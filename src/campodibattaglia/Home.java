@@ -7,10 +7,10 @@ import javax.swing.*;
 
 import org.w3c.dom.Text;
 
-public class Home extends JFrame implements ActionListener{
+public class Home extends JFrame implements ActionListener {
 
 	int x = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-    int y = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+	int y = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
 	private Container c = this.getContentPane();
 	private SfondoPanel sfondo1Panel = new SfondoPanel(1);
@@ -18,7 +18,7 @@ public class Home extends JFrame implements ActionListener{
 	private ButtonIcon onlineButton = new ButtonIcon(2);
 	private ButtonIcon optionsButton = new ButtonIcon(3);
 
-	private Boolean Online =  false;
+	private Boolean Online = false;
 	private int finestra = 0;
 	private Font font;
 
@@ -28,35 +28,33 @@ public class Home extends JFrame implements ActionListener{
 	private ButtonIcon backButton = new ButtonIcon(6);
 
 	private SfondoPanel sfondo3Panel = new SfondoPanel(2);
-	
+
 	private SfondoPanel sfondo4Panel = new SfondoPanel(2);
-	private JButton arButton [][] = new JButton[10][10];
+	private JButton arButton[][] = new JButton[10][10];
 
-
-	Home(){
+	Home() {
 		super("Sa Battalla");
 		home();
 		ascoltatori();
 		finestra();
 
 		try {
-            font = Font.createFont(Font.TRUETYPE_FONT, new File("CampoDiBattaglia/font/SinkiS93.ttf")).deriveFont(40f);
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(font);
-        } 
-		catch (IOException|FontFormatException e) {
-            e.printStackTrace();
-        }
+			font = Font.createFont(Font.TRUETYPE_FONT, new File("font/SinkiS93.ttf")).deriveFont(40f);
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			ge.registerFont(font);
+		} catch (IOException | FontFormatException e) {
+			e.printStackTrace();
+		}
 	}
 
-	private void home(){
+	private void home() {
 		c.removeAll();
 
-		c.setLayout(new GridLayout(1,1));
+		c.setLayout(new GridLayout(1, 1));
 		sfondo1Panel.setLayout(null);
-		offlineButton.setBounds(x/2-(225),y/2,450,80);
-		onlineButton.setBounds(x/2-(225),y/2+(100),450,80);
-		optionsButton.setBounds(x/2-(225),y/2+(200),450,80);
+		offlineButton.setBounds(x / 2 - (225), y / 2, 450, 80);
+		onlineButton.setBounds(x / 2 - (225), y / 2 + (100), 450, 80);
+		optionsButton.setBounds(x / 2 - (225), y / 2 + (200), 450, 80);
 		sfondo1Panel.add(offlineButton);
 		sfondo1Panel.add(onlineButton);
 		sfondo1Panel.add(optionsButton);
@@ -66,17 +64,16 @@ public class Home extends JFrame implements ActionListener{
 		c.repaint();
 	}
 
-	
-	private void scelta(){
+	private void scelta() {
 		c.removeAll();
 
-		finestra=1;
+		finestra = 1;
 
-		c.setLayout(new GridLayout(1,1));
+		c.setLayout(new GridLayout(1, 1));
 		sfondo2Panel.setLayout(null);
-		ospiteButton.setBounds(x/2-(400),y/2-(150),300,400);
-		accountButton.setBounds(x/2+(100),y/2-(150),300,400);
-		backButton.setBounds(20,y-400,370,500);
+		ospiteButton.setBounds(x / 2 - (400), y / 2 - (150), 300, 400);
+		accountButton.setBounds(x / 2 + (100), y / 2 - (150), 300, 400);
+		backButton.setBounds(20, y - 400, 370, 500);
 
 		sfondo2Panel.add(ospiteButton);
 		sfondo2Panel.add(accountButton);
@@ -89,15 +86,15 @@ public class Home extends JFrame implements ActionListener{
 		c.repaint();
 	}
 
-	private void impostazioni(){
+	private void impostazioni() {
 		c.removeAll();
-		finestra=1;
-		c.setLayout(new GridLayout(1,1));
+		finestra = 1;
+		c.setLayout(new GridLayout(1, 1));
 		sfondo3Panel.setLayout(null);
 
 		JLabel prova = new JLabel("ciao");
 		prova.setForeground(Color.WHITE);
-		prova.setBounds(x/2, y/2, 200, 50);
+		prova.setBounds(x / 2, y / 2, 200, 50);
 		sfondo3Panel.add(prova);
 		c.add(sfondo3Panel);
 		ascoltatori();
@@ -107,26 +104,26 @@ public class Home extends JFrame implements ActionListener{
 		c.repaint();
 	}
 
-	private void campoDaGioco(){
+	private void campoDaGioco() {
 		c.removeAll();
-		c.setLayout(new GridLayout(1,1));
+		c.setLayout(new GridLayout(1, 1));
 		sfondo4Panel.setLayout(null);
 
-		 for(int k = 0; k<10; k++){
-			for(int j = 0; j<10; j++){
+		for (int k = 0; k < 10; k++) {
+			for (int j = 0; j < 10; j++) {
 				arButton[k][j] = new JButton("+");
 			}
-		 }
-		 int r = 60;
-		 int t = 60;
-		 for(int k = 0; k<10; k++){
-			for(int j = 0; j<10; j++){
-				arButton[k][j].setBounds(x/2-(360)+r, y/2-(360)+t, 50, 50);
-				r+=60;
+		}
+		int r = 60;
+		int t = 60;
+		for (int k = 0; k < 10; k++) {
+			for (int j = 0; j < 10; j++) {
+				arButton[k][j].setBounds(x / 2 - (360) + r, y / 2 - (360) + t, 50, 50);
+				r += 60;
 				sfondo4Panel.add(arButton[k][j]);
 			}
-			t+=60;
-			r=60;
+			t += 60;
+			r = 60;
 		}
 		c.add(sfondo4Panel);
 		ascoltatori();
@@ -140,6 +137,7 @@ public class Home extends JFrame implements ActionListener{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
+
 	private void ascoltatori() {
 		offlineButton.addActionListener(this);
 		offlineButton.setActionCommand("Offline");
@@ -152,33 +150,30 @@ public class Home extends JFrame implements ActionListener{
 
 		backButton.addActionListener(this);
 		backButton.setActionCommand("Indietro");
-		
+
 		ospiteButton.addActionListener(this);
 		ospiteButton.setActionCommand("Ospite");
-		
+
 		accountButton.addActionListener(this);
 		accountButton.setActionCommand("Account");
 	}
+
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equals("Offline")){
+		if (e.getActionCommand().equals("Offline")) {
 			scelta();
-		}
-		else if (e.getActionCommand().equals("Online")){
+		} else if (e.getActionCommand().equals("Online")) {
 			scelta();
 			Online = true;
 		}
 
-		else if (e.getActionCommand().equals("Impostazioni")){
+		else if (e.getActionCommand().equals("Impostazioni")) {
 			impostazioni();
-		}
-		else if (e.getActionCommand().equals("Indietro")){
-			if (finestra==1)
+		} else if (e.getActionCommand().equals("Indietro")) {
+			if (finestra == 1)
 				home();
-		}
-		else if (e.getActionCommand().equals("Ospite")){
+		} else if (e.getActionCommand().equals("Ospite")) {
 			campoDaGioco();
-		}
-		else if (e.getActionCommand().equals("Account")){
+		} else if (e.getActionCommand().equals("Account")) {
 			impostazioni();
 		}
 	}
