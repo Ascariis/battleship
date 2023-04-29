@@ -1,4 +1,4 @@
-# Progetto Battaglia Navale
+# Battleship
 
 Questo progetto è una versione del gioco classico della Battaglia Navale, implementato utilizzando il linguaggio di programmazione Java e la libreria Swing per l'interfaccia grafica.
 
