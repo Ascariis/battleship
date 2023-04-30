@@ -12,6 +12,8 @@ public class Home extends JFrame implements ActionListener {
 	int x = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	int y = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
+	private GraphicsDevice device;
+
 	private Container c = this.getContentPane();
 	private SfondoPanel sfondo1Panel = new SfondoPanel(1);
 	private ButtonIcon offlineButton = new ButtonIcon(1);
@@ -34,6 +36,8 @@ public class Home extends JFrame implements ActionListener {
 
 	Home() {
 		super("Sa Battalla");
+		device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+		
 		home();
 		ascoltatori();
 		finestra();
@@ -91,12 +95,17 @@ public class Home extends JFrame implements ActionListener {
 		finestra = 1;
 		c.setLayout(new GridLayout(1, 1));
 		sfondo3Panel.setLayout(null);
+		backButton.setBounds(20, y - 400, 370, 500);
+
+		JButton fullscreenToggle = new JButton("Fullscreen ");
 
 		JLabel prova = new JLabel("ciao");
 		prova.setForeground(Color.WHITE);
-		prova.setBounds(x / 2, y / 2, 200, 50);
-		sfondo3Panel.add(prova);
+		fullscreenToggle.setBounds(x / 2, y / 2, 200, 50);
+		sfondo3Panel.add(fullscreenToggle);
+		sfondo3Panel.add(backButton);
 		c.add(sfondo3Panel);
+
 		ascoltatori();
 		finestra();
 
@@ -114,6 +123,7 @@ public class Home extends JFrame implements ActionListener {
 				arButton[k][j] = new JButton("+");
 			}
 		}
+		
 		int r = 60;
 		int t = 60;
 		for (int k = 0; k < 10; k++) {
