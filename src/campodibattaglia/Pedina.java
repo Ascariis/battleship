@@ -28,19 +28,19 @@ public class Pedina extends JButton {
 
         if (taglia == 1) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 65, 65);
+            setBounds(100, taglia * 150, 60, 60);
         } else if (taglia == 2) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 130, 65);
+            setBounds(100, taglia * 150, 120, 60);
         } else if (taglia == 3) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 195, 65);
+            setBounds(100, taglia * 150, 180, 60);
         } else if (taglia == 4) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 260, 65);
+            setBounds(100, taglia * 150, 240, 60);
         } else if (taglia == 5) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 325, 65);
+            setBounds(100, taglia * 150, 300, 60);
         }
         this.setIcon(indirizzo);
 
@@ -50,16 +50,19 @@ public class Pedina extends JButton {
                 mouseY = e.getY();
             }
         });
-        int gridSize = 65 * 10;
+        
         addMouseMotionListener(new MouseMotionAdapter() {
             public void mouseDragged(MouseEvent e) {
-                if (e.getXOnScreen() - mouseX >= screenWidth / 2 - (325) && e.getYOnScreen() - mouseY >= screenHeight / 2 - (325)) {
-                    setLocation((Math.round(e.getXOnScreen() - mouseX) / 65) * 65 , (Math.round(e.getYOnScreen() - mouseY) / 65) * 65);
+                boolean isOnSafezone = false;
+                if (e.getXOnScreen() - mouseX >= screenWidth / 2 - (300) && e.getYOnScreen() - mouseY >= screenHeight / 2 - (300)) {
+                    setLocation((Math.round(e.getXOnScreen()) / 60) * 60 , (Math.round(e.getYOnScreen()) / 60) * 60);
+                    
                 } else 
                     setLocation(e.getXOnScreen() - mouseX, e.getYOnScreen() - mouseY);
             }
         });
     }
+
     /* Se dio vuole
     public void rotate(double angle) {
         setSize(getHeight(), getWidth());

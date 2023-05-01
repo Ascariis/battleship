@@ -133,16 +133,16 @@ public class Home extends JFrame implements ActionListener {
 			}
 		}
 
-		int r = 65;
+		int r = 60;
 		int t = 0;
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
-				arButton[k][j].setBounds(screenWidth / 2 - (325) + r, screenHeight / 2 - (325) + t, 65, 65);
-				r += 65;
+				arButton[k][j].setBounds(screenWidth / 2 - (300) + r, screenHeight / 2 - (300) + t, 60, 60);
+				r += 60;
 				sfondo4Panel.add(arButton[k][j]);
 			}
-			t += 65;
-			r = 65;
+			t += 60;
+			r = 60;
 		}
 
 		impo.setBounds(screenWidth - (140), 70, 70, 70);
@@ -150,14 +150,23 @@ public class Home extends JFrame implements ActionListener {
 		sfondo4Panel.add(pedina1);
 		sfondo4Panel.moveToFront(pedina1);
 		sfondo4Panel.add(pedina2);
+		sfondo4Panel.moveToFront(pedina2);
 		sfondo4Panel.add(pedina3);
+		sfondo4Panel.moveToFront(pedina3);
 		sfondo4Panel.add(pedina4);
+		sfondo4Panel.moveToFront(pedina4);
 		sfondo4Panel.add(pedina5);
+		sfondo4Panel.moveToFront(pedina5);
 		sfondo4Panel.add(pedina6);
+		sfondo4Panel.moveToFront(pedina6);
 		sfondo4Panel.add(pedina7);
+		sfondo4Panel.moveToFront(pedina7);
 		sfondo4Panel.add(pedina8);
+		sfondo4Panel.moveToFront(pedina8);
 		sfondo4Panel.add(pedina9);
+		sfondo4Panel.moveToFront(pedina9);
 		sfondo4Panel.add(pedina0);
+		sfondo4Panel.moveToFront(pedina0);
 		sfondo4Panel.add(impo);
 
 		c.add(sfondo4Panel);
