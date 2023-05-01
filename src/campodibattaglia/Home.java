@@ -7,7 +7,10 @@ import javax.swing.*;
 
 import org.w3c.dom.Text;
 
-public class Home extends JFrame implements ActionListener, MouseListener, MouseMotionListener {
+public class Home extends JFrame implements ActionListener, MouseListener, MouseMotionListener, KeyListener {
+
+	JButton testBarca = new JButton("barchettta", null);
+	Point puntoBarca = new Point();
 
 	private boolean isFullscreen = false;
 	int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
@@ -120,6 +123,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 		c.setLayout(new GridLayout(1, 1));
 		sfondo4Panel.setLayout(null);
 
+
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
 				arButton[k][j] = new JButton("+");
@@ -137,7 +141,10 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 			t += 65;
 			r = 65;
 		}
+
+		testBarca.setBounds(200, 190, 50, 35);
 		backButton.setBounds(70, 70, 70, 70);
+		sfondo4Panel.add(testBarca);
 		sfondo4Panel.add(backButton);
 		ButtonIcon pedina = new ButtonIcon(7);
 		pedina.setBounds(70, 200, 130, 65);
@@ -167,6 +174,15 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 		c.repaint();
 	}
 
+<<<<<<< HEAD
+=======
+	/*
+	 * ++ private void controllo(){
+	 * ++
+	 * ++ }
+	 */
+	
+>>>>>>> ea4261fd681b5f880c766dfe1f9c03b64ae0f14d
 	private void finestra() {
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -191,6 +207,9 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 
 		accountButton.addActionListener(this);
 		accountButton.setActionCommand("Account");
+
+		testBarca.addMouseListener(this);
+		addKeyListener(this);
 	}
 
 	@Override
@@ -237,7 +256,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		
+		puntoBarca = (Point) testBarca.getLocation();
 		throw new UnsupportedOperationException("Unimplemented method 'mousePressed'");
 	}
 
@@ -269,6 +288,38 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'mouseMoved'");
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+	
+		throw new UnsupportedOperationException("Unimplemented method 'keyTyped'");
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_F11) {
+			if (!isFullscreen) {
+				dispose();
+				setUndecorated(true);
+				isFullscreen = true;
+				setBounds(0, 0, screenWidth, screenHeight);
+				this.setVisible(true);
+			} else {
+				dispose();
+				setUndecorated(false);
+				isFullscreen = false;
+				setBounds(0, 0, screenWidth, screenHeight);
+				this.setVisible(true);
+			}
+		}
+		throw new UnsupportedOperationException("Unimplemented method 'keyPressed'");
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'keyReleased'");
 	}
 
 }
