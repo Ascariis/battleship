@@ -123,14 +123,9 @@ public class Home extends JFrame implements ActionListener {
 				arButton[k][j] = new JButton("+");
 			}
 		}
-<<<<<<< HEAD
-		int r = 65;
-		int t = 0;
-=======
 		
 		int r = 60;
 		int t = 60;
->>>>>>> 7e73d2841fbf0abfa688f373ee737cb82bfd2ee4
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
 				arButton[k][j].setBounds(x / 2 - (325) + r, y / 2 - (325) + t, 65, 65);
