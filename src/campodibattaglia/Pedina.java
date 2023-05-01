@@ -12,26 +12,14 @@ public class Pedina extends JButton {
     private int mouseX, mouseY;
         
     public Pedina(int taglia) {
-        
-        
         this.setBorderPainted(false);
         this.setContentAreaFilled(false);
         this.setFocusPainted(false);
 
-        if (taglia == 1)
+        if (taglia == 1) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-
-        else if (taglia == 2)
-            indirizzo = new ImageIcon("image/multiplayer.png");
-
-        else if (taglia == 3)
-            indirizzo = new ImageIcon("image/multiplayer.png");
-
-        else if (taglia == 4)
-            indirizzo = new ImageIcon("image/multiplayer.png");
-
-        else if (taglia == 5)
-            indirizzo = new ImageIcon("image/multiplayer.png");
+            setBounds(100, 150, 65, 65);
+        }
         this.setIcon(indirizzo);
 
         addMouseListener(new MouseAdapter() {

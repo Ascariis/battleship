@@ -7,11 +7,7 @@ import javax.swing.*;
 
 import org.w3c.dom.Text;
 
-public class Home extends JFrame implements ActionListener, MouseListener, MouseMotionListener, KeyListener {
-
-	JButton testBarca = new JButton("barchettta", null);
-	Point puntoBarca = new Point();
-
+public class Home extends JFrame implements ActionListener {
 
 	private boolean isFullscreen = false;
 	int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
@@ -60,7 +56,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 	private void home() {
 		c.removeAll();
 		finestra = 1;
-		
+
 		c.setLayout(new GridLayout(1, 1));
 		sfondo1Panel.setLayout(null);
 		offlineButton.setBounds(screenWidth / 2 - (225), screenHeight / 2, 450, 80);
@@ -99,7 +95,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 
 	private void impostazioni() {
 		c.removeAll();
-		
+
 		c.setLayout(new GridLayout(1, 1));
 		sfondo3Panel.setLayout(null);
 		backButton.setBounds(70, 70, 70, 70);
@@ -110,7 +106,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 
 		JLabel prova = new JLabel("ciao");
 		prova.setForeground(Color.WHITE);
-		fullscreenToggle.setBounds(screenWidth / 2-(225), screenHeight / 2-(40), 450, 80);
+		fullscreenToggle.setBounds(screenWidth / 2 - (225), screenHeight / 2 - (40), 450, 80);
 		sfondo3Panel.add(fullscreenToggle);
 		sfondo3Panel.add(backButton);
 		c.add(sfondo3Panel);
@@ -125,6 +121,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 	private void campoDaGioco() {
 		c.removeAll();
 		c.setLayout(new GridLayout(1, 1));
+		finestra = 2;
 		sfondo4Panel.setLayout(null);
 
 		for (int k = 0; k < 10; k++) {
@@ -144,30 +141,11 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 			t += 65;
 			r = 65;
 		}
-		testBarca.setBounds(200, 190, 50, 35);
-		
-		impo.setBounds(screenWidth-(140), 70, 70, 70);
-		sfondo4Panel.add(testBarca);
-		sfondo4Panel.add(impo);
-		ButtonIcon pedina = new ButtonIcon(7);
-		pedina.setBounds(70, 200, 130, 65);
-		sfondo4Panel.add(pedina);
+		Pedina testPedina = new Pedina(1);
 
-		pedina.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				iconaCursore = (ImageIcon) pedina.getIcon();
-				pedina.setIcon(iconaCursore);
-			}
-		});
-		sfondo4Panel.addMouseMotionListener(new MouseMotionAdapter() {
-			public void mouseDrugt(MouseEvent e) {
-				if (iconaCursore != null) {
-					int x = e.getX();
-					int y = e.getY();
-					pedina.setBounds(x - 50, y - 87 / 2, 371, 87);
-				}
-			}
-		});
+		impo.setBounds(screenWidth - (140), 70, 70, 70);
+		sfondo4Panel.add(testPedina);
+		sfondo4Panel.add(impo);
 
 		c.add(sfondo4Panel);
 		ascoltatori();
@@ -203,8 +181,6 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 		accountButton.addActionListener(this);
 		accountButton.setActionCommand("Account");
 
-		testBarca.addMouseListener(this);
-		addKeyListener(this);
 	}
 
 	@Override
@@ -243,80 +219,6 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 			}
 
 		}
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'mouseClicked'");
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		puntoBarca = (Point) testBarca.getLocation();
-		throw new UnsupportedOperationException("Unimplemented method 'mousePressed'");
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'mouseReleased'");
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'mouseEntered'");
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'mouseExited'");
-	}
-
-	@Override
-	public void mouseDragged(MouseEvent e) {
-
-		throw new UnsupportedOperationException("Unimplemented method 'mouseDragged'");
-	}
-
-	@Override
-	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'mouseMoved'");
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-
-		throw new UnsupportedOperationException("Unimplemented method 'keyTyped'");
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_F11) {
-			if (!isFullscreen) {
-				dispose();
-				setUndecorated(true);
-				isFullscreen = true;
-				setBounds(0, 0, screenWidth, screenHeight);
-				this.setVisible(true);
-			} else {
-				dispose();
-				setUndecorated(false);
-				isFullscreen = false;
-				setBounds(0, 0, screenWidth, screenHeight);
-				this.setVisible(true);
-			}
-		}
-		throw new UnsupportedOperationException("Unimplemented method 'keyPressed'");
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'keyReleased'");
 	}
 
 }
