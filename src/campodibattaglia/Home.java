@@ -42,8 +42,6 @@ public class Home extends JFrame implements ActionListener {
 	private Pedina pedina8 = new Pedina(3);
 	private Pedina pedina9 = new Pedina(3);
 	private Pedina pedina0 = new Pedina(4);
-	
-
 
 	private SfondoPanel sfondo4Panel = new SfondoPanel(2);
 	private JButton arButton[][] = new JButton[10][10];
@@ -150,6 +148,7 @@ public class Home extends JFrame implements ActionListener {
 		}
 
 		impo.setBounds(screenWidth - (140), 70, 70, 70);
+
 		sfondo4Panel.add(pedina1);
 		sfondo4Panel.add(pedina2);
 		sfondo4Panel.add(pedina3);
