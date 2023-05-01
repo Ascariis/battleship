@@ -174,15 +174,6 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 		c.repaint();
 	}
 
-<<<<<<< HEAD
-=======
-	/*
-	 * ++ private void controllo(){
-	 * ++
-	 * ++ }
-	 */
-	
->>>>>>> ea4261fd681b5f880c766dfe1f9c03b64ae0f14d
 	private void finestra() {
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
