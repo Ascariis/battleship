@@ -5,7 +5,6 @@ import java.io.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import org.w3c.dom.Text;
 
 public class Home extends JFrame implements ActionListener {
 
@@ -13,7 +12,6 @@ public class Home extends JFrame implements ActionListener {
 	int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
-	private GraphicsDevice device;
 
 	private Container c = this.getContentPane();
 	private SfondoPanel sfondo1Panel = new SfondoPanel(1);
@@ -45,7 +43,7 @@ public class Home extends JFrame implements ActionListener {
 
 	private SfondoPanel sfondo4Panel = new SfondoPanel(2);
 	private JButton arButton[][] = new JButton[10][10];
-	private ImageIcon iconaCursore = new ImageIcon("image/pedina1.png");
+	
 
 	Home() {
 		super("Sa Battalla");
