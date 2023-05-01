@@ -71,9 +71,9 @@ public class Home extends JFrame implements ActionListener {
 
 		c.setLayout(new GridLayout(1, 1));
 		sfondo2Panel.setLayout(null);
-		ospiteButton.setBounds(x / 2 - (400), y / 2 - (150), 300, 400);
-		accountButton.setBounds(x / 2 + (100), y / 2 - (150), 300, 400);
-		backButton.setBounds(20, y - 400, 370, 500);
+		ospiteButton.setBounds(x / 2 - (400), y / 2 - (150), 300, 320);
+		accountButton.setBounds(x / 2 + (100), y / 2 - (150), 300, 320);
+		backButton.setBounds(70, 70, 70, 70);
 
 		sfondo2Panel.add(ospiteButton);
 		sfondo2Panel.add(accountButton);
@@ -114,17 +114,19 @@ public class Home extends JFrame implements ActionListener {
 				arButton[k][j] = new JButton("+");
 			}
 		}
-		int r = 60;
-		int t = 60;
+		int r = 65;
+		int t = 0;
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
-				arButton[k][j].setBounds(x / 2 - (360) + r, y / 2 - (360) + t, 50, 50);
-				r += 60;
+				arButton[k][j].setBounds(x / 2 - (325) + r, y / 2 - (325) + t, 65, 65);
+				r += 65;
 				sfondo4Panel.add(arButton[k][j]);
 			}
-			t += 60;
-			r = 60;
+			t += 65;
+			r = 65;
 		}
+		backButton.setBounds(70, 70, 70, 70);
+		sfondo4Panel.add(backButton);
 		c.add(sfondo4Panel);
 		ascoltatori();
 		finestra();
@@ -132,6 +134,9 @@ public class Home extends JFrame implements ActionListener {
 		c.repaint();
 	}
 
+	private void controllo(){
+		
+	}
 	private void finestra() {
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
