@@ -33,7 +33,7 @@ public class Home extends JFrame implements ActionListener {
 
 	private SfondoPanel sfondo4Panel = new SfondoPanel(2);
 	private JButton arButton[][] = new JButton[10][10];
-
+	private ImageIcon iconaCursore = new ImageIcon("image/pedina1.png");
 	Home() {
 		super("Sa Battalla");
 		device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
@@ -95,14 +95,18 @@ public class Home extends JFrame implements ActionListener {
 		finestra = 1;
 		c.setLayout(new GridLayout(1, 1));
 		sfondo3Panel.setLayout(null);
-		backButton.setBounds(20, y - 400, 370, 500);
+		backButton.setBounds(70, 70, 70, 70);
 
-		JButton fullscreenToggle = new JButton("Fullscreen ");
+		JSlider slider = new JSlider(JSlider.HORIZONTAL, 0, 100, 50);
 
-		JLabel prova = new JLabel("ciao");
-		prova.setForeground(Color.WHITE);
-		fullscreenToggle.setBounds(x / 2, y / 2, 200, 50);
-		sfondo3Panel.add(fullscreenToggle);
+		slider.setMinorTickSpacing(5);
+		slider.setMajorTickSpacing(25);
+		slider.setPaintTicks(true);
+		slider.setPaintLabels(true);
+		slider.setBounds(x/2-(150), y/2-(25), 300, 50);
+		//JButton fullscreenToggle = new JButton("Fullscreen ");
+		sfondo3Panel.add(slider);
+		//sfondo3Panel.add(fullscreenToggle);
 		sfondo3Panel.add(backButton);
 		c.add(sfondo3Panel);
 
@@ -137,6 +141,27 @@ public class Home extends JFrame implements ActionListener {
 		}
 		backButton.setBounds(70, 70, 70, 70);
 		sfondo4Panel.add(backButton);
+		ButtonIcon pedina = new ButtonIcon(7);
+		pedina.setBounds(70, 200, 130, 65);
+		sfondo4Panel.add(pedina);
+		
+
+		pedina.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                iconaCursore = (ImageIcon)pedina.getIcon();
+                pedina.setIcon(iconaCursore);
+            }
+        });
+		sfondo4Panel.addMouseMotionListener(new MouseMotionAdapter() {
+            public void mouseMoved(MouseEvent e) {
+                if (iconaCursore != null) {
+                    int x = e.getX();
+                    int y = e.getY();
+                    pedina.setBounds(x - 50, y - 87/2, 371, 87);
+                }
+            }
+        });
+
 		c.add(sfondo4Panel);
 		ascoltatori();
 		finestra();
@@ -144,9 +169,6 @@ public class Home extends JFrame implements ActionListener {
 		c.repaint();
 	}
 
-	private void controllo(){
-		
-	}
 	private void finestra() {
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

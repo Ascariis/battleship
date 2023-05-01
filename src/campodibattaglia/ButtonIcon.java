@@ -33,6 +33,9 @@ public class ButtonIcon extends JButton {
         else if (nFinestra == 6)
             indirizzo = new ImageIcon("image/indietro.png");
 
+        else if (nFinestra == 7)
+            indirizzo = new ImageIcon("image/pedina1.png");
+            
         this.setIcon(indirizzo);
     }
 }
