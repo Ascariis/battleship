@@ -148,6 +148,7 @@ public class Home extends JFrame implements ActionListener {
 		impo.setBounds(screenWidth - (140), 70, 70, 70);
 
 		sfondo4Panel.add(pedina1);
+		sfondo4Panel.moveToFront(pedina1);
 		sfondo4Panel.add(pedina2);
 		sfondo4Panel.add(pedina3);
 		sfondo4Panel.add(pedina4);
@@ -190,7 +191,6 @@ public class Home extends JFrame implements ActionListener {
 
 		accountButton.addActionListener(this);
 		accountButton.setActionCommand("Account");
-
 	}
 
 	@Override
@@ -227,7 +227,6 @@ public class Home extends JFrame implements ActionListener {
 				setBounds(0, 0, screenWidth, screenHeight);
 				this.setVisible(true);
 			}
-
 		}
 	}
 
