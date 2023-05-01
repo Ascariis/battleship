@@ -32,7 +32,17 @@ public class Home extends JFrame implements ActionListener {
 
 	private SfondoPanel sfondo3Panel = new SfondoPanel(2);
 	private ButtonIcon impo = new ButtonIcon(8);
-	private Pedina testPedina = new Pedina(1);
+	private Pedina pedina1 = new Pedina(1);
+	private Pedina pedina2 = new Pedina(1);
+	private Pedina pedina3 = new Pedina(1);
+	private Pedina pedina4 = new Pedina(1);
+	private Pedina pedina5 = new Pedina(2);
+	private Pedina pedina6 = new Pedina(2);
+	private Pedina pedina7 = new Pedina(2);
+	private Pedina pedina8 = new Pedina(3);
+	private Pedina pedina9 = new Pedina(3);
+	private Pedina pedina0 = new Pedina(4);
+	
 
 
 	private SfondoPanel sfondo4Panel = new SfondoPanel(2);
@@ -140,7 +150,16 @@ public class Home extends JFrame implements ActionListener {
 		}
 
 		impo.setBounds(screenWidth - (140), 70, 70, 70);
-		sfondo4Panel.add(testPedina);
+		sfondo4Panel.add(pedina1);
+		sfondo4Panel.add(pedina2);
+		sfondo4Panel.add(pedina3);
+		sfondo4Panel.add(pedina4);
+		sfondo4Panel.add(pedina5);
+		sfondo4Panel.add(pedina6);
+		sfondo4Panel.add(pedina7);
+		sfondo4Panel.add(pedina8);
+		sfondo4Panel.add(pedina9);
+		sfondo4Panel.add(pedina0);
 		sfondo4Panel.add(impo);
 
 		c.add(sfondo4Panel);

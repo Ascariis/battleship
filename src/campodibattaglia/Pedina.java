@@ -18,7 +18,23 @@ public class Pedina extends JButton {
 
         if (taglia == 1) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, 150, 65, 65);
+            setBounds(100, taglia * 150, (taglia * 65), 65);
+        }
+        else if (taglia == 2) {
+            indirizzo = new ImageIcon("image/singleplayer.png");
+            setBounds(100, taglia * 150, (taglia * 65), 65);
+        }
+        else if (taglia == 3) {
+            indirizzo = new ImageIcon("image/singleplayer.png");
+            setBounds(100, taglia * 150, (taglia * 65), 65);
+        }
+        else if (taglia == 4) {
+            indirizzo = new ImageIcon("image/singleplayer.png");
+            setBounds(100, taglia * 150, (taglia * 65), 65);
+        }
+        else if (taglia == 5) {
+            indirizzo = new ImageIcon("image/singleplayer.png");
+            setBounds(100, taglia * 150, (taglia * 65), 65);
         }
         this.setIcon(indirizzo);
 
