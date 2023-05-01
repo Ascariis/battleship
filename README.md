@@ -27,7 +27,7 @@ Il progetto implementa la versione single-player e multi-player.
 1. Assicurarsi che Java Development Kit (JDK) sia installato sul proprio sistema.
 2. Clonare la repository su una directory locale utilizzando il seguente comando:
 
-'git clone git@github.com:Ascariis/battleship.git'
+`git clone git@github.com:Ascariis/battleship.git`
 
 3. Aprire il progetto in un IDE Java, ad esempio Eclipse o IntelliJ.
 4. Eseguire il file principale `Main.java` per avviare il gioco.
