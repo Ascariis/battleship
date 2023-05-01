@@ -75,8 +75,8 @@ public class Home extends JFrame implements ActionListener {
 
 		c.setLayout(new GridLayout(1, 1));
 		sfondo2Panel.setLayout(null);
-		ospiteButton.setBounds(x / 2 - (400), y / 2 - (150), 300, 320);
-		accountButton.setBounds(x / 2 + (100), y / 2 - (150), 300, 320);
+		ospiteButton.setBounds(x / 2 - (400), y / 2 - (100), 300, 320);
+		accountButton.setBounds(x / 2 + (100), y / 2 - (100), 300, 320);
 		backButton.setBounds(70, 70, 70, 70);
 
 		sfondo2Panel.add(ospiteButton);
@@ -124,8 +124,8 @@ public class Home extends JFrame implements ActionListener {
 			}
 		}
 		
-		int r = 60;
-		int t = 60;
+		int r = 65;
+		int t = 0;
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
 				arButton[k][j].setBounds(x / 2 - (325) + r, y / 2 - (325) + t, 65, 65);
