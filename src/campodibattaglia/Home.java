@@ -32,6 +32,8 @@ public class Home extends JFrame implements ActionListener {
 
 	private SfondoPanel sfondo3Panel = new SfondoPanel(2);
 	private ButtonIcon impo = new ButtonIcon(8);
+	private Pedina testPedina = new Pedina(1);
+
 
 	private SfondoPanel sfondo4Panel = new SfondoPanel(2);
 	private JButton arButton[][] = new JButton[10][10];
@@ -86,8 +88,6 @@ public class Home extends JFrame implements ActionListener {
 		sfondo2Panel.add(accountButton);
 		sfondo2Panel.add(backButton);
 		c.add(sfondo2Panel);
-		ascoltatori();
-		finestra();
 
 		c.revalidate();
 		c.repaint();
@@ -110,9 +110,6 @@ public class Home extends JFrame implements ActionListener {
 		sfondo3Panel.add(fullscreenToggle);
 		sfondo3Panel.add(backButton);
 		c.add(sfondo3Panel);
-
-		ascoltatori();
-		finestra();
 
 		c.revalidate();
 		c.repaint();
@@ -141,15 +138,12 @@ public class Home extends JFrame implements ActionListener {
 			t += 65;
 			r = 65;
 		}
-		Pedina testPedina = new Pedina(1);
 
 		impo.setBounds(screenWidth - (140), 70, 70, 70);
 		sfondo4Panel.add(testPedina);
 		sfondo4Panel.add(impo);
 
 		c.add(sfondo4Panel);
-		ascoltatori();
-		finestra();
 		c.revalidate();
 		c.repaint();
 	}
