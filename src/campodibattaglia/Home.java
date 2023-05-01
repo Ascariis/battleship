@@ -12,6 +12,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 	JButton testBarca = new JButton("barchettta", null);
 	Point puntoBarca = new Point();
 
+
 	private boolean isFullscreen = false;
 	int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
@@ -34,6 +35,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 	private ButtonIcon backButton = new ButtonIcon(6);
 
 	private SfondoPanel sfondo3Panel = new SfondoPanel(2);
+	private ButtonIcon impo = new ButtonIcon(8);
 
 	private SfondoPanel sfondo4Panel = new SfondoPanel(2);
 	private JButton arButton[][] = new JButton[10][10];
@@ -56,7 +58,8 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 
 	private void home() {
 		c.removeAll();
-
+		finestra = 1;
+		
 		c.setLayout(new GridLayout(1, 1));
 		sfondo1Panel.setLayout(null);
 		offlineButton.setBounds(screenWidth / 2 - (225), screenHeight / 2, 450, 80);
@@ -95,18 +98,18 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 
 	private void impostazioni() {
 		c.removeAll();
-		finestra = 1;
+		
 		c.setLayout(new GridLayout(1, 1));
 		sfondo3Panel.setLayout(null);
 		backButton.setBounds(70, 70, 70, 70);
 
-		JButton fullscreenToggle = new JButton("Fullscreen ");
+		ButtonIcon fullscreenToggle = new ButtonIcon(7);
 		fullscreenToggle.addActionListener(this);
 		fullscreenToggle.setActionCommand("Fullscreen");
 
 		JLabel prova = new JLabel("ciao");
 		prova.setForeground(Color.WHITE);
-		fullscreenToggle.setBounds(screenWidth / 2, screenHeight / 2, 200, 50);
+		fullscreenToggle.setBounds(screenWidth / 2-(225), screenHeight / 2-(40), 450, 80);
 		sfondo3Panel.add(fullscreenToggle);
 		sfondo3Panel.add(backButton);
 		c.add(sfondo3Panel);
@@ -122,7 +125,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 		c.removeAll();
 		c.setLayout(new GridLayout(1, 1));
 		sfondo4Panel.setLayout(null);
-
+		finestra = 2;
 
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
@@ -141,11 +144,11 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 			t += 65;
 			r = 65;
 		}
-
 		testBarca.setBounds(200, 190, 50, 35);
-		backButton.setBounds(70, 70, 70, 70);
+		
+		impo.setBounds(screenWidth-(140), 70, 70, 70);
 		sfondo4Panel.add(testBarca);
-		sfondo4Panel.add(backButton);
+		sfondo4Panel.add(impo);
 		ButtonIcon pedina = new ButtonIcon(7);
 		pedina.setBounds(70, 200, 130, 65);
 		sfondo4Panel.add(pedina);
@@ -189,6 +192,8 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 
 		optionsButton.addActionListener(this);
 		optionsButton.setActionCommand("Impostazioni");
+		impo.addActionListener(this);
+		impo.setActionCommand("Impostazioni");
 
 		backButton.addActionListener(this);
 		backButton.setActionCommand("Indietro");
@@ -217,6 +222,8 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 		} else if (e.getActionCommand().equals("Indietro")) {
 			if (finestra == 1)
 				home();
+			else if (finestra == 2)
+				campoDaGioco();
 		} else if (e.getActionCommand().equals("Ospite")) {
 			campoDaGioco();
 		} else if (e.getActionCommand().equals("Account")) {
