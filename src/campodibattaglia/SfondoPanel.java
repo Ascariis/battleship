@@ -6,7 +6,7 @@ import java.awt.Toolkit;
 
 import javax.swing.*;
 
-public class SfondoPanel extends JPanel {
+public class SfondoPanel extends JLayeredPane {
 	int x = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	int y = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 	String indirizzo;
