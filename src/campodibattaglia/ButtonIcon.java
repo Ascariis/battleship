@@ -32,16 +32,11 @@ public class ButtonIcon extends JButton {
             indirizzo = new ImageIcon("image/indietro.png");
 
         else if (nFinestra == 7)
-<<<<<<< HEAD
-            indirizzo = new ImageIcon("image/pedina1.png");
-
-=======
             indirizzo = new ImageIcon("image/fullscreen.png");
             
         else if (nFinestra == 8)
             indirizzo = new ImageIcon("image/impo.png");
           
->>>>>>> 7ff65b6bb39061dfd693e0f3cce8433f3e284db6
         this.setIcon(indirizzo);
     }
 }
