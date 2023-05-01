@@ -38,6 +38,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 	private SfondoPanel sfondo4Panel = new SfondoPanel(2);
 	private JButton arButton[][] = new JButton[10][10];
 	private ImageIcon iconaCursore = new ImageIcon("image/pedina1.png");
+
 	Home() {
 		super("Sa Battalla");
 
@@ -123,7 +124,6 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 		c.setLayout(new GridLayout(1, 1));
 		sfondo4Panel.setLayout(null);
 
-
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
 				arButton[k][j] = new JButton("+");
@@ -149,23 +149,22 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 		ButtonIcon pedina = new ButtonIcon(7);
 		pedina.setBounds(70, 200, 130, 65);
 		sfondo4Panel.add(pedina);
-		
 
 		pedina.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                iconaCursore = (ImageIcon)pedina.getIcon();
-                pedina.setIcon(iconaCursore);
-            }
-        });
+			public void actionPerformed(ActionEvent e) {
+				iconaCursore = (ImageIcon) pedina.getIcon();
+				pedina.setIcon(iconaCursore);
+			}
+		});
 		sfondo4Panel.addMouseMotionListener(new MouseMotionAdapter() {
-            public void mouseDrugt(MouseEvent e) {
-                if (iconaCursore != null) {
-                    int x = e.getX();
-                    int y = e.getY();
-                    pedina.setBounds(x - 50, y - 87/2, 371, 87);
-                }
-            }
-        });
+			public void mouseDrugt(MouseEvent e) {
+				if (iconaCursore != null) {
+					int x = e.getX();
+					int y = e.getY();
+					pedina.setBounds(x - 50, y - 87 / 2, 371, 87);
+				}
+			}
+		});
 
 		c.add(sfondo4Panel);
 		ascoltatori();
@@ -271,7 +270,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		
+
 		throw new UnsupportedOperationException("Unimplemented method 'mouseDragged'");
 	}
 
@@ -283,7 +282,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-	
+
 		throw new UnsupportedOperationException("Unimplemented method 'keyTyped'");
 	}
 
