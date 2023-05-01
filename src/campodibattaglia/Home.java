@@ -9,6 +9,9 @@ import org.w3c.dom.Text;
 
 public class Home extends JFrame implements ActionListener, MouseListener, MouseMotionListener, KeyListener {
 
+	JButton testBarca = new JButton("barchettta", null);
+	Point puntoBarca = new Point();
+
 	private boolean isFullscreen = false;
 	int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
@@ -120,6 +123,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 		c.setLayout(new GridLayout(1, 1));
 		sfondo4Panel.setLayout(null);
 
+
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
 				arButton[k][j] = new JButton("+");
@@ -137,7 +141,10 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 			t += 65;
 			r = 65;
 		}
+
+		testBarca.setBounds(200, 190, 50, 35);
 		backButton.setBounds(70, 70, 70, 70);
+		sfondo4Panel.add(testBarca);
 		sfondo4Panel.add(backButton);
 		c.add(sfondo4Panel);
 		ascoltatori();
@@ -177,7 +184,8 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 		accountButton.addActionListener(this);
 		accountButton.setActionCommand("Account");
 
-		this.addKeyListener(this);
+		testBarca.addMouseListener(this);
+		addKeyListener(this);
 	}
 
 	@Override
@@ -224,7 +232,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		
+		puntoBarca = (Point) testBarca.getLocation();
 		throw new UnsupportedOperationException("Unimplemented method 'mousePressed'");
 	}
 
