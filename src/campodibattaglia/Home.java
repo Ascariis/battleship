@@ -42,7 +42,7 @@ public class Home extends JFrame implements ActionListener {
 	private Pedina pedina0 = new Pedina(4);
 
 	private SfondoPanel sfondo4Panel = new SfondoPanel(2);
-	private JButton arButton[][] = new JButton[10][10];
+	private Casella arButton[][] = new Casella[10][10];
 	
 
 	Home() {
@@ -129,7 +129,7 @@ public class Home extends JFrame implements ActionListener {
 
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
-				arButton[k][j] = new JButton("+");
+				arButton[k][j] = new Casella();
 			}
 		}
 
@@ -159,6 +159,7 @@ public class Home extends JFrame implements ActionListener {
 		sfondo4Panel.moveToFront(pedina5);
 		sfondo4Panel.add(pedina6);
 		sfondo4Panel.moveToFront(pedina6);
+		pedina6.rotate();
 		sfondo4Panel.add(pedina7);
 		sfondo4Panel.moveToFront(pedina7);
 		sfondo4Panel.add(pedina8);
