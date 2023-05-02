@@ -137,16 +137,16 @@ public class Home extends JFrame implements ActionListener {
 			}
 		}
 
-		int r = 50;
+		int r = 60;
 		int t = 0;
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
-				arButton[k][j].setBounds(screenWidth / 2 - (300) + r, screenHeight / 2 - (300) + t, 50, 50);
-				r += 50;
+				arButton[k][j].setBounds(screenWidth / 2 - (300) + r, screenHeight / 2 - (300) + t, 60, 60);
+				r += 60;
 				sfondo4Panel.add(arButton[k][j]);
 			}
-			t += 50;
-			r = 50;
+			t += 60;
+			r = 60;
 		}
 		nameLabel.setForeground(Color.WHITE);
 		nameLabel.setBounds(100,40, 200, 80);

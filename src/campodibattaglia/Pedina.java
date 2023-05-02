@@ -57,25 +57,28 @@ public class Pedina extends JButton {
                 boolean isOnSafezone = false;
                 if (e.getXOnScreen() - mouseX >= screenWidth / 2 - (300)
                         && e.getYOnScreen() - mouseY >= screenHeight / 2 - (300)) {
-                    setLocation((Math.round(e.getXOnScreen()) / 50) * 50, (Math.round(e.getYOnScreen()) / 50) * 50);
-
+                    setLocation((Math.round(e.getXOnScreen()) / 60) * 60, (Math.round(e.getYOnScreen()) / 60) * 60);
                 } else
                     setLocation(e.getXOnScreen() - mouseX, e.getYOnScreen() - mouseY);
             }
         });
     }
-    
-    /* Se dio vuole
-    public void rotate(double angle, taglia) {
-        setSize(getHeight(), getWidth());
-        ImageIcon icon = (ImageIcon) getIcon();
-        angle = 90;
-        BufferedImage img = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2d = img.createGraphics();
-        g2d.rotate(Math.toRadians(angle), icon.getIconWidth() / taglia, icon.getIconHeight() / 2);
-        icon.paintIcon(null, g2d, 0, 0);
-        g2d.dispose();
-        setIcon(new ImageIcon(img));
 
-    }*/
+    /*
+     * Se dio vuole
+     * public void rotate(double angle, taglia) {
+     * setSize(getHeight(), getWidth());
+     * ImageIcon icon = (ImageIcon) getIcon();
+     * angle = 90;
+     * BufferedImage img = new BufferedImage(icon.getIconWidth(),
+     * icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
+     * Graphics2D g2d = img.createGraphics();
+     * g2d.rotate(Math.toRadians(angle), icon.getIconWidth() / taglia,
+     * icon.getIconHeight() / 2);
+     * icon.paintIcon(null, g2d, 0, 0);
+     * g2d.dispose();
+     * setIcon(new ImageIcon(img));
+     * 
+     * }
+     */
 }
