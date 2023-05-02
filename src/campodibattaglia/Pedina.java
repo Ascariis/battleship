@@ -57,8 +57,7 @@ public class Pedina extends JButton {
                 boolean isOnSafezone = false;
                 if (e.getXOnScreen() - mouseX >= screenWidth / 2 - (300)
                         && e.getYOnScreen() - mouseY >= screenHeight / 2 - (300)) {
-                    setBounds((Math.round(e.getXOnScreen()) / 60) * 60, (Math.round(e.getYOnScreen()) / 60) * 60,
-                            taglia * 60, 60);
+                    setLocation((Math.round(e.getXOnScreen()) / 60) * 60, (Math.round(e.getYOnScreen()) / 60) * 60);
 
                 } else
                     setLocation(e.getXOnScreen() - mouseX, e.getYOnScreen() - mouseY);
