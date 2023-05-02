@@ -1,5 +1,6 @@
 package campodibattaglia;
 
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -9,7 +10,8 @@ import javax.swing.*;
 
 public class Pedina extends JButton {
 
-    Icon indirizzo;
+    ImageIcon icon;
+    
     private int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
@@ -22,24 +24,36 @@ public class Pedina extends JButton {
         this.setBorderPainted(false);
         this.setContentAreaFilled(false);
         this.setFocusPainted(false);
+        
+        
+        
 
         if (taglia == 1) {
-            indirizzo = new ImageIcon("image/singleplayer.png");
             setBounds(100, taglia * 200, 60, 60);
+            icon = new ImageIcon("image/barca1.png");
+            Image img = icon.getImage();
+            Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            icon=new ImageIcon(newImg);
         } else if (taglia == 2) {
-            indirizzo = new ImageIcon("image/singleplayer.png");
             setBounds(100, taglia * 200, 120, 60);
+            icon = new ImageIcon("image/barca2.png");
+            Image img = icon.getImage();
+            Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            icon=new ImageIcon(newImg);
         } else if (taglia == 3) {
-            indirizzo = new ImageIcon("image/singleplayer.png");
             setBounds(100, taglia * 200, 180, 60);
+            icon = new ImageIcon("image/barca3.png");
+            Image img = icon.getImage();
+            Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            icon=new ImageIcon(newImg);
         } else if (taglia == 4) {
-            indirizzo = new ImageIcon("image/singleplayer.png");
             setBounds(100, taglia * 200, 240, 60);
-        } else if (taglia == 5) {
-            indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 200, 300, 60);
+            icon = new ImageIcon("image/barca4.png");
+            Image img = icon.getImage();
+            Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), java.awt.Image.SCALE_SMOOTH);
+            icon=new ImageIcon(newImg);
         }
-        this.setIcon(indirizzo);
+        this.setIcon(icon);
 
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
@@ -103,3 +117,4 @@ public class Pedina extends JButton {
      * }
      */
 }
+
