@@ -5,13 +5,11 @@ import java.io.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-
 public class Home extends JFrame implements ActionListener {
 
 	private boolean isFullscreen = false;
 	int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
-
 
 	private Container c = this.getContentPane();
 	private SfondoPanel sfondo1Panel = new SfondoPanel(1);
@@ -43,7 +41,7 @@ public class Home extends JFrame implements ActionListener {
 
 	private SfondoPanel sfondo4Panel = new SfondoPanel(2);
 	private Casella arButton[][] = new Casella[10][10];
-	
+
 	private String nameString;
 	private JLabel nameLabel = new JLabel(nameString);
 	private String scoreSting = "Score 0";
@@ -131,17 +129,15 @@ public class Home extends JFrame implements ActionListener {
 		finestra = 2;
 		sfondo4Panel.setLayout(null);
 
-		
 		nameLabel.setForeground(Color.WHITE);
-		nameLabel.setBounds(100,40, 200, 80);
+		nameLabel.setBounds(100, 40, 200, 80);
 		nameLabel.setFont(font);
 		scoreLabel.setForeground(Color.WHITE);
 		sfondo4Panel.add(nameLabel);
 		scoreLabel.setFont(font);
-		scoreLabel.setBounds(300,40, 200, 80);
+		scoreLabel.setBounds(300, 40, 200, 80);
 		sfondo4Panel.add(scoreLabel);
 		impo.setBounds(screenWidth - (140), 70, 70, 70);
-
 
 		sfondo4Panel.add(pedina1);
 		sfondo4Panel.add(pedina2);
@@ -153,6 +149,7 @@ public class Home extends JFrame implements ActionListener {
 		sfondo4Panel.add(pedina8);
 		sfondo4Panel.add(pedina9);
 		sfondo4Panel.add(pedina0);
+		pedina0.rotateButton();
 		sfondo4Panel.add(impo);
 
 		for (int k = 0; k < 10; k++) {
@@ -172,7 +169,7 @@ public class Home extends JFrame implements ActionListener {
 			t += 60;
 			r = 60;
 		}
-		
+
 		c.add(sfondo4Panel);
 		c.revalidate();
 		c.repaint();

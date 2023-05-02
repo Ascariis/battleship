@@ -1,17 +1,22 @@
 package campodibattaglia;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
 
 import javax.swing.*;
 
 public class Pedina extends JButton {
 
     ImageIcon icon;
-    
+    private boolean rotateIcon = false;
+
     private int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
@@ -24,34 +29,31 @@ public class Pedina extends JButton {
         this.setBorderPainted(false);
         this.setContentAreaFilled(false);
         this.setFocusPainted(false);
-        
-        
-        
 
         if (taglia == 1) {
             setBounds(100, taglia * 200, 60, 60);
             icon = new ImageIcon("image/barca1.png");
             Image img = icon.getImage();
             Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), java.awt.Image.SCALE_SMOOTH);
-            icon=new ImageIcon(newImg);
+            icon = new ImageIcon(newImg);
         } else if (taglia == 2) {
             setBounds(100, taglia * 200, 120, 60);
             icon = new ImageIcon("image/barca2.png");
             Image img = icon.getImage();
             Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), java.awt.Image.SCALE_SMOOTH);
-            icon=new ImageIcon(newImg);
+            icon = new ImageIcon(newImg);
         } else if (taglia == 3) {
             setBounds(100, taglia * 200, 180, 60);
             icon = new ImageIcon("image/barca3.png");
             Image img = icon.getImage();
             Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), java.awt.Image.SCALE_SMOOTH);
-            icon=new ImageIcon(newImg);
+            icon = new ImageIcon(newImg);
         } else if (taglia == 4) {
             setBounds(100, taglia * 200, 240, 60);
             icon = new ImageIcon("image/barca4.png");
             Image img = icon.getImage();
             Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), java.awt.Image.SCALE_SMOOTH);
-            icon=new ImageIcon(newImg);
+            icon = new ImageIcon(newImg);
         }
         this.setIcon(icon);
 
@@ -64,11 +66,11 @@ public class Pedina extends JButton {
             @Override
             public void mouseReleased(MouseEvent e) {
                 if (e.getXOnScreen() - mouseX > FIELD_CLOSEST_X && e.getXOnScreen() - mouseX < FIELD_CLOSEST_X + 600
-                && e.getYOnScreen() - mouseY < FIELD_CLOSEST_Y + 600) {
+                        && e.getYOnScreen() - mouseY < FIELD_CLOSEST_Y + 600) {
 
                 } else {
                     if (taglia == 1) {
-                        setBounds(100, taglia * 200, 60, 60);
+                        setLocation(100, taglia * 200);
                     } else if (taglia == 2) {
                         setBounds(100, taglia * 200, 120, 60);
                     } else if (taglia == 3) {
@@ -97,6 +99,88 @@ public class Pedina extends JButton {
                     setLocation(e.getXOnScreen() - mouseX, e.getYOnScreen() - mouseY);
             }
         });
+
+    }
+
+    public void rotateButton() {
+        // Get the original image from the icon
+        Image originalImg = icon.getImage();
+
+        // Create a new image with the rotated icon
+        Image rotatedImg = rotateImage(originalImg, 90);
+        
+        // Create a new ImageIcon with the rotated image
+        ImageIcon rotatedIcon = new ImageIcon(rotatedImg);
+        setSize(getHeight(), getWidth());
+        // Set the new icon
+        setIcon(rotatedIcon);
+    }
+    
+    private Image rotateImage(Image image, double degrees) {
+        int width = image.getWidth(null);
+        int height = image.getHeight(null);
+
+        // Create a new image with the same dimensions
+        Image rotatedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+
+        // Perform the rotation
+        Graphics2D g2d = (Graphics2D) rotatedImage.getGraphics();
+        AffineTransform transform = new AffineTransform();
+        transform.rotate(Math.toRadians(degrees), width / 2, height / 2);
+        g2d.drawImage(image, transform, null);
+        g2d.dispose();
+
+        return rotatedImage;
+    }
+    
+    @Override
+    protected void paintComponent(Graphics g) {
+        Graphics2D g2d = (Graphics2D) g.create();
+
+        // Clear the button
+        g2d.clearRect(0, 0, getWidth(), getHeight());
+
+        // Paint the button with the current icon
+        super.paintComponent(g2d);
+
+        g2d.dispose();
+    }
+
+
+/*  QUesto codice è talmente togo che non puoi capire
+    boolean isRotated = false;
+
+    public void rotateButton() {
+
+        if (isRotated == false) {
+            AffineTransform transform = new AffineTransform();
+            transform.rotate(Math.toRadians(90), getWidth() / 2, getHeight() / 2);
+            setTransform(transform);
+            isRotated = true;
+        } else {
+            isRotated = true;
+        }
+
+    }
+
+    private void setTransform(AffineTransform transform) {
+        if (isRotated == false) {
+            setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+            
+                @Override
+                public void paint(Graphics g, JComponent c) {
+                    Graphics2D g2d = (Graphics2D) g.create();
+                    g2d.clearRect(0, 0, c.getWidth(), c.getHeight());
+                    g2d.setTransform(transform);
+                    super.paint(g2d, c);
+                    g2d.dispose();
+                    setSize(getHeight(), getWidth());
+                }
+            });
+            isRotated = true;
+        } else
+            isRotated = false;
+        
     }
 
     /*
@@ -117,4 +201,3 @@ public class Pedina extends JButton {
      * }
      */
 }
-
