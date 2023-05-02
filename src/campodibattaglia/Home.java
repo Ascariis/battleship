@@ -22,6 +22,7 @@ public class Home extends JFrame implements ActionListener {
 	private Boolean Online = false;
 	private int finestra = 0;
 	private Font font;
+	private Font font1;
 
 	private SfondoPanel sfondo2Panel = new SfondoPanel(1);
 	private ButtonIcon ospiteButton = new ButtonIcon(4);
@@ -48,6 +49,11 @@ public class Home extends JFrame implements ActionListener {
 	private JLabel nameLabel = new JLabel(nameString);
 	private String scoreSting = "Score 0";
 	private JLabel scoreLabel = new JLabel(scoreSting);
+	private ButtonIcon comandiButton = new ButtonIcon(9);
+	private ButtonIcon regoleButton = new ButtonIcon(10);
+	private SfondoPanel sfondo5Panel = new SfondoPanel(2);
+	private SfondoPanel sfondo6Panel = new SfondoPanel(2);
+	int acaso=0;
 
 	Home() {
 		super("Sa Battalla");
@@ -57,7 +63,8 @@ public class Home extends JFrame implements ActionListener {
 		finestra();
 
 		try {
-			font = Font.createFont(Font.TRUETYPE_FONT, new File("font/game_over.ttf")).deriveFont(64f);
+			font = Font.createFont(Font.TRUETYPE_FONT, new File("font/game_over.ttf")).deriveFont(70f);
+			font1 = Font.createFont(Font.TRUETYPE_FONT, new File("font/game_over.ttf")).deriveFont(100f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			ge.registerFont(font);
 		} catch (IOException | FontFormatException e) {
@@ -105,7 +112,7 @@ public class Home extends JFrame implements ActionListener {
 
 	private void impostazioni() {
 		c.removeAll();
-
+		acaso=0;
 		c.setLayout(new GridLayout(1, 1));
 		sfondo3Panel.setLayout(null);
 		backButton.setBounds(70, 70, 70, 70);
@@ -114,9 +121,12 @@ public class Home extends JFrame implements ActionListener {
 		fullscreenToggle.addActionListener(this);
 		fullscreenToggle.setActionCommand("Fullscreen");
 
-		JLabel prova = new JLabel("ciao");
-		prova.setForeground(Color.WHITE);
-		fullscreenToggle.setBounds(screenWidth / 2 - (225), screenHeight / 2 - (40), 450, 80);
+		comandiButton.setBounds(screenWidth / 2 - (225), screenHeight / 2, 450, 80);
+		sfondo3Panel.add(comandiButton);
+		regoleButton.setBounds(screenWidth / 2 - (225), screenHeight / 2 + (100), 450, 80);
+		sfondo3Panel.add(regoleButton);
+
+		fullscreenToggle.setBounds(screenWidth / 2 - (225), screenHeight / 2 - (100), 450, 80);
 		sfondo3Panel.add(fullscreenToggle);
 		sfondo3Panel.add(backButton);
 		c.add(sfondo3Panel);
@@ -172,8 +182,80 @@ public class Home extends JFrame implements ActionListener {
 			t += 60;
 			r = 60;
 		}
-		
+
 		c.add(sfondo4Panel);
+		c.revalidate();
+		c.repaint();
+	}
+
+	private void comandi(){
+		acaso=1;
+		c.removeAll();
+		c.setLayout(new GridLayout(1, 1));
+		sfondo5Panel.setLayout(null);
+		acaso=1;
+		JLabel comando1 = new JLabel("Ruota barca:");
+		JLabel comando2 = new JLabel("Vuoto:");
+		JLabel comando3 = new JLabel("Vuoto:");
+		JLabel comando4 = new JLabel("Vuoto:");
+		JLabel comando5 = new JLabel("Vuoto:");
+		JLabel comando6 = new JLabel("Vuoto:");
+
+		backButton.setBounds(70, 70, 70, 70);
+		sfondo5Panel.add(backButton);
+
+		comando1.setForeground(Color.WHITE);
+		comando2.setForeground(Color.WHITE);
+		comando3.setForeground(Color.WHITE);
+		comando4.setForeground(Color.WHITE);
+		comando5.setForeground(Color.WHITE);
+		comando6.setForeground(Color.WHITE);
+
+		comando1.setFont(font1);
+		comando2.setFont(font1);
+		comando3.setFont(font1);
+		comando4.setFont(font1);
+		comando5.setFont(font1);
+		comando6.setFont(font1);
+
+		comando1.setBounds(screenWidth / 2 - (300), screenHeight / 2 + (100), 300, 80);
+		comando2.setBounds(screenWidth / 2 - (300), screenHeight / 2, 300, 80);
+		comando3.setBounds(screenWidth / 2 - (300), screenHeight / 2 - (100), 300, 80);
+		comando4.setBounds(screenWidth / 2 - (300), screenHeight / 2 - (200), 300, 80);
+		comando5.setBounds(screenWidth / 2 - (300), screenHeight / 2 - (300), 300, 80);
+		comando6.setBounds(screenWidth / 2 - (300), screenHeight / 2 - (400), 300, 80);
+
+		sfondo5Panel.add(comando1);
+		sfondo5Panel.add(comando2);
+		sfondo5Panel.add(comando3);
+		sfondo5Panel.add(comando4);
+		sfondo5Panel.add(comando5);
+		sfondo5Panel.add(comando6);
+
+		c.add(sfondo5Panel);
+		c.revalidate();
+		c.repaint();
+	}
+	private void regole(){
+		c.removeAll();
+		acaso=1;
+		c.setLayout(new GridLayout(1, 1));
+		sfondo6Panel.setLayout(null);
+
+		JLabel testo = new JLabel("A Battaglia navale ogni giocatore ha in dotazione una tavola, cartacea o elettronica, dove ci sono due griglie uguali con 100 caselline. Su una delle due griglie dovrà posizionare le proprie navi, sull’altra invece dovrà sparare dei colpi alla cieca nel tentativo di indovinare la posizione delle navi avversarie. Insieme al tabellone a doppia griglia, ciascun giocatore riceve una flotta di cinque navi e un pacchetto di pedine, che serviranno come marcatori per individuare i colpi andati a segno e quelli falliti, sulla griglia avversaria. Insieme alle pedine ci sono anche i segnalini rossi che servono a marcare i colpi ricevuti. Ovviamente l’obiettivo di ciascun giocatore è quello di affondare tutte le navi del nemico, prima che questi abbia il sopravvento e affondi le proprie. Fortuna, intuito e strategia in questo gioco sono determinanti per vincere. Ma vediamo le regole.");
+		
+		testo.setBounds(screenWidth / 2 - (150), screenHeight / 2 - (300), 300, 80);
+
+		backButton.setBounds(70, 70, 70, 70);
+		sfondo6Panel.add(backButton);
+
+		testo.setForeground(Color.WHITE);
+
+
+		testo.setFont(font1);
+		sfondo6Panel.add(testo);
+
+		c.add(sfondo6Panel);
 		c.revalidate();
 		c.repaint();
 	}
@@ -204,6 +286,12 @@ public class Home extends JFrame implements ActionListener {
 
 		accountButton.addActionListener(this);
 		accountButton.setActionCommand("Account");
+
+		comandiButton.addActionListener(this);
+		comandiButton.setActionCommand("Comandi");
+
+		regoleButton.addActionListener(this);
+		regoleButton.setActionCommand("Regole");
 	}
 
 	@Override
@@ -222,12 +310,18 @@ public class Home extends JFrame implements ActionListener {
 				home();
 			else if (finestra == 2)
 				campoDaGioco();
+			if (acaso == 1)
+				impostazioni();
 		} else if (e.getActionCommand().equals("Ospite")) {
 			nameString = "Ospite";
 			nameLabel.setText(nameString);
 			campoDaGioco();
 		} else if (e.getActionCommand().equals("Account")) {
 			impostazioni();
+		} else if (e.getActionCommand().equals("Comandi")) {
+			comandi();
+		} else if (e.getActionCommand().equals("Regole")) {
+			regole();
 		} else if (e.getActionCommand().equals("Fullscreen")) {
 			if (!isFullscreen) {
 				dispose();
