@@ -4,34 +4,36 @@ import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.*;
 
-public class Casella extends JButton implements MouseListener{
+public class Casella extends JButton implements MouseListener {
     int x = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     int y = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
     Icon indirizzo;
 
     Casella() {
-        //this.setBorderPainted(false);
+        // this.setBorderPainted(false);
         this.setContentAreaFilled(false);
         this.setFocusPainted(false);
-       this.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));;
-        
+        this.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
+        ;
+
     }
+
     protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g.create();
-        float opacity = (float)0.4;
+        float opacity = (float) 0.4;
         g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
         super.paintComponent(g2d);
         g2d.setColor(getBackground());
         g2d.fillRect(0, 0, getWidth(), getHeight());
         g2d.dispose();
-    }   
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub
@@ -52,7 +54,7 @@ public class Casella extends JButton implements MouseListener{
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        
+
         throw new UnsupportedOperationException("Unimplemented method 'mouseEntered'");
     }
 
