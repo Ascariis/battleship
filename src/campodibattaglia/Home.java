@@ -42,16 +42,7 @@ public class Home extends JFrame implements ActionListener {
 	private Pedina pedina0 = new Pedina(4);
 
 	private SfondoPanel sfondo4Panel = new SfondoPanel(2);
-<<<<<<< HEAD
 	private Casella arButton[][] = new Casella[10][10];
-=======
-	private JButton arButton[][] = new JButton[10][10];
-
-	private String scoreString = "0";
-	private JLabel scoreLabel = new JLabel(scoreString);
-	private String nameString;
-	private JLabel nameLabel = new JLabel(nameString);
->>>>>>> 1e7e18637e7aa44da1df91fc56d9f578fe67cba1
 	
 
 	Home() {
@@ -170,11 +161,6 @@ public class Home extends JFrame implements ActionListener {
 		sfondo4Panel.add(pedina4);
 		sfondo4Panel.add(pedina5);
 		sfondo4Panel.add(pedina6);
-<<<<<<< HEAD
-		sfondo4Panel.moveToFront(pedina6);
-		pedina6.rotate();
-=======
->>>>>>> 1e7e18637e7aa44da1df91fc56d9f578fe67cba1
 		sfondo4Panel.add(pedina7);
 		sfondo4Panel.add(pedina8);
 		sfondo4Panel.add(pedina9);

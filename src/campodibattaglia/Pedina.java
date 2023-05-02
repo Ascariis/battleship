@@ -55,30 +55,16 @@ public class Pedina extends JButton {
         addMouseMotionListener(new MouseMotionAdapter() {
             public void mouseDragged(MouseEvent e) {
                 boolean isOnSafezone = false;
-<<<<<<< HEAD
                 if (e.getXOnScreen() - mouseX >= screenWidth / 2 - (300)
                         && e.getYOnScreen() - mouseY >= screenHeight / 2 - (300)) {
                     setBounds((Math.round(e.getXOnScreen()) / 60) * 60, (Math.round(e.getYOnScreen()) / 60) * 60,
                             taglia * 60, 60);
 
                 } else
-=======
-                if (e.getXOnScreen() - mouseX >= screenWidth / 2 - (300) && e.getYOnScreen() - mouseY >= screenHeight / 2 - (300)) {
-                    setLocation( (int) ((e.getXOnScreen() / 50 ) * 50), (int) ((e.getYOnScreen() / 50 ) * 50));
-                    
-                } else 
->>>>>>> 1e7e18637e7aa44da1df91fc56d9f578fe67cba1
                     setLocation(e.getXOnScreen() - mouseX, e.getYOnScreen() - mouseY);
             }
         });
     }
-<<<<<<< HEAD
-
-    public void rotate() {
-        
-        
-    }
-=======
     
     /* Se dio vuole
     public void rotate(double angle, taglia) {
@@ -93,5 +79,4 @@ public class Pedina extends JButton {
         setIcon(new ImageIcon(img));
 
     }*/
->>>>>>> 1e7e18637e7aa44da1df91fc56d9f578fe67cba1
 }
