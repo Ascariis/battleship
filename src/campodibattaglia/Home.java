@@ -42,7 +42,16 @@ public class Home extends JFrame implements ActionListener {
 	private Pedina pedina0 = new Pedina(4);
 
 	private SfondoPanel sfondo4Panel = new SfondoPanel(2);
+<<<<<<< HEAD
 	private Casella arButton[][] = new Casella[10][10];
+=======
+	private JButton arButton[][] = new JButton[10][10];
+
+	private String scoreString = "0";
+	private JLabel scoreLabel = new JLabel(scoreString);
+	private String nameString;
+	private JLabel nameLabel = new JLabel(nameString);
+>>>>>>> 1e7e18637e7aa44da1df91fc56d9f578fe67cba1
 	
 
 	Home() {
@@ -53,7 +62,7 @@ public class Home extends JFrame implements ActionListener {
 		finestra();
 
 		try {
-			font = Font.createFont(Font.TRUETYPE_FONT, new File("font/SinkiS93.ttf")).deriveFont(40f);
+			font = Font.createFont(Font.TRUETYPE_FONT, new File("font/game_over.ttf")).deriveFont(64f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			ge.registerFont(font);
 		} catch (IOException | FontFormatException e) {
@@ -88,7 +97,7 @@ public class Home extends JFrame implements ActionListener {
 		sfondo2Panel.setLayout(null);
 		ospiteButton.setBounds(screenWidth / 2 - (400), screenHeight / 2 - (100), 300, 320);
 		accountButton.setBounds(screenWidth / 2 + (100), screenHeight / 2 - (100), 300, 320);
-		backButton.setBounds(70, 70, 70, 70);
+		backButton.setBounds(100, 100, 70, 70);
 
 		sfondo2Panel.add(ospiteButton);
 		sfondo2Panel.add(accountButton);
@@ -133,41 +142,43 @@ public class Home extends JFrame implements ActionListener {
 			}
 		}
 
-		int r = 60;
+		int r = 50;
 		int t = 0;
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
-				arButton[k][j].setBounds(screenWidth / 2 - (300) + r, screenHeight / 2 - (300) + t, 60, 60);
-				r += 60;
+				arButton[k][j].setBounds(screenWidth / 2 - (300) + r, screenHeight / 2 - (300) + t, 50, 50);
+				r += 50;
 				sfondo4Panel.add(arButton[k][j]);
 			}
-			t += 60;
-			r = 60;
+			t += 50;
+			r = 50;
 		}
-
+		nameLabel.setForeground(Color.WHITE);
+		nameLabel.setBounds(100,40, 200, 80);
+		nameLabel.setFont(font);
+		scoreLabel.setForeground(Color.WHITE);
+		sfondo4Panel.add(nameLabel);
+		scoreLabel.setFont(font);
+		scoreLabel.setBounds(300,40, 200, 80);
+		sfondo4Panel.add(scoreLabel);
 		impo.setBounds(screenWidth - (140), 70, 70, 70);
 
+
 		sfondo4Panel.add(pedina1);
-		sfondo4Panel.moveToFront(pedina1);
 		sfondo4Panel.add(pedina2);
-		sfondo4Panel.moveToFront(pedina2);
 		sfondo4Panel.add(pedina3);
-		sfondo4Panel.moveToFront(pedina3);
 		sfondo4Panel.add(pedina4);
-		sfondo4Panel.moveToFront(pedina4);
 		sfondo4Panel.add(pedina5);
-		sfondo4Panel.moveToFront(pedina5);
 		sfondo4Panel.add(pedina6);
+<<<<<<< HEAD
 		sfondo4Panel.moveToFront(pedina6);
 		pedina6.rotate();
+=======
+>>>>>>> 1e7e18637e7aa44da1df91fc56d9f578fe67cba1
 		sfondo4Panel.add(pedina7);
-		sfondo4Panel.moveToFront(pedina7);
 		sfondo4Panel.add(pedina8);
-		sfondo4Panel.moveToFront(pedina8);
 		sfondo4Panel.add(pedina9);
-		sfondo4Panel.moveToFront(pedina9);
 		sfondo4Panel.add(pedina0);
-		sfondo4Panel.moveToFront(pedina0);
 		sfondo4Panel.add(impo);
 
 		c.add(sfondo4Panel);
@@ -220,6 +231,8 @@ public class Home extends JFrame implements ActionListener {
 			else if (finestra == 2)
 				campoDaGioco();
 		} else if (e.getActionCommand().equals("Ospite")) {
+			nameString = "Ospite";
+			nameLabel.setText(nameString);
 			campoDaGioco();
 		} else if (e.getActionCommand().equals("Account")) {
 			impostazioni();

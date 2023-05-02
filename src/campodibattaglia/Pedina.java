@@ -29,19 +29,19 @@ public class Pedina extends JButton {
 
         if (taglia == 1) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 60, 60);
+            setBounds(100, taglia * 150, 50, 50);
         } else if (taglia == 2) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 120, 60);
+            setBounds(100, taglia * 150, 120, 50);
         } else if (taglia == 3) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 180, 60);
+            setBounds(100, taglia * 150, 180, 50);
         } else if (taglia == 4) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 240, 60);
+            setBounds(100, taglia * 150, 240, 50);
         } else if (taglia == 5) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 300, 60);
+            setBounds(100, taglia * 150, 300, 50);
         }
         this.setIcon(indirizzo);
 
@@ -55,19 +55,43 @@ public class Pedina extends JButton {
         addMouseMotionListener(new MouseMotionAdapter() {
             public void mouseDragged(MouseEvent e) {
                 boolean isOnSafezone = false;
+<<<<<<< HEAD
                 if (e.getXOnScreen() - mouseX >= screenWidth / 2 - (300)
                         && e.getYOnScreen() - mouseY >= screenHeight / 2 - (300)) {
                     setBounds((Math.round(e.getXOnScreen()) / 60) * 60, (Math.round(e.getYOnScreen()) / 60) * 60,
                             taglia * 60, 60);
 
                 } else
+=======
+                if (e.getXOnScreen() - mouseX >= screenWidth / 2 - (300) && e.getYOnScreen() - mouseY >= screenHeight / 2 - (300)) {
+                    setLocation( (int) ((e.getXOnScreen() / 50 ) * 50), (int) ((e.getYOnScreen() / 50 ) * 50));
+                    
+                } else 
+>>>>>>> 1e7e18637e7aa44da1df91fc56d9f578fe67cba1
                     setLocation(e.getXOnScreen() - mouseX, e.getYOnScreen() - mouseY);
             }
         });
     }
+<<<<<<< HEAD
 
     public void rotate() {
         
         
     }
+=======
+    
+    /* Se dio vuole
+    public void rotate(double angle, taglia) {
+        setSize(getHeight(), getWidth());
+        ImageIcon icon = (ImageIcon) getIcon();
+        angle = 90;
+        BufferedImage img = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = img.createGraphics();
+        g2d.rotate(Math.toRadians(angle), icon.getIconWidth() / taglia, icon.getIconHeight() / 2);
+        icon.paintIcon(null, g2d, 0, 0);
+        g2d.dispose();
+        setIcon(new ImageIcon(img));
+
+    }*/
+>>>>>>> 1e7e18637e7aa44da1df91fc56d9f578fe67cba1
 }
