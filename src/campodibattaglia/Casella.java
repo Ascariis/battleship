@@ -23,14 +23,6 @@ public class Casella extends JButton implements MouseListener{
        this.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));;
         
     }
-    /*@Override
-    protected void paintComponent(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g;
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.setColor(new Color(255, 255, 255, 100)); // Imposta il colore di sfondo del pulsante con una trasparenza del 50%
-        g2.fillRoundRect(0, 0, getWidth(), getHeight(), 10, 10); // Disegna un rettangolo arrotondato come sfondo del pulsante
-        super.paintComponent(g);
-    }*/
     protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g.create();
         float opacity = (float)0.4;
