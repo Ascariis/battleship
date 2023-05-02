@@ -131,23 +131,7 @@ public class Home extends JFrame implements ActionListener {
 		finestra = 2;
 		sfondo4Panel.setLayout(null);
 
-		for (int k = 0; k < 10; k++) {
-			for (int j = 0; j < 10; j++) {
-				arButton[k][j] = new Casella();
-			}
-		}
-
-		int r = 60;
-		int t = 0;
-		for (int k = 0; k < 10; k++) {
-			for (int j = 0; j < 10; j++) {
-				arButton[k][j].setBounds(screenWidth / 2 - (300) + r, screenHeight / 2 - (300) + t, 60, 60);
-				r += 60;
-				sfondo4Panel.add(arButton[k][j]);
-			}
-			t += 60;
-			r = 60;
-		}
+		
 		nameLabel.setForeground(Color.WHITE);
 		nameLabel.setBounds(100,40, 200, 80);
 		nameLabel.setFont(font);
@@ -171,6 +155,24 @@ public class Home extends JFrame implements ActionListener {
 		sfondo4Panel.add(pedina0);
 		sfondo4Panel.add(impo);
 
+		for (int k = 0; k < 10; k++) {
+			for (int j = 0; j < 10; j++) {
+				arButton[k][j] = new Casella();
+			}
+		}
+
+		int r = 60;
+		int t = 0;
+		for (int k = 0; k < 10; k++) {
+			for (int j = 0; j < 10; j++) {
+				arButton[k][j].setBounds(screenWidth / 2 - (300) + r, screenHeight / 2 - (300) + t, 60, 60);
+				r += 60;
+				sfondo4Panel.add(arButton[k][j]);
+			}
+			t += 60;
+			r = 60;
+		}
+		
 		c.add(sfondo4Panel);
 		c.revalidate();
 		c.repaint();

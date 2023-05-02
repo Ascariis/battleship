@@ -29,19 +29,19 @@ public class Pedina extends JButton {
 
         if (taglia == 1) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 50, 50);
+            setBounds(100, taglia * 150, 60, 60);
         } else if (taglia == 2) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 120, 50);
+            setBounds(100, taglia * 150, 120, 60);
         } else if (taglia == 3) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 180, 50);
+            setBounds(100, taglia * 150, 180, 60);
         } else if (taglia == 4) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 240, 50);
+            setBounds(100, taglia * 150, 240, 60);
         } else if (taglia == 5) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 300, 50);
+            setBounds(100, taglia * 150, 300, 60);
         }
         this.setIcon(indirizzo);
 
@@ -55,8 +55,9 @@ public class Pedina extends JButton {
         addMouseMotionListener(new MouseMotionAdapter() {
             public void mouseDragged(MouseEvent e) {
                 boolean isOnSafezone = false;
-                if (e.getXOnScreen() - mouseX >= screenWidth / 2 - (300)
-                        && e.getYOnScreen() - mouseY >= screenHeight / 2 - (300)) {
+                if (e.getXOnScreen() - mouseX > screenWidth / 2 - (300)
+                        && e.getYOnScreen() - mouseY >
+                         screenHeight / 2 - (300)) {
                     setLocation((Math.round(e.getXOnScreen()) / 60) * 60, (Math.round(e.getYOnScreen()) / 60) * 60);
                 } else
                     setLocation(e.getXOnScreen() - mouseX, e.getYOnScreen() - mouseY);
