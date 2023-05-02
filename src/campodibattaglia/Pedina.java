@@ -17,6 +17,7 @@ public class Pedina extends JButton {
     private static final int GRID_ORIGIN_X = 100;
     private static final int GRID_ORIGIN_Y = 150;
     Icon indirizzo;
+
     private int mouseX, mouseY;
 
     public Pedina(int taglia) {
