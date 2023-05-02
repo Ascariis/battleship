@@ -159,7 +159,6 @@ public class Home extends JFrame implements ActionListener {
 		sfondo4Panel.add(pedina8);
 		sfondo4Panel.add(pedina9);
 		sfondo4Panel.add(pedina0);
-		pedina0.rotateButton();
 		sfondo4Panel.add(impo);
 
 		for (int k = 0; k < 10; k++) {

@@ -102,51 +102,7 @@ public class Pedina extends JButton {
 
     }
 
-    public void rotateButton() {
-        // Get the original image from the icon
-        Image originalImg = icon.getImage();
-
-        // Create a new image with the rotated icon
-        Image rotatedImg = rotateImage(originalImg, 90);
-        
-        // Create a new ImageIcon with the rotated image
-        ImageIcon rotatedIcon = new ImageIcon(rotatedImg);
-        setSize(getHeight(), getWidth());
-        // Set the new icon
-        setIcon(rotatedIcon);
-    }
     
-    private Image rotateImage(Image image, double degrees) {
-        int width = image.getWidth(null);
-        int height = image.getHeight(null);
-
-        // Create a new image with the same dimensions
-        Image rotatedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-
-        // Perform the rotation
-        Graphics2D g2d = (Graphics2D) rotatedImage.getGraphics();
-        AffineTransform transform = new AffineTransform();
-        transform.rotate(Math.toRadians(degrees), width / 2, height / 2);
-        g2d.drawImage(image, transform, null);
-        g2d.dispose();
-
-        return rotatedImage;
-    }
-    
-    @Override
-    protected void paintComponent(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g.create();
-
-        // Clear the button
-        g2d.clearRect(0, 0, getWidth(), getHeight());
-
-        // Paint the button with the current icon
-        super.paintComponent(g2d);
-
-        g2d.dispose();
-    }
-
-
 /*  QUesto codice è talmente togo che non puoi capire
     boolean isRotated = false;
 
