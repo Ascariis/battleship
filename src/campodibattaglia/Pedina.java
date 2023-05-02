@@ -28,19 +28,19 @@ public class Pedina extends JButton {
 
         if (taglia == 1) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 60, 60);
+            setBounds(100, taglia * 150, 50, 50);
         } else if (taglia == 2) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 120, 60);
+            setBounds(100, taglia * 150, 120, 50);
         } else if (taglia == 3) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 180, 60);
+            setBounds(100, taglia * 150, 180, 50);
         } else if (taglia == 4) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 240, 60);
+            setBounds(100, taglia * 150, 240, 50);
         } else if (taglia == 5) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 300, 60);
+            setBounds(100, taglia * 150, 300, 50);
         }
         this.setIcon(indirizzo);
 
@@ -55,24 +55,22 @@ public class Pedina extends JButton {
             public void mouseDragged(MouseEvent e) {
                 boolean isOnSafezone = false;
                 if (e.getXOnScreen() - mouseX >= screenWidth / 2 - (300) && e.getYOnScreen() - mouseY >= screenHeight / 2 - (300)) {
-                    setLocation((Math.round(e.getXOnScreen()) / 60) * 60 , (Math.round(e.getYOnScreen()) / 60) * 60);
+                    setLocation( (int) ((e.getXOnScreen() / 50 ) * 50), (int) ((e.getYOnScreen() / 50 ) * 50));
                     
                 } else 
                     setLocation(e.getXOnScreen() - mouseX, e.getYOnScreen() - mouseY);
             }
         });
     }
-
+    
     /* Se dio vuole
-    public void rotate(double angle) {
+    public void rotate(double angle, taglia) {
         setSize(getHeight(), getWidth());
-        // Get the current Icon of the button
         ImageIcon icon = (ImageIcon) getIcon();
         angle = 90;
-        // Create a new rotated version of the Icon
         BufferedImage img = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = img.createGraphics();
-        g2d.rotate(Math.toRadians(angle), icon.getIconWidth() / 2, icon.getIconHeight() / 2);
+        g2d.rotate(Math.toRadians(angle), icon.getIconWidth() / taglia, icon.getIconHeight() / 2);
         icon.paintIcon(null, g2d, 0, 0);
         g2d.dispose();
         setIcon(new ImageIcon(img));
