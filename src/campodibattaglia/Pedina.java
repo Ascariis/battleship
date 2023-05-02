@@ -1,14 +1,14 @@
 package campodibattaglia;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+//import java.awt.Graphics;
+//import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
+//import java.awt.geom.AffineTransform;
+//import java.awt.image.BufferedImage;
 
 import javax.swing.*;
 
@@ -59,6 +59,10 @@ public class Pedina extends JButton {
 
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
+                if (e.getButton() == MouseEvent.BUTTON3) { // GODOOOOO
+                    System.out.print("POBAAAA");
+                }else
+                
                 mouseX = e.getX();
                 mouseY = e.getY();
             }
