@@ -1,27 +1,23 @@
 package campodibattaglia;
 
-import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import java.awt.image.BufferedImage;
 
 import javax.swing.*;
 
 public class Pedina extends JButton {
 
-    // Define the grid size and origin
-    private static final int GRID_SIZE = 65;
-    private static final int GRID_ORIGIN_X = 100;
-    private static final int GRID_ORIGIN_Y = 150;
     Icon indirizzo;
+    private int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+    private int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+
     private int mouseX, mouseY;
+    private int FIELD_CLOSEST_X = screenWidth / 2 - (300);
+    private int FIELD_CLOSEST_Y = screenHeight / 2 - (300);
 
     public Pedina(int taglia) {
-        int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-        int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
         this.setBorderPainted(false);
         this.setContentAreaFilled(false);
@@ -29,19 +25,19 @@ public class Pedina extends JButton {
 
         if (taglia == 1) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 60, 60);
+            setBounds(100, taglia * 200, 60, 60);
         } else if (taglia == 2) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 120, 60);
+            setBounds(100, taglia * 200, 120, 60);
         } else if (taglia == 3) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 180, 60);
+            setBounds(100, taglia * 200, 180, 60);
         } else if (taglia == 4) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 240, 60);
+            setBounds(100, taglia * 200, 240, 60);
         } else if (taglia == 5) {
             indirizzo = new ImageIcon("image/singleplayer.png");
-            setBounds(100, taglia * 150, 300, 60);
+            setBounds(100, taglia * 200, 300, 60);
         }
         this.setIcon(indirizzo);
 
@@ -50,14 +46,38 @@ public class Pedina extends JButton {
                 mouseX = e.getX();
                 mouseY = e.getY();
             }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                if (e.getXOnScreen() - mouseX > FIELD_CLOSEST_X && e.getXOnScreen() - mouseX < FIELD_CLOSEST_X + 600
+                && e.getYOnScreen() - mouseY < FIELD_CLOSEST_Y + 600) {
+
+                } else {
+                    if (taglia == 1) {
+                        setBounds(100, taglia * 200, 60, 60);
+                    } else if (taglia == 2) {
+                        setBounds(100, taglia * 200, 120, 60);
+                    } else if (taglia == 3) {
+                        setBounds(100, taglia * 200, 180, 60);
+                    } else if (taglia == 4) {
+                        setBounds(100, taglia * 200, 240, 60);
+                    } else if (taglia == 5) {
+                        setBounds(100, taglia * 200, 300, 60);
+                    }
+                }
+                super.mouseReleased(e);
+            }
         });
 
         addMouseMotionListener(new MouseMotionAdapter() {
             public void mouseDragged(MouseEvent e) {
-                boolean isOnSafezone = false;
-                if (e.getXOnScreen() - mouseX > screenWidth / 2 - (300)
-                        && e.getYOnScreen() - mouseY >
-                         screenHeight / 2 - (300)) {
+
+                // SNAP TO GRID BRUTTO
+                if (e.getXOnScreen() - mouseX > FIELD_CLOSEST_X
+                        && e.getYOnScreen() - mouseY > FIELD_CLOSEST_Y
+                        && e.getXOnScreen() - mouseX < FIELD_CLOSEST_X + 600
+                        && e.getYOnScreen() - mouseY < FIELD_CLOSEST_Y + 600) {
+
                     setLocation((Math.round(e.getXOnScreen()) / 60) * 60, (Math.round(e.getYOnScreen()) / 60) * 60);
                 } else
                     setLocation(e.getXOnScreen() - mouseX, e.getYOnScreen() - mouseY);
