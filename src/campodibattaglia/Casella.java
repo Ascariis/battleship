@@ -24,6 +24,9 @@ public class Casella extends JButton implements MouseListener {
 
     }
 
+    public int getPosX() { return getX();}
+    public int getPosY() { return getY();}
+
     protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g.create();
         float opacity = (float) 0.4;
