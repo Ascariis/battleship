@@ -6,10 +6,14 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Home extends JFrame implements ActionListener {
-
-	private boolean isFullscreen = false;
 	int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+	
+	
+	public final int FIELD_X = screenWidth / 2 - (300);
+	public final int FIELD_Y = screenHeight / 2 - (300);
+	private boolean isFullscreen = false;
+	
 
 	private Container c = this.getContentPane();
 	private SfondoPanel sfondo1Panel = new SfondoPanel(1);
@@ -73,7 +77,7 @@ public class Home extends JFrame implements ActionListener {
 	private void home() {
 		c.removeAll();
 		finestra = 1;
-
+		
 		c.setLayout(new GridLayout(1, 1));
 		sfondo1Panel.setLayout(null);
 		offlineButton.setBounds(screenWidth / 2 - (225), screenHeight / 2, 450, 80);
@@ -171,13 +175,15 @@ public class Home extends JFrame implements ActionListener {
 		int t = 0;
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
-				arButton[k][j].setBounds(screenWidth / 2 - (300) + r, screenHeight / 2 - (300) + t, 60, 60);
+				arButton[k][j].setBounds(FIELD_X + r, FIELD_Y + t, 60, 60);
 				r += 60;
 				sfondo4Panel.add(arButton[k][j]);
 			}
 			t += 60;
 			r = 60;
 		}
+		System.out.println(arButton[0][0].getPosX() + " X PRIMO BUTTON");
+        System.out.println(arButton[0][0].getPosY() + " X PRIMO BUTTON");
 
 		c.add(sfondo4Panel);
 		c.revalidate();
@@ -236,19 +242,35 @@ public class Home extends JFrame implements ActionListener {
 		acaso=1;
 		c.setLayout(new GridLayout(1, 1));
 		sfondo6Panel.setLayout(null);
-
-		JLabel testo = new JLabel("A Battaglia navale ogni giocatore ha in dotazione una tavola, cartacea o elettronica, dove ci sono due griglie uguali con 100 caselline. Su una delle due griglie dovrà posizionare le proprie navi, sull’altra invece dovrà sparare dei colpi alla cieca nel tentativo di indovinare la posizione delle navi avversarie. Insieme al tabellone a doppia griglia, ciascun giocatore riceve una flotta di cinque navi e un pacchetto di pedine, che serviranno come marcatori per individuare i colpi andati a segno e quelli falliti, sulla griglia avversaria. Insieme alle pedine ci sono anche i segnalini rossi che servono a marcare i colpi ricevuti. Ovviamente l’obiettivo di ciascun giocatore è quello di affondare tutte le navi del nemico, prima che questi abbia il sopravvento e affondi le proprie. Fortuna, intuito e strategia in questo gioco sono determinanti per vincere. Ma vediamo le regole.");
-		
-		testo.setBounds(screenWidth / 2 - (150), screenHeight / 2 - (300), 300, 80);
-
 		backButton.setBounds(70, 70, 70, 70);
 		sfondo6Panel.add(backButton);
 
-		testo.setForeground(Color.WHITE);
+		JLabel testo = new JLabel("<html><body style='width: 300px;'>"
+				+ "A Battaglia navale ogni giocatore ha in dotazione una tavola, "
+				+ "cartacea o elettronica, dove ci sono due griglie uguali con 100 caselline. "
+				+ "Su una delle due griglie dovra' posizionare le proprie navi, sull’altra invece "
+				+ "dovrà sparare dei colpi alla cieca nel tentativo di indovinare la posizione delle "
+				+ "navi avversarie. Insieme al tabellone a doppia griglia, ciascun giocatore riceve "
+				+ "una flotta di cinque navi e un pacchetto di pedine, che serviranno come marcatori "
+				+ "per individuare i colpi andati a segno e quelli falliti, sulla griglia avversaria. "
+				+ "Insieme alle pedine ci sono anche i segnalini rossi che servono a marcare i colpi "
+				+ "ricevuti. Ovviamente l’obiettivo di ciascun giocatore è quello di affondare tutte "
+				+ "le navi del nemico, prima che questi abbia il sopravvento e affondi le proprie. "
+				+ "Fortuna, intuito e strategia in questo gioco sono determinanti per vincere. "
+				+ "Ma vediamo le regole."
+				+ "</body></html>");
 
-
+		testo.setBounds(screenWidth / 2 - (150), screenHeight / 2 - (300), 300, 80);
+		testo.setForeground(Color.BLACK);
 		testo.setFont(font1);
-		sfondo6Panel.add(testo);
+		testo.setOpaque(false);
+		testo.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+		JScrollPane scrollPanel = new JScrollPane(testo);
+		scrollPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
+		scrollPanel.setOpaque(false);
+       		scrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPanel.setBounds(screenWidth/2-(300), screenHeight/2-(250), 600, 500);
+		sfondo6Panel.add(scrollPanel);
 
 		c.add(sfondo6Panel);
 		c.revalidate();

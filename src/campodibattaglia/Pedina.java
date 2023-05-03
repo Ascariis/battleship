@@ -1,14 +1,14 @@
 package campodibattaglia;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+//import java.awt.Graphics;
+//import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
+//import java.awt.geom.AffineTransform;
+//import java.awt.image.BufferedImage;
 
 import javax.swing.*;
 
@@ -59,6 +59,10 @@ public class Pedina extends JButton {
 
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
+                if (e.getButton() == MouseEvent.BUTTON3) { // GODOOOOO
+                    System.out.print("POBAAAA");
+                }else
+                
                 mouseX = e.getX();
                 mouseY = e.getY();
             }
@@ -94,9 +98,11 @@ public class Pedina extends JButton {
                         && e.getXOnScreen() - mouseX < FIELD_CLOSEST_X + 600
                         && e.getYOnScreen() - mouseY < FIELD_CLOSEST_Y + 600) {
 
-                    setLocation((Math.round(e.getXOnScreen()) / 60) * 60, (Math.round(e.getYOnScreen()) / 60) * 60);
+                    setLocation((Math.round(e.getXOnScreen()) / 60) * 60 - ((e.getXOnScreen() / 60) * 60) - FIELD_X) , (Math.round(e.getYOnScreen()) / 60) * 60);
                 } else
                     setLocation(e.getXOnScreen() - mouseX, e.getYOnScreen() - mouseY);
+                System.out.println(e.getXOnScreen() + " X BARCA");
+                System.out.println(e.getYOnScreen() + " Y BARCA");
             }
         });
 
