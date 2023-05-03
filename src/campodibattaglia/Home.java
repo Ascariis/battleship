@@ -77,7 +77,7 @@ public class Home extends JFrame implements ActionListener {
 	private void home() {
 		c.removeAll();
 		finestra = 1;
-
+		
 		c.setLayout(new GridLayout(1, 1));
 		sfondo1Panel.setLayout(null);
 		offlineButton.setBounds(screenWidth / 2 - (225), screenHeight / 2, 450, 80);
