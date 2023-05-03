@@ -98,7 +98,7 @@ public class Pedina extends JButton {
                         && e.getXOnScreen() - mouseX < FIELD_CLOSEST_X + 600
                         && e.getYOnScreen() - mouseY < FIELD_CLOSEST_Y + 600) {
 
-                    setLocation((Math.round(e.getXOnScreen()) / 60) * 60, (Math.round(e.getYOnScreen()) / 60) * 60);
+                    setLocation((Math.round(e.getXOnScreen()) / 60) * 60 - ((e.getXOnScreen() / 60) * 60) - FIELD_X) , (Math.round(e.getYOnScreen()) / 60) * 60);
                 } else
                     setLocation(e.getXOnScreen() - mouseX, e.getYOnScreen() - mouseY);
                 System.out.println(e.getXOnScreen() + " X BARCA");
