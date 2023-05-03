@@ -54,6 +54,21 @@ public class Home extends JFrame implements ActionListener {
 	private ButtonIcon regoleButton = new ButtonIcon(10);
 	private SfondoPanel sfondo5Panel = new SfondoPanel(5);
 	private SfondoPanel sfondo6Panel = new SfondoPanel(4);
+
+	private SfondoPanel sfondo7Panel = new SfondoPanel(6);
+	private JLabel nomeLabel = new JLabel("User:");
+	private JTextField nomeText = new JTextField();
+	private JLabel passwordLabel = new JLabel("Password:");
+	private JPasswordField passwordField = new JPasswordField();
+	private JButton loginButton = new JButton();
+	private JButton registratiButton = new JButton();
+
+	private SfondoPanel sfondo8Panel = new SfondoPanel(7);
+	private JLabel passworConfLabel = new JLabel("Conferma password:");
+	private JPasswordField passwordConfField = new JPasswordField();
+	private JButton registerButton = new JButton();
+	private JButton accediButton = new JButton();
+
 	int acaso=0;
 
 	Home() {
@@ -170,16 +185,16 @@ public class Home extends JFrame implements ActionListener {
 				}
 			}
 
-			int r = 60;
-			int t = 0;
+			int xplus = 60;
+			int yplus = 0;
 			for (int k = 0; k < 10; k++) {
 				for (int j = 0; j < 10; j++) {
-					arButton[k][j].setBounds(FIELD_X + r, FIELD_Y + t, 60, 60);
-					r += 60;
+					arButton[k][j].setBounds(FIELD_X + xplus, FIELD_Y + yplus, 60, 60);
+					xplus += 60;
 					sfondo4Panel.add(arButton[k][j]);
 				}
-				t += 60;
-				r = 60;
+				yplus += 60;
+				xplus = 60;
 			}
 		
 		System.out.println(arButton[0][0].getPosX() + " X PRIMO BUTTON");
@@ -246,19 +261,33 @@ public class Home extends JFrame implements ActionListener {
 		sfondo6Panel.add(backButton);
 
 		JLabel testo = new JLabel("<html><body style='width: 400px;'>"
-				+ "A Battaglia navale ogni giocatore ha in dotazione una tavola, "
-				+ "cartacea o elettronica, dove ci sono due griglie uguali con 100 caselline. "
-				+ "Su una delle due griglie dovra' posizionare le proprie navi, sull’altra invece "
-				+ "dovrà sparare dei colpi alla cieca nel tentativo di indovinare la posizione delle "
-				+ "navi avversarie. Insieme al tabellone a doppia griglia, ciascun giocatore riceve "
-				+ "una flotta di cinque navi e un pacchetto di pedine, che serviranno come marcatori "
-				+ "per individuare i colpi andati a segno e quelli falliti, sulla griglia avversaria. "
-				+ "Insieme alle pedine ci sono anche i segnalini rossi che servono a marcare i colpi "
-				+ "ricevuti. Ovviamente l’obiettivo di ciascun giocatore è quello di affondare tutte "
-				+ "le navi del nemico, prima che questi abbia il sopravvento e affondi le proprie. "
-				+ "Fortuna, intuito e strategia in questo gioco sono determinanti per vincere. "
-				+ " Ma vediamo le regole."
-				+ "</body></html>");
+		+ "'Sa Battala' e' un gioco di strategia e abilita' ispirato a battaglia navale, "
+		+ "in cui due giocatori cercano di distruggere le navi dell'avversario. "
+		+ "Il gioco viene su una griglia quadrata, dove ciascun giocatore posiziona "
+		+ "le proprie navi in segreto sulla propria griglia e cerca di individuare e "
+		+ "distruggere le navi del proprio avversario.				"
+		+ "Ecco le regole del gioco:			"
+		+ "1. Ciascun giocatore posiziona le proprie navi sulla propria griglia in segreto."
+		+ "   Le navi possono essere posizionate orizzontalmente o verticalmente, ma non diagonalmente.			"
+		+ "2. Esistono diverse dimensioni di navi, a partire dalle piu' piccole di 1 caselle "
+		+ "   fino alle piu' grandi di 4 caselle. Ciascun giocatore ha 10 navi a disposizione "
+		+ "   (4 da 1 casella, 3 da 2 caselle, 2 da 3 caselle e 1 da 4 caselle).		"
+		+ "3 .Per determinare chi inizia lo decidera' il programma che fara' tutto in automatico. "
+		+ "   Il giocatore che inizia sceglie una casella sulla griglia dell'avversario e "
+		+ "   dichiara se c'e' una nave o meno. Se la casella scelta contiene una nave, "
+		+ "   il giocatore avversario la dichiara colpita, altrimenti la dichiara mancata. "
+		+ "   In caso tutte le caselle che contengono la nave vengono dichiarate "
+		+ "   la nave verra' dichiarata affondata.			"
+		+ "4. A turno, i giocatori cercano di individuare e distruggere le navi dell'avversario. "
+		+ "   Ogni volta che un giocatore colpisce una nave dell'avversario, ha diritto a un altro turno. "
+		+ "   Se invece il giocatore manca il bersaglio, il turno passa all'avversario.			"
+		+ "5. Il gioco prosegue fino a quando tutte e 10 le navi di uno dei giocatori vengono distrutte. "
+		+ "   Il giocatore che distrugge tutte le navi dell'avversario vince il gioco.			"
+		+ "6  E' importante notare che durante il gioco non e' consentito comunicare "
+		+ "   informazioni sulla posizione delle navi al proprio avversario.					"
+		+ "Buona fortuna!"
+		+ " </body></html>");
+
 
 		testo.setBounds(screenWidth / 2 - (150), screenHeight / 2 - (300), 300, 80);
 		testo.setForeground(Color.BLACK);
@@ -274,6 +303,18 @@ public class Home extends JFrame implements ActionListener {
 		sfondo6Panel.add(scrollPanel);
 
 		c.add(sfondo6Panel);
+		c.revalidate();
+		c.repaint();
+	}
+
+	private void accedi(){
+		c.removeAll();
+		c.setLayout(new GridLayout(1, 1));
+		sfondo7Panel.setLayout(null);
+		backButton.setBounds(70, 70, 70, 70);
+		sfondo7Panel.add(backButton);
+
+		c.add(sfondo7Panel);
 		c.revalidate();
 		c.repaint();
 	}
