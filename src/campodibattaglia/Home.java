@@ -237,6 +237,8 @@ public class Home extends JFrame implements ActionListener {
 		acaso=1;
 		c.setLayout(new GridLayout(1, 1));
 		sfondo6Panel.setLayout(null);
+		backButton.setBounds(70, 70, 70, 70);
+		sfondo6Panel.add(backButton);
 
 		JLabel testo = new JLabel("<html><body style='width: 300px;'>"
 				+ "A Battaglia navale ogni giocatore ha in dotazione una tavola, "
@@ -252,12 +254,8 @@ public class Home extends JFrame implements ActionListener {
 				+ "Fortuna, intuito e strategia in questo gioco sono determinanti per vincere. "
 				+ "Ma vediamo le regole."
 				+ "</body></html>");
-		
+
 		testo.setBounds(screenWidth / 2 - (150), screenHeight / 2 - (300), 300, 80);
-
-		backButton.setBounds(70, 70, 70, 70);
-		sfondo6Panel.add(backButton);
-
 		testo.setForeground(Color.BLACK);
 		testo.setFont(font1);
 		testo.setOpaque(false);
@@ -268,14 +266,6 @@ public class Home extends JFrame implements ActionListener {
        		scrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPanel.setBounds(screenWidth/2-(300), screenHeight/2-(250), 600, 500);
 		sfondo6Panel.add(scrollPanel);
-		backButton.setBounds(70, 70, 70, 70);
-		sfondo6Panel.add(backButton);
-
-		testo.setForeground(Color.WHITE);
-
-
-		testo.setFont(font1);
-		sfondo6Panel.add(testo);
 
 		c.add(sfondo6Panel);
 		c.revalidate();
