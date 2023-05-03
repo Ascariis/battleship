@@ -46,7 +46,7 @@ public class Home extends JFrame implements ActionListener {
 
 	private SfondoPanel sfondo4Panel = new SfondoPanel(2);
 	private Casella arButton[][] = new Casella[10][10];
-
+	private boolean creato = false;
 	private String nameString;
 	private JLabel nameLabel = new JLabel(nameString);
 	private String scoreSting = "Score 0";
@@ -164,24 +164,26 @@ public class Home extends JFrame implements ActionListener {
 		sfondo4Panel.add(pedina9);
 		sfondo4Panel.add(pedina0);
 		sfondo4Panel.add(impo);
-
-		for (int k = 0; k < 10; k++) {
-			for (int j = 0; j < 10; j++) {
-				arButton[k][j] = new Casella();
+		
+			for (int k = 0; k < 10; k++) {
+				for (int j = 0; j < 10; j++) {
+					arButton[k][j] = new Casella();
+				}
 			}
-		}
 
-		int r = 60;
-		int t = 0;
-		for (int k = 0; k < 10; k++) {
-			for (int j = 0; j < 10; j++) {
-				arButton[k][j].setBounds(FIELD_X + r, FIELD_Y + t, 60, 60);
-				r += 60;
-				sfondo4Panel.add(arButton[k][j]);
+			int r = 60;
+			int t = 0;
+			for (int k = 0; k < 10; k++) {
+				for (int j = 0; j < 10; j++) {
+					arButton[k][j].setBounds(FIELD_X + r, FIELD_Y + t, 60, 60);
+					r += 60;
+					sfondo4Panel.add(arButton[k][j]);
+				}
+				t += 60;
+				r = 60;
 			}
-			t += 60;
-			r = 60;
-		}
+			System.out.println("poba");
+		
 		System.out.println(arButton[0][0].getPosX() + " X PRIMO BUTTON");
         System.out.println(arButton[0][0].getPosY() + " X PRIMO BUTTON");
 
@@ -326,8 +328,15 @@ public class Home extends JFrame implements ActionListener {
 		} else if (e.getActionCommand().equals("Indietro")) {
 			if (finestra == 1)
 				home();
-			else if (finestra == 2)
+			else if (finestra == 2){
+				for (int k = 0; k < 10; k++) {
+					for (int j = 0; j < 10; j++) {
+						sfondo4Panel.remove(arButton[k][j]);
+					}
+				}
 				campoDaGioco();
+			}
+				
 			if (acaso == 1)
 				impostazioni();
 		} else if (e.getActionCommand().equals("Ospite")) {
