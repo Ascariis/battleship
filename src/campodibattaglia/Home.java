@@ -165,6 +165,7 @@ public class Home extends JFrame implements ActionListener {
 		sfondo4Panel.add(pedina0);
 		sfondo4Panel.add(impo);
 
+		
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
 				arButton[k][j] = new Casella();
@@ -182,6 +183,7 @@ public class Home extends JFrame implements ActionListener {
 			t += 60;
 			r = 60;
 		}
+
 		System.out.println(arButton[0][0].getPosX() + " X PRIMO BUTTON");
         System.out.println(arButton[0][0].getPosY() + " X PRIMO BUTTON");
 
