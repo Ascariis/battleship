@@ -265,10 +265,11 @@ public class Home extends JFrame implements ActionListener {
 		testo.setFont(font1);
 		testo.setOpaque(false);
 		testo.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+		
 		JScrollPane scrollPanel = new JScrollPane(testo);
 		scrollPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
 		scrollPanel.setOpaque(false);
-       		scrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+       	scrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPanel.setBounds(screenWidth/2-(300), screenHeight/2-(250), 600, 500);
 		sfondo6Panel.add(scrollPanel);
 
