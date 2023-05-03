@@ -52,6 +52,21 @@ public class Home extends JFrame implements ActionListener {
 	private ButtonIcon regoleButton = new ButtonIcon(10);
 	private SfondoPanel sfondo5Panel = new SfondoPanel(5);
 	private SfondoPanel sfondo6Panel = new SfondoPanel(4);
+
+	private SfondoPanel sfondo7Panel = new SfondoPanel(6);
+	private JLabel nomeLabel = new JLabel("User:");
+	private JTextField nomeText = new JTextField();
+	private JLabel passwordLabel = new JLabel("Password:");
+	private JPasswordField passwordField = new JPasswordField();
+	private JButton loginButton = new JButton();
+	private JButton registratiButton = new JButton();
+
+	private SfondoPanel sfondo8Panel = new SfondoPanel(7);
+	private JLabel passworConfLabel = new JLabel("Conferma password:");
+	private JPasswordField passwordConfField = new JPasswordField();
+	private JButton registerButton = new JButton();
+	private JButton accediButton = new JButton();
+
 	int acaso=0;
 
 	Home() {
@@ -168,18 +183,21 @@ public class Home extends JFrame implements ActionListener {
 			}
 		}
 
-			int r = 60;
-			int t = 0;
-			for (int k = 0; k < 10; k++) {
-				for (int j = 0; j < 10; j++) {
-					arButton[k][j].setBounds(FIELD_X + r, FIELD_Y + t, 60, 60);
-					r += 60;
-					sfondo4Panel.add(arButton[k][j]);
-				}
-				t += 60;
-				r = 60;
+		int r = 60;
+		int t = 0;
+		for (int k = 0; k < 10; k++) {
+			for (int j = 0; j < 10; j++) {
+				arButton[k][j].setBounds(FIELD_X + r, FIELD_Y + t, 60, 60);
+				r += 60;
+				sfondo4Panel.add(arButton[k][j]);
 			}
-		
+			t += 60;
+			r = 60;
+		}
+
+
+		// GAME LOOP - RICERCA PUNTI OCCUPATI DA BARCA TODO
+
 		System.out.println(arButton[0][0].getPosX() + " X PRIMO BUTTON");
 		System.out.println(arButton[0][0].getPosY() + " X PRIMO BUTTON");
 
