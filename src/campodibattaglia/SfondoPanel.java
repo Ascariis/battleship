@@ -19,6 +19,15 @@ public class SfondoPanel extends JPanel {
 			case 2:
 				indirizzo = "image/Sfondo1.gif";
 				break;
+			case 3:
+				indirizzo = "image/settingsSfondo.gif";
+				break;
+			case 4:
+				indirizzo = "image/rulesSfondo.gif";
+				break;
+			case 5:
+				indirizzo = "image/comandsSfondo.gif";
+				break;
 		}
 	}
 
