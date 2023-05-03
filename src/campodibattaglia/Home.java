@@ -8,12 +8,10 @@ import javax.swing.*;
 public class Home extends JFrame implements ActionListener {
 	int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
-	
-	
+
 	public final int FIELD_X = screenWidth / 2 - (300);
 	public final int FIELD_Y = screenHeight / 2 - (300);
 	private boolean isFullscreen = false;
-	
 
 	private Container c = this.getContentPane();
 	private SfondoPanel sfondo1Panel = new SfondoPanel(1);
@@ -54,21 +52,6 @@ public class Home extends JFrame implements ActionListener {
 	private ButtonIcon regoleButton = new ButtonIcon(10);
 	private SfondoPanel sfondo5Panel = new SfondoPanel(5);
 	private SfondoPanel sfondo6Panel = new SfondoPanel(4);
-
-	private SfondoPanel sfondo7Panel = new SfondoPanel(6);
-	private JLabel nomeLabel = new JLabel("User:");
-	private JTextField nomeText = new JTextField();
-	private JLabel passwordLabel = new JLabel("Password:");
-	private JPasswordField passwordField = new JPasswordField();
-	private JButton loginButton = new JButton();
-	private JButton registratiButton = new JButton();
-
-	private SfondoPanel sfondo8Panel = new SfondoPanel(7);
-	private JLabel passworConfLabel = new JLabel("Conferma password:");
-	private JPasswordField passwordConfField = new JPasswordField();
-	private JButton registerButton = new JButton();
-	private JButton accediButton = new JButton();
-
 	int acaso=0;
 
 	Home() {
@@ -91,7 +74,7 @@ public class Home extends JFrame implements ActionListener {
 	private void home() {
 		c.removeAll();
 		finestra = 1;
-		
+
 		c.setLayout(new GridLayout(1, 1));
 		sfondo1Panel.setLayout(null);
 		offlineButton.setBounds(screenWidth / 2 - (225), screenHeight / 2, 450, 80);
@@ -128,7 +111,7 @@ public class Home extends JFrame implements ActionListener {
 
 	private void impostazioni() {
 		c.removeAll();
-		acaso=0;
+		acaso = 0;
 		c.setLayout(new GridLayout(1, 1));
 		sfondo3Panel.setLayout(null);
 		backButton.setBounds(70, 70, 70, 70);
@@ -179,37 +162,37 @@ public class Home extends JFrame implements ActionListener {
 		sfondo4Panel.add(pedina0);
 		sfondo4Panel.add(impo);
 
-			for (int k = 0; k < 10; k++) {
-				for (int j = 0; j < 10; j++) {
-					arButton[k][j] = new Casella();
-				}
+		for (int k = 0; k < 10; k++) {
+			for (int j = 0; j < 10; j++) {
+				arButton[k][j] = new Casella();
 			}
+		}
 
-			int xplus = 60;
-			int yplus = 0;
+			int r = 60;
+			int t = 0;
 			for (int k = 0; k < 10; k++) {
 				for (int j = 0; j < 10; j++) {
-					arButton[k][j].setBounds(FIELD_X + xplus, FIELD_Y + yplus, 60, 60);
-					xplus += 60;
+					arButton[k][j].setBounds(FIELD_X + r, FIELD_Y + t, 60, 60);
+					r += 60;
 					sfondo4Panel.add(arButton[k][j]);
 				}
-				yplus += 60;
-				xplus = 60;
+				t += 60;
+				r = 60;
 			}
 		
 		System.out.println(arButton[0][0].getPosX() + " X PRIMO BUTTON");
-        System.out.println(arButton[0][0].getPosY() + " X PRIMO BUTTON");
+		System.out.println(arButton[0][0].getPosY() + " X PRIMO BUTTON");
 
 		c.add(sfondo4Panel);
 		c.revalidate();
 		c.repaint();
 	}
 
-	private void comandi(){
+	private void comandi() {
 		c.removeAll();
 		c.setLayout(new GridLayout(1, 1));
 		sfondo5Panel.setLayout(null);
-		acaso=1;
+		acaso = 1;
 		JLabel comando1 = new JLabel("Ruota barca:");
 		JLabel comando2 = new JLabel("Vuoto:");
 		JLabel comando3 = new JLabel("Vuoto:");
@@ -252,9 +235,10 @@ public class Home extends JFrame implements ActionListener {
 		c.revalidate();
 		c.repaint();
 	}
-	private void regole(){
+
+	private void regole() {
 		c.removeAll();
-		acaso=1;
+		acaso = 1;
 		c.setLayout(new GridLayout(1, 1));
 		sfondo6Panel.setLayout(null);
 		backButton.setBounds(70, 70, 70, 70);
@@ -294,12 +278,12 @@ public class Home extends JFrame implements ActionListener {
 		testo.setFont(font1);
 		testo.setOpaque(false);
 		testo.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-		
+
 		JScrollPane scrollPanel = new JScrollPane(testo);
 		scrollPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
 		scrollPanel.setOpaque(false);
-       	scrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPanel.setBounds(screenWidth/2-(300), screenHeight/2-(150), 600, 500);
+		scrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPanel.setBounds(screenWidth / 2 - (300), screenHeight / 2 - (150), 600, 500);
 		sfondo6Panel.add(scrollPanel);
 
 		c.add(sfondo6Panel);
@@ -367,7 +351,7 @@ public class Home extends JFrame implements ActionListener {
 		} else if (e.getActionCommand().equals("Indietro")) {
 			if (finestra == 1)
 				home();
-			else if (finestra == 2){
+			else if (finestra == 2) {
 				for (int k = 0; k < 10; k++) {
 					for (int j = 0; j < 10; j++) {
 						sfondo4Panel.remove(arButton[k][j]);
@@ -375,7 +359,7 @@ public class Home extends JFrame implements ActionListener {
 				}
 				campoDaGioco();
 			}
-				
+
 			if (acaso == 1)
 				impostazioni();
 		} else if (e.getActionCommand().equals("Ospite")) {
