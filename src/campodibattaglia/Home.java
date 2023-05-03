@@ -185,7 +185,6 @@ public class Home extends JFrame implements ActionListener {
 	}
 
 	private void comandi(){
-		acaso=1;
 		c.removeAll();
 		c.setLayout(new GridLayout(1, 1));
 		sfondo5Panel.setLayout(null);
