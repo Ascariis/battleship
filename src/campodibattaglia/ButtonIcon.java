@@ -33,7 +33,7 @@ public class ButtonIcon extends JButton {
 
         else if (nFinestra == 7)
             indirizzo = new ImageIcon("image/fullscreen.png");
-            
+
         else if (nFinestra == 8)
             indirizzo = new ImageIcon("image/impo.png");
 
@@ -41,7 +41,7 @@ public class ButtonIcon extends JButton {
             indirizzo = new ImageIcon("image/comandi.png");
         else if (nFinestra == 10)
             indirizzo = new ImageIcon("image/regole.png");
-          
+
         this.setIcon(indirizzo);
     }
 }

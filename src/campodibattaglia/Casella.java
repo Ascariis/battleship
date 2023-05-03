@@ -4,15 +4,13 @@ import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.*;
 
 public class Casella extends JButton implements MouseListener {
-    int x = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-    int y = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+
     Icon indirizzo;
 
     Casella() {
@@ -24,8 +22,13 @@ public class Casella extends JButton implements MouseListener {
 
     }
 
-    public int getPosX() { return getX();}
-    public int getPosY() { return getY();}
+    public int getPosX() {
+        return getX();
+    }
+
+    public int getPosY() {
+        return getY();
+    }
 
     protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g.create();
@@ -66,4 +69,5 @@ public class Casella extends JButton implements MouseListener {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'mouseExited'");
     }
+
 }
