@@ -6,10 +6,14 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Home extends JFrame implements ActionListener {
-
-	private boolean isFullscreen = false;
 	int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+	
+	
+	public final int FIELD_X = screenWidth / 2 - (300);
+	public final int FIELD_Y = screenHeight / 2 - (300);
+	private boolean isFullscreen = false;
+	
 
 	private Container c = this.getContentPane();
 	private SfondoPanel sfondo1Panel = new SfondoPanel(1);
@@ -171,13 +175,15 @@ public class Home extends JFrame implements ActionListener {
 		int t = 0;
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
-				arButton[k][j].setBounds(screenWidth / 2 - (300) + r, screenHeight / 2 - (300) + t, 60, 60);
+				arButton[k][j].setBounds(FIELD_X + r, FIELD_Y + t, 60, 60);
 				r += 60;
 				sfondo4Panel.add(arButton[k][j]);
 			}
 			t += 60;
 			r = 60;
 		}
+		System.out.println(arButton[0][0].getPosX() + " X PRIMO BUTTON");
+        System.out.println(arButton[0][0].getPosY() + " X PRIMO BUTTON");
 
 		c.add(sfondo4Panel);
 		c.revalidate();
