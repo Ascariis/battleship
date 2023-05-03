@@ -46,7 +46,6 @@ public class Home extends JFrame implements ActionListener {
 
 	private SfondoPanel sfondo4Panel = new SfondoPanel(2);
 	private Casella arButton[][] = new Casella[10][10];
-	private boolean creato = false;
 	private String nameString;
 	private JLabel nameLabel = new JLabel(nameString);
 	private String scoreSting = "Score 0";
