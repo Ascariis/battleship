@@ -31,7 +31,7 @@ public class Home extends JFrame implements ActionListener {
 	private ButtonIcon accountButton = new ButtonIcon(5);
 	private ButtonIcon backButton = new ButtonIcon(6);
 
-	private SfondoPanel sfondo3Panel = new SfondoPanel(2);
+	private SfondoPanel sfondo3Panel = new SfondoPanel(3);
 	private ButtonIcon impo = new ButtonIcon(8);
 	private Pedina pedina1 = new Pedina(1);
 	private Pedina pedina2 = new Pedina(1);
@@ -46,15 +46,14 @@ public class Home extends JFrame implements ActionListener {
 
 	private SfondoPanel sfondo4Panel = new SfondoPanel(2);
 	private Casella arButton[][] = new Casella[10][10];
-	private boolean creato = false;
 	private String nameString;
 	private JLabel nameLabel = new JLabel(nameString);
 	private String scoreSting = "Score 0";
 	private JLabel scoreLabel = new JLabel(scoreSting);
 	private ButtonIcon comandiButton = new ButtonIcon(9);
 	private ButtonIcon regoleButton = new ButtonIcon(10);
-	private SfondoPanel sfondo5Panel = new SfondoPanel(2);
-	private SfondoPanel sfondo6Panel = new SfondoPanel(2);
+	private SfondoPanel sfondo5Panel = new SfondoPanel(5);
+	private SfondoPanel sfondo6Panel = new SfondoPanel(4);
 	int acaso=0;
 
 	Home() {
@@ -164,7 +163,7 @@ public class Home extends JFrame implements ActionListener {
 		sfondo4Panel.add(pedina9);
 		sfondo4Panel.add(pedina0);
 		sfondo4Panel.add(impo);
-		
+
 			for (int k = 0; k < 10; k++) {
 				for (int j = 0; j < 10; j++) {
 					arButton[k][j] = new Casella();
@@ -272,7 +271,7 @@ public class Home extends JFrame implements ActionListener {
 		scrollPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
 		scrollPanel.setOpaque(false);
        	scrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPanel.setBounds(screenWidth/2-(300), screenHeight/2-(250), 600, 500);
+		scrollPanel.setBounds(screenWidth/2-(300), screenHeight/2-(15a0), 600, 500);
 		sfondo6Panel.add(scrollPanel);
 
 		c.add(sfondo6Panel);
