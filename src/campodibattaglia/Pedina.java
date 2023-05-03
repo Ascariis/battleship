@@ -164,6 +164,14 @@ public class Pedina extends JButton {
         this.setIcon(icon);
     }
 
+    public int getTaglia() {
+        return taglia;
+    }
+
+    public boolean getRotationState() {
+        return isRotated;
+    }
+
     private void rotateButton() {
         if (!isRotated) {
             setSize(getHeight(), getWidth());

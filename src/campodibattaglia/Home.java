@@ -180,6 +180,9 @@ public class Home extends JFrame implements ActionListener {
 			r = 60;
 		}
 
+
+		// GAME LOOP - RICERCA PUNTI OCCUPATI DA BARCA TODO
+
 		System.out.println(arButton[0][0].getPosX() + " X PRIMO BUTTON");
 		System.out.println(arButton[0][0].getPosY() + " X PRIMO BUTTON");
 
