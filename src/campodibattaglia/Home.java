@@ -238,10 +238,36 @@ public class Home extends JFrame implements ActionListener {
 		c.setLayout(new GridLayout(1, 1));
 		sfondo6Panel.setLayout(null);
 
-		JLabel testo = new JLabel("A Battaglia navale ogni giocatore ha in dotazione una tavola, cartacea o elettronica, dove ci sono due griglie uguali con 100 caselline. Su una delle due griglie dovrà posizionare le proprie navi, sull’altra invece dovrà sparare dei colpi alla cieca nel tentativo di indovinare la posizione delle navi avversarie. Insieme al tabellone a doppia griglia, ciascun giocatore riceve una flotta di cinque navi e un pacchetto di pedine, che serviranno come marcatori per individuare i colpi andati a segno e quelli falliti, sulla griglia avversaria. Insieme alle pedine ci sono anche i segnalini rossi che servono a marcare i colpi ricevuti. Ovviamente l’obiettivo di ciascun giocatore è quello di affondare tutte le navi del nemico, prima che questi abbia il sopravvento e affondi le proprie. Fortuna, intuito e strategia in questo gioco sono determinanti per vincere. Ma vediamo le regole.");
+		JLabel testo = new JLabel("<html><body style='width: 300px;'>"
+				+ "A Battaglia navale ogni giocatore ha in dotazione una tavola, "
+				+ "cartacea o elettronica, dove ci sono due griglie uguali con 100 caselline. "
+				+ "Su una delle due griglie dovra' posizionare le proprie navi, sull’altra invece "
+				+ "dovrà sparare dei colpi alla cieca nel tentativo di indovinare la posizione delle "
+				+ "navi avversarie. Insieme al tabellone a doppia griglia, ciascun giocatore riceve "
+				+ "una flotta di cinque navi e un pacchetto di pedine, che serviranno come marcatori "
+				+ "per individuare i colpi andati a segno e quelli falliti, sulla griglia avversaria. "
+				+ "Insieme alle pedine ci sono anche i segnalini rossi che servono a marcare i colpi "
+				+ "ricevuti. Ovviamente l’obiettivo di ciascun giocatore è quello di affondare tutte "
+				+ "le navi del nemico, prima che questi abbia il sopravvento e affondi le proprie. "
+				+ "Fortuna, intuito e strategia in questo gioco sono determinanti per vincere. "
+				+ "Ma vediamo le regole."
+				+ "</body></html>");
 		
 		testo.setBounds(screenWidth / 2 - (150), screenHeight / 2 - (300), 300, 80);
 
+		backButton.setBounds(70, 70, 70, 70);
+		sfondo6Panel.add(backButton);
+
+		testo.setForeground(Color.BLACK);
+		testo.setFont(font1);
+		testo.setOpaque(false);
+		testo.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+		JScrollPane scrollPanel = new JScrollPane(testo);
+		scrollPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
+		scrollPanel.setOpaque(false);
+       		scrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPanel.setBounds(screenWidth/2-(300), screenHeight/2-(250), 600, 500);
+		sfondo6Panel.add(scrollPanel);
 		backButton.setBounds(70, 70, 70, 70);
 		sfondo6Panel.add(backButton);
 
