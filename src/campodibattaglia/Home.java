@@ -245,7 +245,7 @@ public class Home extends JFrame implements ActionListener {
 		backButton.setBounds(70, 70, 70, 70);
 		sfondo6Panel.add(backButton);
 
-		JLabel testo = new JLabel("<html><body style='width: 300px;'>"
+		JLabel testo = new JLabel("<html><body style='width: 400px;'>"
 				+ "A Battaglia navale ogni giocatore ha in dotazione una tavola, "
 				+ "cartacea o elettronica, dove ci sono due griglie uguali con 100 caselline. "
 				+ "Su una delle due griglie dovra' posizionare le proprie navi, sull’altra invece "
@@ -257,7 +257,7 @@ public class Home extends JFrame implements ActionListener {
 				+ "ricevuti. Ovviamente l’obiettivo di ciascun giocatore è quello di affondare tutte "
 				+ "le navi del nemico, prima che questi abbia il sopravvento e affondi le proprie. "
 				+ "Fortuna, intuito e strategia in questo gioco sono determinanti per vincere. "
-				+ "Ma vediamo le regole."
+				+ " Ma vediamo le regole."
 				+ "</body></html>");
 
 		testo.setBounds(screenWidth / 2 - (150), screenHeight / 2 - (300), 300, 80);
