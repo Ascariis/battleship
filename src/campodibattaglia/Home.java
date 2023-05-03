@@ -181,7 +181,6 @@ public class Home extends JFrame implements ActionListener {
 				t += 60;
 				r = 60;
 			}
-			System.out.println("poba");
 		
 		System.out.println(arButton[0][0].getPosX() + " X PRIMO BUTTON");
         System.out.println(arButton[0][0].getPosY() + " X PRIMO BUTTON");
