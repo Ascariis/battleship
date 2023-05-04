@@ -13,11 +13,23 @@ public class Home extends JFrame implements ActionListener {
 	public final int FIELD_Y = screenHeight / 2 - (300);
 	private boolean isFullscreen = false;
 
+	//dimensione bottoni
+	private float homeWidth = (450/1920)*1440;
+	private float homeHeight = (80/1080)*900;
+	
+	private float sceltaWidth = (300/1920)*1440;
+	private float sceltaHeight =(320/1080)*900;
+
+	private float backWidth = (70/1920)*1440;
+	private float backHeight = (70/1080)*900;
+
+
+
 	private Container c = this.getContentPane();
 	private SfondoPanel sfondo1Panel = new SfondoPanel(1);
-	private ButtonIcon offlineButton = new ButtonIcon(1);
-	private ButtonIcon onlineButton = new ButtonIcon(2);
-	private ButtonIcon optionsButton = new ButtonIcon(3);
+	private ButtonIcon offlineButton = new ButtonIcon(1,homeWidth,homeHeight);
+	private ButtonIcon onlineButton = new ButtonIcon(2,homeWidth,homeHeight);
+	private ButtonIcon optionsButton = new ButtonIcon(3,homeWidth,homeHeight);
 
 	private Boolean Online = false;
 	private int finestra = 0;
@@ -25,12 +37,12 @@ public class Home extends JFrame implements ActionListener {
 	private Font font1;
 
 	private SfondoPanel sfondo2Panel = new SfondoPanel(1);
-	private ButtonIcon ospiteButton = new ButtonIcon(4);
-	private ButtonIcon accountButton = new ButtonIcon(5);
-	private ButtonIcon backButton = new ButtonIcon(6);
+	private ButtonIcon ospiteButton = new ButtonIcon(4,sceltaWidth,sceltaHeight);
+	private ButtonIcon accountButton = new ButtonIcon(5,sceltaWidth,sceltaHeight);
+	private ButtonIcon backButton = new ButtonIcon(6,backWidth ,backHeight);
 
 	private SfondoPanel sfondo3Panel = new SfondoPanel(3);
-	private ButtonIcon impo = new ButtonIcon(8);
+	private ButtonIcon impo = new ButtonIcon(8,backWidth ,backHeight);
 	private Pedina pedina1 = new Pedina(1);
 	private Pedina pedina2 = new Pedina(1);
 	private Pedina pedina3 = new Pedina(1);
@@ -48,8 +60,9 @@ public class Home extends JFrame implements ActionListener {
 	private JLabel nameLabel = new JLabel(nameString);
 	private String scoreSting = "Score 0";
 	private JLabel scoreLabel = new JLabel(scoreSting);
-	private ButtonIcon comandiButton = new ButtonIcon(9);
-	private ButtonIcon regoleButton = new ButtonIcon(10);
+	private ButtonIcon fullscreenToggle = new ButtonIcon(7,homeWidth,homeHeight);
+	private ButtonIcon comandiButton = new ButtonIcon(9,homeWidth,homeHeight);
+	private ButtonIcon regoleButton = new ButtonIcon(10,homeWidth,homeHeight);
 	private SfondoPanel sfondo5Panel = new SfondoPanel(5);
 	private SfondoPanel sfondo6Panel = new SfondoPanel(4);
 
@@ -91,10 +104,10 @@ public class Home extends JFrame implements ActionListener {
 		finestra = 1;
 
 		c.setLayout(new GridLayout(1, 1));
-		sfondo1Panel.setLayout(null);
-		offlineButton.setBounds(screenWidth / 2 - (225), screenHeight / 2, 450, 80);
-		onlineButton.setBounds(screenWidth / 2 - (225), screenHeight / 2 + (100), 450, 80);
-		optionsButton.setBounds(screenWidth / 2 - (225), screenHeight / 2 + (200), 450, 80);
+		//sfondo1Panel.setLayout(null);
+		//offlineButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth), screenHeight / 2, homeWidth,homeHeight);
+		//onlineButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth), screenHeight / 2 + ((100/1080)*screenHeight), homeWidth,homeHeight);
+		//optionsButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth), screenHeight / 2 + ((200/1080)*screenHeight), homeWidth,homeHeight);
 		sfondo1Panel.add(offlineButton);
 		sfondo1Panel.add(onlineButton);
 		sfondo1Panel.add(optionsButton);
@@ -111,9 +124,9 @@ public class Home extends JFrame implements ActionListener {
 
 		c.setLayout(new GridLayout(1, 1));
 		sfondo2Panel.setLayout(null);
-		ospiteButton.setBounds(screenWidth / 2 - (400), screenHeight / 2 - (100), 300, 320);
-		accountButton.setBounds(screenWidth / 2 + (100), screenHeight / 2 - (100), 300, 320);
-		backButton.setBounds(100, 100, 70, 70);
+		//ospiteButton.setBounds(screenWidth / 2 - ((400/1920)*screenWidth), screenHeight / 2 - ((100/1080)*screenHeight), sceltaWidth, sceltaHeight);
+		//accountButton.setBounds(screenWidth / 2 + ((100/1920)*screenWidth), screenHeight / 2 - ((100/1080)*screenHeight), sceltaWidth, sceltaHeight);
+		//backButton.setBounds(70, 70, backWidth, backHeight);
 
 		sfondo2Panel.add(ospiteButton);
 		sfondo2Panel.add(accountButton);
@@ -129,18 +142,18 @@ public class Home extends JFrame implements ActionListener {
 		acaso = 0;
 		c.setLayout(new GridLayout(1, 1));
 		sfondo3Panel.setLayout(null);
-		backButton.setBounds(70, 70, 70, 70);
+		//backButton.setBounds(70, 70,  backWidth, backHeight);
 
-		ButtonIcon fullscreenToggle = new ButtonIcon(7);
+		
 		fullscreenToggle.addActionListener(this);
 		fullscreenToggle.setActionCommand("Fullscreen");
 
-		comandiButton.setBounds(screenWidth / 2 - (225), screenHeight / 2, 450, 80);
+		//comandiButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth), screenHeight / 2,  homeWidth,homeHeight);
 		sfondo3Panel.add(comandiButton);
-		regoleButton.setBounds(screenWidth / 2 - (225), screenHeight / 2 + (100), 450, 80);
+		//regoleButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth), screenHeight / 2 + ((100/1080)*screenHeight),  homeWidth,homeHeight);
 		sfondo3Panel.add(regoleButton);
 
-		fullscreenToggle.setBounds(screenWidth / 2 - (225), screenHeight / 2 - (100), 450, 80);
+		//fullscreenToggle.setBounds(screenWidth / 2 - ((225/1920)*screenWidth), screenHeight / 2 - ((100/1080)*screenHeight),  homeWidth,homeHeight);
 		sfondo3Panel.add(fullscreenToggle);
 		sfondo3Panel.add(backButton);
 		c.add(sfondo3Panel);
@@ -163,7 +176,7 @@ public class Home extends JFrame implements ActionListener {
 		scoreLabel.setFont(font);
 		scoreLabel.setBounds(300, 40, 200, 80);
 		sfondo4Panel.add(scoreLabel);
-		impo.setBounds(screenWidth - (140), 70, 70, 70);
+		//impo.setBounds(screenWidth - (140), 70, backWidth, backHeight);
 
 		sfondo4Panel.add(pedina1);
 		sfondo4Panel.add(pedina2);
@@ -218,7 +231,7 @@ public class Home extends JFrame implements ActionListener {
 		JLabel comando5 = new JLabel("Vuoto:");
 		JLabel comando6 = new JLabel("Vuoto:");
 
-		backButton.setBounds(70, 70, 70, 70);
+		//backButton.setBounds(70, 70, backWidth, backHeight);
 		sfondo5Panel.add(backButton);
 
 		comando1.setForeground(Color.WHITE);
@@ -259,7 +272,7 @@ public class Home extends JFrame implements ActionListener {
 		acaso = 1;
 		c.setLayout(new GridLayout(1, 1));
 		sfondo6Panel.setLayout(null);
-		backButton.setBounds(70, 70, 70, 70);
+		//backButton.setBounds(70, 70, backWidth, backHeight);
 		sfondo6Panel.add(backButton);
 
 		JLabel testo = new JLabel("<html><body style='width: 400px;'>"
@@ -313,7 +326,7 @@ public class Home extends JFrame implements ActionListener {
 		c.removeAll();
 		c.setLayout(new GridLayout(1, 1));
 		sfondo7Panel.setLayout(null);
-		backButton.setBounds(70, 70, 70, 70);
+		//backButton.setBounds(70, 70, backWidth, backHeight);
 		sfondo7Panel.add(backButton);
 
 		c.add(sfondo7Panel);
