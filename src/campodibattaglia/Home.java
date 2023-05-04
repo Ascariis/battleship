@@ -14,16 +14,14 @@ public class Home extends JFrame implements ActionListener {
 	private boolean isFullscreen = false;
 
 	//dimensione bottoni
-	private float homeWidth = (450/1920)*1440;
-	private float homeHeight = (80/1080)*900;
+	private double homeWidth =  ((0.234375)*screenWidth);
+	private double homeHeight = ((0.074074074074074)*screenHeight);
 	
-	private float sceltaWidth = (300/1920)*1440;
-	private float sceltaHeight =(320/1080)*900;
+	private double sceltaWidth = (0.15625)*screenWidth;
+	private double sceltaHeight =(0.296296296296296)*screenHeight;
 
-	private float backWidth = (70/1920)*1440;
-	private float backHeight = (70/1080)*900;
-
-
+	private double backWidth = (0.036458333333333)*screenWidth;
+	private double backHeight = (0.064814814814815)*screenHeight;
 
 	private Container c = this.getContentPane();
 	private SfondoPanel sfondo1Panel = new SfondoPanel(1);
@@ -102,9 +100,8 @@ public class Home extends JFrame implements ActionListener {
 	private void home() {
 		c.removeAll();
 		finestra = 1;
-
 		c.setLayout(new GridLayout(1, 1));
-		//sfondo1Panel.setLayout(null);
+		sfondo1Panel.setLayout(null);
 		//offlineButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth), screenHeight / 2, homeWidth,homeHeight);
 		//onlineButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth), screenHeight / 2 + ((100/1080)*screenHeight), homeWidth,homeHeight);
 		//optionsButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth), screenHeight / 2 + ((200/1080)*screenHeight), homeWidth,homeHeight);
