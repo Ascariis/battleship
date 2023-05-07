@@ -311,7 +311,7 @@ public class Home extends JFrame implements ActionListener {
 		scrollPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
 		scrollPanel.setOpaque(false);
 		scrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPanel.setBounds(screenWidth / 2 - (300), screenHeight / 2 - (150), 600, 500);
+		scrollPanel.setBounds(screenWidth / 2 - (300), screenHeight / 2 - (100), 600, 450);
 		sfondo6Panel.add(scrollPanel);
 
 		c.add(sfondo6Panel);
@@ -323,8 +323,22 @@ public class Home extends JFrame implements ActionListener {
 		c.removeAll();
 		c.setLayout(new GridLayout(1, 1));
 		sfondo7Panel.setLayout(null);
-		//backButton.setBounds(70, 70, backWidth, backHeight);
 		sfondo7Panel.add(backButton);
+
+		nomeLabel.setBounds(screenWidth/2-(200), screenHeight/2, 200, 50);
+		nomeLabel.setFont(font);
+		nomeText.setBounds(screenWidth/2, screenHeight/2, 200, 50);
+		nomeText.setFont(font);
+		passwordLabel.setBounds(screenWidth/2-(200), screenHeight/2+(50), 200, 50);
+		passwordLabel.setFont(font);
+		passwordField.setBounds(screenWidth/2, screenHeight/2+(50), 200, 50);
+		loginButton.setBounds(screenWidth/2-(100), screenHeight/2+(200), 200, 80);
+
+		sfondo7Panel.add(nomeLabel);
+		sfondo7Panel.add(nomeText);
+		sfondo7Panel.add(passwordLabel);
+		sfondo7Panel.add(passwordField);
+		sfondo7Panel.add(loginButton);
 
 		c.add(sfondo7Panel);
 		c.revalidate();
@@ -395,7 +409,7 @@ public class Home extends JFrame implements ActionListener {
 			nameLabel.setText(nameString);
 			campoDaGioco();
 		} else if (e.getActionCommand().equals("Account")) {
-			impostazioni();
+			accedi();
 		} else if (e.getActionCommand().equals("Comandi")) {
 			comandi();
 		} else if (e.getActionCommand().equals("Regole")) {
