@@ -60,7 +60,6 @@ public class Pedina extends JButton {
                     rotateButton();
                 } 
                 else
-                ;
                 mouseX = e.getX();
                 mouseY = e.getY();
             }
@@ -89,7 +88,7 @@ public class Pedina extends JButton {
 
 
         
-        int GRID_SIZE = 60;
+        int GRID_SIZE = 50;
         addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
