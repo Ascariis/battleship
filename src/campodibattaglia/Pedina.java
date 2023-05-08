@@ -1,7 +1,6 @@
 package campodibattaglia;
 
 import java.awt.Image;
-import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -18,8 +17,8 @@ public class Pedina extends JButton {
     private int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
     private int mouseX, mouseY;
-    private int FIELD_CLOSEST_X = screenWidth / 2 - (250);
-    private int FIELD_CLOSEST_Y = screenHeight / 2 - (250);
+    private int FIELD_CLOSEST_X = screenWidth / 2 - (260);
+    private int FIELD_CLOSEST_Y = screenHeight / 2 - (260);
 
     public Pedina(int taglia) {
         this.taglia = taglia;
@@ -100,10 +99,15 @@ public class Pedina extends JButton {
                 int newX = getX() + deltaX;
                 int newY = getY() + deltaY;
 
-                int snappedX = (newX + GRID_SIZE / 2) / GRID_SIZE * GRID_SIZE;
-                int snappedY = (newY + GRID_SIZE / 2) / GRID_SIZE * GRID_SIZE;
+                System.out.println(getWidth());
+                System.out.println(" ");
+                System.out.println(getHeight());
+
+                int snappedX = ((newX + GRID_SIZE / 2) / GRID_SIZE * GRID_SIZE) + 10;
+                int snappedY = ((newY + GRID_SIZE / 2) / GRID_SIZE * GRID_SIZE) - 10;
 
                 setLocation(snappedX, snappedY);
+                System.out.println(snappedX + " " + snappedY);
             }
         });
 /* 

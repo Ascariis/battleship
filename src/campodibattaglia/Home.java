@@ -9,8 +9,8 @@ public class Home extends JFrame implements ActionListener {
 	int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
-	public final int FIELD_X = screenWidth / 2 - (300);
-	public final int FIELD_Y = screenHeight / 2 - (300);
+	public final int FIELD_X = 960 - (300);
+	public final int FIELD_Y = 540 - (300);
 	private boolean isFullscreen = false;
 
 	//dimensione bottoni
