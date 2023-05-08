@@ -13,12 +13,13 @@ public class Home extends JFrame implements ActionListener {
 	public final int FIELD_Y = screenHeight / 2 - (300);
 	private boolean isFullscreen = false;
 
-	// dimensione bottoni
+	//dimensione bottoni
 	private double homeWidth = ((0.234375) * screenWidth);
 	private double homeHeight = ((0.074074074074074) * screenHeight);
 
 	private double sceltaWidth = (0.15625) * screenWidth;
 	private double sceltaHeight = (0.296296296296296) * screenHeight;
+
 
 	private double backWidth = (0.036458333333333) * screenWidth;
 	private double backHeight = (0.064814814814815) * screenHeight;
@@ -96,12 +97,6 @@ public class Home extends JFrame implements ActionListener {
 		finestra = 1;
 		c.setLayout(new GridLayout(1, 1));
 		sfondo1Panel.setLayout(null);
-		// offlineButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth),
-		// screenHeight / 2, homeWidth,homeHeight);
-		// onlineButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth),
-		// screenHeight / 2 + ((100/1080)*screenHeight), homeWidth,homeHeight);
-		// optionsButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth),
-		// screenHeight / 2 + ((200/1080)*screenHeight), homeWidth,homeHeight);
 		sfondo1Panel.add(offlineButton);
 		sfondo1Panel.add(onlineButton);
 		sfondo1Panel.add(optionsButton);
@@ -118,12 +113,6 @@ public class Home extends JFrame implements ActionListener {
 
 		c.setLayout(new GridLayout(1, 1));
 		sfondo2Panel.setLayout(null);
-		// ospiteButton.setBounds(screenWidth / 2 - ((400/1920)*screenWidth),
-		// screenHeight / 2 - ((100/1080)*screenHeight), sceltaWidth, sceltaHeight);
-		// accountButton.setBounds(screenWidth / 2 + ((100/1920)*screenWidth),
-		// screenHeight / 2 - ((100/1080)*screenHeight), sceltaWidth, sceltaHeight);
-		// backButton.setBounds(70, 70, backWidth, backHeight);
-
 		sfondo2Panel.add(ospiteButton);
 		sfondo2Panel.add(accountButton);
 		sfondo2Panel.add(backButton);
@@ -138,20 +127,14 @@ public class Home extends JFrame implements ActionListener {
 		acaso = 0;
 		c.setLayout(new GridLayout(1, 1));
 		sfondo3Panel.setLayout(null);
-		// backButton.setBounds(70, 70, backWidth, backHeight);
 
 		fullscreenToggle.addActionListener(this);
 		fullscreenToggle.setActionCommand("Fullscreen");
 
-		// comandiButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth),
-		// screenHeight / 2, homeWidth,homeHeight);
 		sfondo3Panel.add(comandiButton);
-		// regoleButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth),
-		// screenHeight / 2 + ((100/1080)*screenHeight), homeWidth,homeHeight);
+
 		sfondo3Panel.add(regoleButton);
 
-		// fullscreenToggle.setBounds(screenWidth / 2 - ((225/1920)*screenWidth),
-		// screenHeight / 2 - ((100/1080)*screenHeight), homeWidth,homeHeight);
 		sfondo3Panel.add(fullscreenToggle);
 		sfondo3Panel.add(backButton);
 		c.add(sfondo3Panel);
@@ -178,7 +161,6 @@ public class Home extends JFrame implements ActionListener {
 		scoreLabel.setFont(font);
 		scoreLabel.setBounds(300, 40, 200, 80);
 		sfondo4Panel.add(scoreLabel);
-		// impo.setBounds(screenWidth - (140), 70, backWidth, backHeight);
 
 		final int dimensionePedinaTEMP[] = { 1, 1, 1, 1, 2, 2, 2, 3, 3, 4 };
 		for (int i = 0; i < pedina.length; i++) {
@@ -198,16 +180,16 @@ public class Home extends JFrame implements ActionListener {
 			}
 		}
 
-		int r = 60;
+		int r = 50;
 		int t = 0;
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
-				arButton[k][j].setBounds(FIELD_X + r, FIELD_Y + t, 60, 60);
-				r += 60;
+				arButton[k][j].setBounds(FIELD_X + r, FIELD_Y + t, 50, 50);
+				r += 50;
 				sfondo4Panel.add(arButton[k][j]);
 			}
-			t += 60;
-			r = 60;
+			t += 50;
+			r = 50;
 		}
 
 		System.out.println(arButton[0][0].getPosX() + " X PRIMO BUTTON");
