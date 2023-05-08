@@ -12,6 +12,7 @@ public class Home extends JFrame implements ActionListener {
 	public final int FIELD_X = 760 - (300);
 	public final int FIELD_Y = 540 - (300);
 	private boolean isFullscreen = false;
+	boolean isPlaced = false;
 
 	// dimensione bottoni
 	private double homeWidth = ((0.234375) * screenWidth);
@@ -162,17 +163,21 @@ public class Home extends JFrame implements ActionListener {
 		scoreLabel.setFont(font);
 		scoreLabel.setBounds(300, 40, 200, 80);
 		sfondo4Panel.add(scoreLabel);
+		
+		
+		if (!isPlaced) {
+			final int dimensionePedinaTEMP[] = { 1, 1, 1, 1, 2, 2, 2, 3, 3, 4 };
+			for (int i = 0; i < pedina.length; i++) {
+				pedina[i] = new Pedina(dimensionePedinaTEMP[i]);
+			}
 
-		final int dimensionePedinaTEMP[] = { 1, 1, 1, 1, 2, 2, 2, 3, 3, 4 };
-		for (int i = 0; i < pedina.length; i++) {
-			pedina[i] = new Pedina(dimensionePedinaTEMP[i]);
+			for (int i = 0; i < pedina.length; i++) {
+				sfondo4Panel.add(pedina[i]);
+			}
+
+			isPlaced = true;
 		}
-		if(poba == true){
-		for (int i = 0; i < pedina.length; i++) {
-			sfondo4Panel.add(pedina[i]);
-		}
-		poba=false;
-		}
+
 		sfondo4Panel.add(impo);
 		sfondo4Panel.add(confirmPositions);
 
@@ -307,7 +312,7 @@ public class Home extends JFrame implements ActionListener {
 		sfondo7Panel.setLayout(null);
 		sfondo7Panel.add(backButton);
 
-		tornaprima=1;
+		tornaprima = 1;
 
 		nomeLabel.setBounds(screenWidth / 2 - (200), screenHeight / 2, 200, 50);
 		nomeLabel.setFont(font);
@@ -317,7 +322,7 @@ public class Home extends JFrame implements ActionListener {
 		passwordLabel.setFont(font);
 		passwordField.setBounds(screenWidth / 2, screenHeight / 2 + (50), 200, 50);
 		loginButton.setBounds(screenWidth / 2 - (100), screenHeight / 2 + (120), 200, 50);
-		nota1.setHorizontalAlignment( JLabel.CENTER );
+		nota1.setHorizontalAlignment(JLabel.CENTER);
 		nota1.setBounds(screenWidth / 2 - (150), screenHeight / 2 + (230), 300, 15);
 		registratiButton.setBounds(screenWidth / 2 - (60), screenHeight / 2 + (250), 120, 30);
 
@@ -337,13 +342,13 @@ public class Home extends JFrame implements ActionListener {
 		c.repaint();
 	}
 
-	private void registrati(){
+	private void registrati() {
 		c.removeAll();
 		c.setLayout(new GridLayout(1, 1));
 		sfondo8Panel.setLayout(null);
 		sfondo8Panel.add(backButton);
 
-		tornaprima=1;
+		tornaprima = 1;
 
 		nomeLabel.setBounds(screenWidth / 2 - (200), screenHeight / 2 - (50), 200, 50);
 		nomeLabel.setFont(font);
@@ -356,7 +361,7 @@ public class Home extends JFrame implements ActionListener {
 		passwordConfLabel.setFont(font);
 		passwordConfField.setBounds(screenWidth / 2, screenHeight / 2 + (50), 200, 50);
 		registerButton.setBounds(screenWidth / 2 - (100), screenHeight / 2 + (120), 200, 50);
-		nota2.setHorizontalAlignment( JLabel.CENTER );
+		nota2.setHorizontalAlignment(JLabel.CENTER);
 		nota2.setBounds(screenWidth / 2 - (150), screenHeight / 2 + (230), 300, 15);
 		accediButton.setBounds(screenWidth / 2 - (60), screenHeight / 2 + (250), 120, 30);
 
@@ -378,6 +383,7 @@ public class Home extends JFrame implements ActionListener {
 		c.revalidate();
 		c.repaint();
 	}
+
 	private void finestra() {
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -467,12 +473,11 @@ public class Home extends JFrame implements ActionListener {
 					}
 				}
 				campoDaGioco();
-			}
-			else if (finestra == 1 && tornaprima == 1)
+			} else if (finestra == 1 && tornaprima == 1)
 				scelta();
 			if (acaso == 1)
 				impostazioni();
-			
+
 		} else if (e.getActionCommand().equals("Ospite")) {
 			nameString = "Ospite";
 			nameLabel.setText(nameString);
@@ -497,14 +502,14 @@ public class Home extends JFrame implements ActionListener {
 				setBounds(0, 0, screenWidth, screenHeight);
 				this.setVisible(true);
 			}
-		} else if (e.getActionCommand().equals("Login")) {		
-		}else if (e.getActionCommand().equals("Register")) {		
-		}else if (e.getActionCommand().equals("Accedi")) {		
-			accedi();	
-		}else if (e.getActionCommand().equals("Registrati")) {	
+		} else if (e.getActionCommand().equals("Login")) {
+		} else if (e.getActionCommand().equals("Register")) {
+		} else if (e.getActionCommand().equals("Accedi")) {
+			accedi();
+		} else if (e.getActionCommand().equals("Registrati")) {
 			registrati();
 		}
-		
+
 	}
 
 }
