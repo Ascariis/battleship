@@ -9,17 +9,16 @@ public class Home extends JFrame implements ActionListener {
 	int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
-	public final int FIELD_X = 960 - (300);
+	public final int FIELD_X = 760 - (300);
 	public final int FIELD_Y = 540 - (300);
 	private boolean isFullscreen = false;
 
-	//dimensione bottoni
+	// dimensione bottoni
 	private double homeWidth = ((0.234375) * screenWidth);
 	private double homeHeight = ((0.074074074074074) * screenHeight);
 
 	private double sceltaWidth = (0.15625) * screenWidth;
 	private double sceltaHeight = (0.296296296296296) * screenHeight;
-
 
 	private double backWidth = (0.036458333333333) * screenWidth;
 	private double backHeight = (0.064814814814815) * screenHeight;

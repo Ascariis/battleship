@@ -16,9 +16,10 @@ public class Pedina extends JButton {
     private int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
+    private boolean isSnapped = false;
     private int mouseX, mouseY;
-    private int FIELD_CLOSEST_X = screenWidth / 2 - (260);
-    private int FIELD_CLOSEST_Y = screenHeight / 2 - (260);
+    private int FIELD_CLOSEST_X = 760 - (300);
+    private int FIELD_CLOSEST_Y = 540 - (300);
 
     public Pedina(int taglia) {
         this.taglia = taglia;
@@ -52,81 +53,72 @@ public class Pedina extends JButton {
             icon = new ImageIcon(newImg);
         }
         this.setIcon(icon);
-        
+
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (e.getButton() == MouseEvent.BUTTON3) { // GODOOOOO
                     rotateButton();
-                } 
-                else
-                ;
+                } else
+                    ;
                 mouseX = e.getX();
                 mouseY = e.getY();
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                if (e.getXOnScreen() - mouseX > FIELD_CLOSEST_X && e.getXOnScreen() - mouseX < FIELD_CLOSEST_X + 500
-                        && e.getYOnScreen() - mouseY < FIELD_CLOSEST_Y + 500) {
-
-                } else {
-                    if (taglia == 1) {
-                        setLocation(100, taglia * 200);
-                    } else if (taglia == 2) {
-                        setLocation(100, taglia * 200);
-                    } else if (taglia == 3) {
-                        setLocation(100, taglia * 200);
-                    } else if (taglia == 4) {
-                        setLocation(100, taglia * 200);
-                    } else if (taglia == 5) {
-                        setLocation(100, taglia * 200);
-                    }
+                if (getX() + getWidth() > (FIELD_CLOSEST_X + 550)
+                        || getY() + getHeight() > (FIELD_CLOSEST_Y + 500)) {
+                    setToDefLocation();
                 }
+                if ((e.getXOnScreen() < FIELD_CLOSEST_X - 50 || getY() < FIELD_CLOSEST_Y - 50)) {
+                    setToDefLocation();
+                }
+
                 super.mouseReleased(e);
             }
         });
 
-
-        
         int GRID_SIZE = 50;
         addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
+                if (getX() >= FIELD_CLOSEST_X) {
+                    int deltaX = e.getX() - mouseX;
+                    int deltaY = e.getY() - mouseY;
 
-                int deltaX = e.getX() - mouseX;
-                int deltaY = e.getY() - mouseY;
+                    int newX = getX() + deltaX;
+                    int newY = getY() + deltaY;
 
+                    System.out.println(getWidth());
+                    System.out.println(" ");
+                    System.out.println(getHeight());
 
-                int newX = getX() + deltaX;
-                int newY = getY() + deltaY;
+                    int snappedX = ((newX + GRID_SIZE / 2) / GRID_SIZE * GRID_SIZE) + 10; // 10 il valore mistico
+                    int snappedY = ((newY + GRID_SIZE / 2) / GRID_SIZE * GRID_SIZE) - 10;
 
-                System.out.println(getWidth());
-                System.out.println(" ");
-                System.out.println(getHeight());
-
-                int snappedX = ((newX + GRID_SIZE / 2) / GRID_SIZE * GRID_SIZE) + 10;
-                int snappedY = ((newY + GRID_SIZE / 2) / GRID_SIZE * GRID_SIZE) - 10;
-
-                setLocation(snappedX, snappedY);
-                System.out.println(snappedX + " " + snappedY);
-            }
-        });
-/* 
-        addMouseMotionListener(new MouseMotionAdapter() {
-            public void mouseDragged(MouseEvent e) {
-
-                // SNAP TO GRID BRUTTO
-                if (e.getXOnScreen() - mouseX > FIELD_CLOSEST_X
-                        && e.getYOnScreen() - mouseY > FIELD_CLOSEST_Y
-                        && e.getXOnScreen() - mouseX < FIELD_CLOSEST_X + 500
-                        && e.getYOnScreen() - mouseY < FIELD_CLOSEST_Y + 500) {
-
-                    setLocation(((Math.round(e.getXOnScreen()) / 50) * 50), ((Math.round(e.getYOnScreen()) / 50) * 50));
+                    setLocation(snappedX, snappedY);
+                    System.out.println(snappedX + " " + snappedY);
+                    isSnapped = true;
                 } else
                     setLocation(e.getXOnScreen() - mouseX, e.getYOnScreen() - mouseY);
+
             }
         });
-*/
+
+    }
+
+    private void setToDefLocation() {
+        if (taglia == 1) {
+            setLocation(100, taglia * 200);
+        } else if (taglia == 2) {
+            setLocation(100, taglia * 200);
+        } else if (taglia == 3) {
+            setLocation(100, taglia * 200);
+        } else if (taglia == 4) {
+            setLocation(100, taglia * 200);
+        } else if (taglia == 5) {
+            setLocation(100, taglia * 200);
+        }
     }
 
     private void setImageRotated() {
@@ -157,7 +149,7 @@ public class Pedina extends JButton {
         }
         this.setIcon(icon);
     }
-    
+
     private void setImage() {
         if (taglia == 1) {
             setSize(50, 50);
