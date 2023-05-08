@@ -60,8 +60,8 @@ public class Pedina extends JButton {
                     rotateButton();
                 } else
                     ;
-                } 
-                else
+                
+                
                 mouseX = e.getX();
                 mouseY = e.getY();
             }
