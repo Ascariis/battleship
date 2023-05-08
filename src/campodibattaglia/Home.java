@@ -2,7 +2,6 @@ package campodibattaglia;
 
 import java.awt.*;
 import java.io.*;
-import java.util.prefs.PreferenceChangeEvent;
 import java.awt.event.*;
 import javax.swing.*;
 

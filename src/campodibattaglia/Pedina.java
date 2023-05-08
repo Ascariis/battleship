@@ -1,6 +1,7 @@
 package campodibattaglia;
 
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -52,14 +53,15 @@ public class Pedina extends JButton {
             icon = new ImageIcon(newImg);
         }
         this.setIcon(icon);
-
+        
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (e.getButton() == MouseEvent.BUTTON3) { // GODOOOOO
                     rotateButton();
                 } else
+                ;
 
-                    mouseX = e.getX();
+                mouseX = e.getX();
                 mouseY = e.getY();
             }
 
@@ -85,6 +87,27 @@ public class Pedina extends JButton {
             }
         });
 
+
+        
+        int GRID_SIZE = 60;
+        addMouseMotionListener(new MouseAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+
+                int deltaX = e.getX() - mouseX;
+                int deltaY = e.getY() - mouseY;
+
+
+                int newX = getX() + deltaX;
+                int newY = getY() + deltaY;
+
+                int snappedX = (newX + GRID_SIZE / 2) / GRID_SIZE * GRID_SIZE;
+                int snappedY = (newY + GRID_SIZE / 2) / GRID_SIZE * GRID_SIZE;
+
+                setLocation(snappedX, snappedY);
+            }
+        });
+/* 
         addMouseMotionListener(new MouseMotionAdapter() {
             public void mouseDragged(MouseEvent e) {
 
@@ -99,7 +122,7 @@ public class Pedina extends JButton {
                     setLocation(e.getXOnScreen() - mouseX, e.getYOnScreen() - mouseY);
             }
         });
-
+*/
     }
 
     private void setImageRotated() {
@@ -130,7 +153,7 @@ public class Pedina extends JButton {
         }
         this.setIcon(icon);
     }
-
+    
     private void setImage() {
         if (taglia == 1) {
             setSize(60, 60);
