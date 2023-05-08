@@ -63,16 +63,18 @@ public class Home extends JFrame implements ActionListener {
 	private JTextField nomeText = new JTextField();
 	private JLabel passwordLabel = new JLabel("Password:");
 	private JPasswordField passwordField = new JPasswordField();
-	private JButton loginButton = new JButton();
-	private JButton registratiButton = new JButton();
+	private JButton loginButton = new JButton("Login");
+	private JButton registratiButton = new JButton("Registrati");
 
 	private SfondoPanel sfondo8Panel = new SfondoPanel(7);
-	private JLabel passworConfLabel = new JLabel("Conferma password:");
+	private JLabel passwordConfLabel = new JLabel("Conferma password:");
 	private JPasswordField passwordConfField = new JPasswordField();
-	private JButton registerButton = new JButton();
-	private JButton accediButton = new JButton();
-
-	int acaso = 0;
+	private JButton registerButton = new JButton("Register");
+	private JButton accediButton = new JButton("Accedi");
+	private JLabel nota1 = new JLabel("Non hai un'account? Registrane uno ora");
+	private JLabel nota2 = new JLabel("Hai un'account? Accedi ora");
+	private int tornaprima = 0;
+	private int acaso = 0;
 
 	Home() {
 		super("Sa Battalla");
@@ -211,7 +213,6 @@ public class Home extends JFrame implements ActionListener {
 		JLabel comando5 = new JLabel("Vuoto:");
 		JLabel comando6 = new JLabel("Vuoto:");
 
-		// backButton.setBounds(70, 70, backWidth, backHeight);
 		sfondo5Panel.add(backButton);
 
 		comando1.setForeground(Color.WHITE);
@@ -252,35 +253,34 @@ public class Home extends JFrame implements ActionListener {
 		acaso = 1;
 		c.setLayout(new GridLayout(1, 1));
 		sfondo6Panel.setLayout(null);
-		// backButton.setBounds(70, 70, backWidth, backHeight);
 		sfondo6Panel.add(backButton);
 
 		JLabel testo = new JLabel("<html><body style='width: 400px;'>"
-				+ "'Sa Battala' e' un gioco di strategia e abilita' ispirato a battaglia navale, "
-				+ "in cui due giocatori cercano di distruggere le navi dell'avversario. "
-				+ "Il gioco viene su una griglia quadrata, dove ciascun giocatore posiziona "
-				+ "le proprie navi in segreto sulla propria griglia e cerca di individuare e "
-				+ "distruggere le navi del proprio avversario.				"
-				+ "Ecco le regole del gioco:			"
-				+ "1. Ciascun giocatore posiziona le proprie navi sulla propria griglia in segreto."
-				+ "   Le navi possono essere posizionate orizzontalmente o verticalmente, ma non diagonalmente.			"
-				+ "2. Esistono diverse dimensioni di navi, a partire dalle piu' piccole di 1 caselle "
-				+ "   fino alle piu' grandi di 4 caselle. Ciascun giocatore ha 10 navi a disposizione "
-				+ "   (4 da 1 casella, 3 da 2 caselle, 2 da 3 caselle e 1 da 4 caselle).		"
-				+ "3 .Per determinare chi inizia lo decidera' il programma che fara' tutto in automatico. "
-				+ "   Il giocatore che inizia sceglie una casella sulla griglia dell'avversario e "
-				+ "   dichiara se c'e' una nave o meno. Se la casella scelta contiene una nave, "
-				+ "   il giocatore avversario la dichiara colpita, altrimenti la dichiara mancata. "
-				+ "   In caso tutte le caselle che contengono la nave vengono dichiarate "
-				+ "   la nave verra' dichiarata affondata.			"
-				+ "4. A turno, i giocatori cercano di individuare e distruggere le navi dell'avversario. "
-				+ "   Ogni volta che un giocatore colpisce una nave dell'avversario, ha diritto a un altro turno. "
-				+ "   Se invece il giocatore manca il bersaglio, il turno passa all'avversario.			"
-				+ "5. Il gioco prosegue fino a quando tutte e 10 le navi di uno dei giocatori vengono distrutte. "
-				+ "   Il giocatore che distrugge tutte le navi dell'avversario vince il gioco.			"
+				+ "'Sa Battala' e' un gioco di strategia e abilita' ispirato a battaglia navale,<br>"
+				+ "in cui due giocatori cercano di distruggere le navi dell'avversario.<br> "
+				+ "Il gioco viene su una griglia quadrata, dove ciascun giocatore posiziona<br> "
+				+ "le proprie navi in segreto sulla propria griglia e cerca di individuare e<br> "
+				+ "distruggere le navi del proprio avversario.<br>"
+				+ "Ecco le regole del gioco:<br>"
+				+ "<ol> <li>Ciascun giocatore posiziona le proprie navi sulla propria griglia in segreto.<br>"
+				+ "   Le navi possono essere posizionate orizzontalmente o verticalmente, ma non diagonalmente.<br></li></ol>"
+				+ "2. Esistono diverse dimensioni di navi, a partire dalle piu' piccole di 1 caselle<br>"
+				+ "   fino alle piu' grandi di 4 caselle. Ciascun giocatore ha 10 navi a disposizione<br>"
+				+ "   (4 da 1 casella, 3 da 2 caselle, 2 da 3 caselle e 1 da 4 caselle).<br>"
+				+ "3 .Per determinare chi inizia lo decidera' il programma che fara' tutto in automatico.<br>"
+				+ "   Il giocatore che inizia sceglie una casella sulla griglia dell'avversario e<br>"
+				+ "   dichiara se c'e' una nave o meno. Se la casella scelta contiene una nave,<br>"
+				+ "   il giocatore avversario la dichiara colpita, altrimenti la dichiara mancata.<br>"
+				+ "   In caso tutte le caselle che contengono la nave vengono dichiarate<br>"
+				+ "   la nave verra' dichiarata affondata.<br>"
+				+ "4. A turno, i giocatori cercano di individuare e distruggere le navi dell'avversario.<br>"
+				+ "   Ogni volta che un giocatore colpisce una nave dell'avversario, ha diritto a un altro turno.<br> "
+				+ "   Se invece il giocatore manca il bersaglio, il turno passa all'avversario.<br>"
+				+ "5. Il gioco prosegue fino a quando tutte e 10 le navi di uno dei giocatori vengono distrutte.<br> "
+				+ "   Il giocatore che distrugge tutte le navi dell'avversario vince il gioco.<br>"
 				+ "6  E' importante notare che durante il gioco non e' consentito comunicare "
-				+ "   informazioni sulla posizione delle navi al proprio avversario.					"
-				+ "Buona fortuna!"
+				+ "   informazioni sulla posizione delle navi al proprio avversario.<br>"
+				+ "Buona fortuna!<br>"
 				+ " </body></html>");
 
 		testo.setBounds(screenWidth / 2 - (150), screenHeight / 2 - (300), 300, 80);
@@ -307,6 +307,8 @@ public class Home extends JFrame implements ActionListener {
 		sfondo7Panel.setLayout(null);
 		sfondo7Panel.add(backButton);
 
+		tornaprima=1;
+
 		nomeLabel.setBounds(screenWidth / 2 - (200), screenHeight / 2, 200, 50);
 		nomeLabel.setFont(font);
 		nomeText.setBounds(screenWidth / 2, screenHeight / 2, 200, 50);
@@ -314,19 +316,68 @@ public class Home extends JFrame implements ActionListener {
 		passwordLabel.setBounds(screenWidth / 2 - (200), screenHeight / 2 + (50), 200, 50);
 		passwordLabel.setFont(font);
 		passwordField.setBounds(screenWidth / 2, screenHeight / 2 + (50), 200, 50);
-		loginButton.setBounds(screenWidth / 2 - (100), screenHeight / 2 + (200), 200, 80);
+		loginButton.setBounds(screenWidth / 2 - (100), screenHeight / 2 + (120), 200, 50);
+		nota1.setHorizontalAlignment( JLabel.CENTER );
+		nota1.setBounds(screenWidth / 2 - (150), screenHeight / 2 + (230), 300, 15);
+		registratiButton.setBounds(screenWidth / 2 - (60), screenHeight / 2 + (250), 120, 30);
+
+		nomeText.setText(null);
+		passwordField.setText(null);
 
 		sfondo7Panel.add(nomeLabel);
 		sfondo7Panel.add(nomeText);
 		sfondo7Panel.add(passwordLabel);
 		sfondo7Panel.add(passwordField);
 		sfondo7Panel.add(loginButton);
+		sfondo7Panel.add(registratiButton);
+		sfondo7Panel.add(nota1);
 
 		c.add(sfondo7Panel);
 		c.revalidate();
 		c.repaint();
 	}
 
+	private void registrati(){
+		c.removeAll();
+		c.setLayout(new GridLayout(1, 1));
+		sfondo8Panel.setLayout(null);
+		sfondo8Panel.add(backButton);
+
+		tornaprima=1;
+
+		nomeLabel.setBounds(screenWidth / 2 - (200), screenHeight / 2 - (50), 200, 50);
+		nomeLabel.setFont(font);
+		nomeText.setBounds(screenWidth / 2, screenHeight / 2 - (50), 200, 50);
+		nomeText.setFont(font);
+		passwordLabel.setBounds(screenWidth / 2 - (200), screenHeight / 2, 200, 50);
+		passwordLabel.setFont(font);
+		passwordField.setBounds(screenWidth / 2, screenHeight / 2, 200, 50);
+		passwordConfLabel.setBounds(screenWidth / 2 - (200), screenHeight / 2 + (50), 200, 50);
+		passwordConfLabel.setFont(font);
+		passwordConfField.setBounds(screenWidth / 2, screenHeight / 2 + (50), 200, 50);
+		registerButton.setBounds(screenWidth / 2 - (100), screenHeight / 2 + (120), 200, 50);
+		nota2.setHorizontalAlignment( JLabel.CENTER );
+		nota2.setBounds(screenWidth / 2 - (150), screenHeight / 2 + (230), 300, 15);
+		accediButton.setBounds(screenWidth / 2 - (60), screenHeight / 2 + (250), 120, 30);
+
+		nomeText.setText(null);
+		passwordField.setText(null);
+		passwordConfField.setText(null);
+
+		sfondo8Panel.add(nomeLabel);
+		sfondo8Panel.add(nomeText);
+		sfondo8Panel.add(passwordLabel);
+		sfondo8Panel.add(passwordField);
+		sfondo8Panel.add(passwordConfLabel);
+		sfondo8Panel.add(passwordConfField);
+		sfondo8Panel.add(registerButton);
+		sfondo8Panel.add(accediButton);
+		sfondo8Panel.add(nota2);
+
+		c.add(sfondo8Panel);
+		c.revalidate();
+		c.repaint();
+	}
 	private void finestra() {
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -365,6 +416,18 @@ public class Home extends JFrame implements ActionListener {
 
 		regoleButton.addActionListener(this);
 		regoleButton.setActionCommand("Regole");
+
+		loginButton.addActionListener(this);
+		loginButton.setActionCommand("Login");
+
+		registerButton.addActionListener(this);
+		registerButton.setActionCommand("Register");
+
+		accediButton.addActionListener(this);
+		accediButton.setActionCommand("Accedi");
+
+		registratiButton.addActionListener(this);
+		registratiButton.setActionCommand("Registrati");
 	}
 
 	@Override
@@ -395,7 +458,7 @@ public class Home extends JFrame implements ActionListener {
 		else if (e.getActionCommand().equals("Impostazioni")) {
 			impostazioni();
 		} else if (e.getActionCommand().equals("Indietro")) {
-			if (finestra == 1)
+			if (finestra == 1 && tornaprima == 0)
 				home();
 			else if (finestra == 2) {
 				for (int k = 0; k < 10; k++) {
@@ -405,9 +468,11 @@ public class Home extends JFrame implements ActionListener {
 				}
 				campoDaGioco();
 			}
-
+			else if (finestra == 1 && tornaprima == 1)
+				scelta();
 			if (acaso == 1)
 				impostazioni();
+			
 		} else if (e.getActionCommand().equals("Ospite")) {
 			nameString = "Ospite";
 			nameLabel.setText(nameString);
@@ -432,7 +497,14 @@ public class Home extends JFrame implements ActionListener {
 				setBounds(0, 0, screenWidth, screenHeight);
 				this.setVisible(true);
 			}
+		} else if (e.getActionCommand().equals("Login")) {		
+		}else if (e.getActionCommand().equals("Register")) {		
+		}else if (e.getActionCommand().equals("Accedi")) {		
+			accedi();	
+		}else if (e.getActionCommand().equals("Registrati")) {	
+			registrati();
 		}
+		
 	}
 
 }
