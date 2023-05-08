@@ -57,10 +57,9 @@ public class Pedina extends JButton {
             public void mousePressed(MouseEvent e) {
                 if (e.getButton() == MouseEvent.BUTTON3) { // GODOOOOO
                     rotateButton();
-                    System.out.print("POBAAAA");
-                }else
-                
-                mouseX = e.getX();
+                } else
+
+                    mouseX = e.getX();
                 mouseY = e.getY();
             }
 
@@ -98,9 +97,6 @@ public class Pedina extends JButton {
                     setLocation(((Math.round(e.getXOnScreen()) / 60) * 60), ((Math.round(e.getYOnScreen()) / 60) * 60));
                 } else
                     setLocation(e.getXOnScreen() - mouseX, e.getYOnScreen() - mouseY);
-
-                System.out.println(e.getXOnScreen() + " X BARCA");
-                System.out.println(e.getYOnScreen() + " Y BARCA");
             }
         });
 
@@ -181,7 +177,6 @@ public class Pedina extends JButton {
             setImage();
             isRotated = false;
         }
-        
+
     }
 }
-

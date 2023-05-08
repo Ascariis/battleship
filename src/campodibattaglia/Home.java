@@ -2,6 +2,7 @@ package campodibattaglia;
 
 import java.awt.*;
 import java.io.*;
+import java.util.prefs.PreferenceChangeEvent;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -13,21 +14,21 @@ public class Home extends JFrame implements ActionListener {
 	public final int FIELD_Y = screenHeight / 2 - (300);
 	private boolean isFullscreen = false;
 
-	//dimensione bottoni
-	private double homeWidth =  ((0.234375)*screenWidth);
-	private double homeHeight = ((0.074074074074074)*screenHeight);
-	
-	private double sceltaWidth = (0.15625)*screenWidth;
-	private double sceltaHeight =(0.296296296296296)*screenHeight;
+	// dimensione bottoni
+	private double homeWidth = ((0.234375) * screenWidth);
+	private double homeHeight = ((0.074074074074074) * screenHeight);
 
-	private double backWidth = (0.036458333333333)*screenWidth;
-	private double backHeight = (0.064814814814815)*screenHeight;
+	private double sceltaWidth = (0.15625) * screenWidth;
+	private double sceltaHeight = (0.296296296296296) * screenHeight;
+
+	private double backWidth = (0.036458333333333) * screenWidth;
+	private double backHeight = (0.064814814814815) * screenHeight;
 
 	private Container c = this.getContentPane();
 	private SfondoPanel sfondo1Panel = new SfondoPanel(1);
-	private ButtonIcon offlineButton = new ButtonIcon(1,homeWidth,homeHeight);
-	private ButtonIcon onlineButton = new ButtonIcon(2,homeWidth,homeHeight);
-	private ButtonIcon optionsButton = new ButtonIcon(3,homeWidth,homeHeight);
+	private ButtonIcon offlineButton = new ButtonIcon(1, homeWidth, homeHeight);
+	private ButtonIcon onlineButton = new ButtonIcon(2, homeWidth, homeHeight);
+	private ButtonIcon optionsButton = new ButtonIcon(3, homeWidth, homeHeight);
 
 	private Boolean Online = false;
 	private int finestra = 0;
@@ -35,32 +36,26 @@ public class Home extends JFrame implements ActionListener {
 	private Font font1;
 
 	private SfondoPanel sfondo2Panel = new SfondoPanel(1);
-	private ButtonIcon ospiteButton = new ButtonIcon(4,sceltaWidth,sceltaHeight);
-	private ButtonIcon accountButton = new ButtonIcon(5,sceltaWidth,sceltaHeight);
-	private ButtonIcon backButton = new ButtonIcon(6,backWidth ,backHeight);
+	private ButtonIcon ospiteButton = new ButtonIcon(4, sceltaWidth, sceltaHeight);
+	private ButtonIcon accountButton = new ButtonIcon(5, sceltaWidth, sceltaHeight);
+	private ButtonIcon backButton = new ButtonIcon(6, backWidth, backHeight);
 
 	private SfondoPanel sfondo3Panel = new SfondoPanel(3);
-	private ButtonIcon impo = new ButtonIcon(8,backWidth ,backHeight);
-	private Pedina pedina1 = new Pedina(1);
-	private Pedina pedina2 = new Pedina(1);
-	private Pedina pedina3 = new Pedina(1);
-	private Pedina pedina4 = new Pedina(1);
-	private Pedina pedina5 = new Pedina(2);
-	private Pedina pedina6 = new Pedina(2);
-	private Pedina pedina7 = new Pedina(2);
-	private Pedina pedina8 = new Pedina(3);
-	private Pedina pedina9 = new Pedina(3);
-	private Pedina pedina0 = new Pedina(4);
+	private ButtonIcon impo = new ButtonIcon(8, backWidth, backHeight);
 
 	private SfondoPanel sfondo4Panel = new SfondoPanel(2);
 	private Casella arButton[][] = new Casella[10][10];
+	private int field[][] = new int[10][10];
+	private Pedina pedina[] = new Pedina[10];
+	JButton confirmPositions = new JButton("CONFERMA");
+
 	private String nameString;
 	private JLabel nameLabel = new JLabel(nameString);
 	private String scoreSting = "Score 0";
 	private JLabel scoreLabel = new JLabel(scoreSting);
-	private ButtonIcon fullscreenToggle = new ButtonIcon(7,homeWidth,homeHeight);
-	private ButtonIcon comandiButton = new ButtonIcon(9,homeWidth,homeHeight);
-	private ButtonIcon regoleButton = new ButtonIcon(10,homeWidth,homeHeight);
+	private ButtonIcon fullscreenToggle = new ButtonIcon(7, homeWidth, homeHeight);
+	private ButtonIcon comandiButton = new ButtonIcon(9, homeWidth, homeHeight);
+	private ButtonIcon regoleButton = new ButtonIcon(10, homeWidth, homeHeight);
 	private SfondoPanel sfondo5Panel = new SfondoPanel(5);
 	private SfondoPanel sfondo6Panel = new SfondoPanel(4);
 
@@ -78,7 +73,7 @@ public class Home extends JFrame implements ActionListener {
 	private JButton registerButton = new JButton();
 	private JButton accediButton = new JButton();
 
-	int acaso=0;
+	int acaso = 0;
 
 	Home() {
 		super("Sa Battalla");
@@ -102,9 +97,12 @@ public class Home extends JFrame implements ActionListener {
 		finestra = 1;
 		c.setLayout(new GridLayout(1, 1));
 		sfondo1Panel.setLayout(null);
-		//offlineButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth), screenHeight / 2, homeWidth,homeHeight);
-		//onlineButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth), screenHeight / 2 + ((100/1080)*screenHeight), homeWidth,homeHeight);
-		//optionsButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth), screenHeight / 2 + ((200/1080)*screenHeight), homeWidth,homeHeight);
+		// offlineButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth),
+		// screenHeight / 2, homeWidth,homeHeight);
+		// onlineButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth),
+		// screenHeight / 2 + ((100/1080)*screenHeight), homeWidth,homeHeight);
+		// optionsButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth),
+		// screenHeight / 2 + ((200/1080)*screenHeight), homeWidth,homeHeight);
 		sfondo1Panel.add(offlineButton);
 		sfondo1Panel.add(onlineButton);
 		sfondo1Panel.add(optionsButton);
@@ -121,9 +119,11 @@ public class Home extends JFrame implements ActionListener {
 
 		c.setLayout(new GridLayout(1, 1));
 		sfondo2Panel.setLayout(null);
-		//ospiteButton.setBounds(screenWidth / 2 - ((400/1920)*screenWidth), screenHeight / 2 - ((100/1080)*screenHeight), sceltaWidth, sceltaHeight);
-		//accountButton.setBounds(screenWidth / 2 + ((100/1920)*screenWidth), screenHeight / 2 - ((100/1080)*screenHeight), sceltaWidth, sceltaHeight);
-		//backButton.setBounds(70, 70, backWidth, backHeight);
+		// ospiteButton.setBounds(screenWidth / 2 - ((400/1920)*screenWidth),
+		// screenHeight / 2 - ((100/1080)*screenHeight), sceltaWidth, sceltaHeight);
+		// accountButton.setBounds(screenWidth / 2 + ((100/1920)*screenWidth),
+		// screenHeight / 2 - ((100/1080)*screenHeight), sceltaWidth, sceltaHeight);
+		// backButton.setBounds(70, 70, backWidth, backHeight);
 
 		sfondo2Panel.add(ospiteButton);
 		sfondo2Panel.add(accountButton);
@@ -139,18 +139,20 @@ public class Home extends JFrame implements ActionListener {
 		acaso = 0;
 		c.setLayout(new GridLayout(1, 1));
 		sfondo3Panel.setLayout(null);
-		//backButton.setBounds(70, 70,  backWidth, backHeight);
+		// backButton.setBounds(70, 70, backWidth, backHeight);
 
-		
 		fullscreenToggle.addActionListener(this);
 		fullscreenToggle.setActionCommand("Fullscreen");
 
-		//comandiButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth), screenHeight / 2,  homeWidth,homeHeight);
+		// comandiButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth),
+		// screenHeight / 2, homeWidth,homeHeight);
 		sfondo3Panel.add(comandiButton);
-		//regoleButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth), screenHeight / 2 + ((100/1080)*screenHeight),  homeWidth,homeHeight);
+		// regoleButton.setBounds(screenWidth / 2 - ((225/1920)*screenWidth),
+		// screenHeight / 2 + ((100/1080)*screenHeight), homeWidth,homeHeight);
 		sfondo3Panel.add(regoleButton);
 
-		//fullscreenToggle.setBounds(screenWidth / 2 - ((225/1920)*screenWidth), screenHeight / 2 - ((100/1080)*screenHeight),  homeWidth,homeHeight);
+		// fullscreenToggle.setBounds(screenWidth / 2 - ((225/1920)*screenWidth),
+		// screenHeight / 2 - ((100/1080)*screenHeight), homeWidth,homeHeight);
 		sfondo3Panel.add(fullscreenToggle);
 		sfondo3Panel.add(backButton);
 		c.add(sfondo3Panel);
@@ -165,6 +167,10 @@ public class Home extends JFrame implements ActionListener {
 		finestra = 2;
 		sfondo4Panel.setLayout(null);
 
+		confirmPositions.addActionListener(this);
+		confirmPositions.setActionCommand("CONFERMA");
+
+		confirmPositions.setBounds(screenWidth - 100, 1000, 200, 80);
 		nameLabel.setForeground(Color.WHITE);
 		nameLabel.setBounds(100, 40, 200, 80);
 		nameLabel.setFont(font);
@@ -173,19 +179,19 @@ public class Home extends JFrame implements ActionListener {
 		scoreLabel.setFont(font);
 		scoreLabel.setBounds(300, 40, 200, 80);
 		sfondo4Panel.add(scoreLabel);
-		//impo.setBounds(screenWidth - (140), 70, backWidth, backHeight);
+		// impo.setBounds(screenWidth - (140), 70, backWidth, backHeight);
 
-		sfondo4Panel.add(pedina1);
-		sfondo4Panel.add(pedina2);
-		sfondo4Panel.add(pedina3);
-		sfondo4Panel.add(pedina4);
-		sfondo4Panel.add(pedina5);
-		sfondo4Panel.add(pedina6);
-		sfondo4Panel.add(pedina7);
-		sfondo4Panel.add(pedina8);
-		sfondo4Panel.add(pedina9);
-		sfondo4Panel.add(pedina0);
+		final int dimensionePedinaTEMP[] = { 1, 1, 1, 1, 2, 2, 2, 3, 3, 4 };
+		for (int i = 0; i < pedina.length; i++) {
+			pedina[i] = new Pedina(dimensionePedinaTEMP[i]);
+		}
+
+		for (int i = 0; i < pedina.length; i++) {
+			sfondo4Panel.add(pedina[i]);
+		}
+
 		sfondo4Panel.add(impo);
+		sfondo4Panel.add(confirmPositions);
 
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
@@ -204,9 +210,6 @@ public class Home extends JFrame implements ActionListener {
 			t += 60;
 			r = 60;
 		}
-
-
-		// GAME LOOP - RICERCA PUNTI OCCUPATI DA BARCA TODO
 
 		System.out.println(arButton[0][0].getPosX() + " X PRIMO BUTTON");
 		System.out.println(arButton[0][0].getPosY() + " X PRIMO BUTTON");
@@ -228,7 +231,7 @@ public class Home extends JFrame implements ActionListener {
 		JLabel comando5 = new JLabel("Vuoto:");
 		JLabel comando6 = new JLabel("Vuoto:");
 
-		//backButton.setBounds(70, 70, backWidth, backHeight);
+		// backButton.setBounds(70, 70, backWidth, backHeight);
 		sfondo5Panel.add(backButton);
 
 		comando1.setForeground(Color.WHITE);
@@ -269,37 +272,36 @@ public class Home extends JFrame implements ActionListener {
 		acaso = 1;
 		c.setLayout(new GridLayout(1, 1));
 		sfondo6Panel.setLayout(null);
-		//backButton.setBounds(70, 70, backWidth, backHeight);
+		// backButton.setBounds(70, 70, backWidth, backHeight);
 		sfondo6Panel.add(backButton);
 
 		JLabel testo = new JLabel("<html><body style='width: 400px;'>"
-		+ "'Sa Battala' e' un gioco di strategia e abilita' ispirato a battaglia navale, "
-		+ "in cui due giocatori cercano di distruggere le navi dell'avversario. "
-		+ "Il gioco viene su una griglia quadrata, dove ciascun giocatore posiziona "
-		+ "le proprie navi in segreto sulla propria griglia e cerca di individuare e "
-		+ "distruggere le navi del proprio avversario.				"
-		+ "Ecco le regole del gioco:			"
-		+ "1. Ciascun giocatore posiziona le proprie navi sulla propria griglia in segreto."
-		+ "   Le navi possono essere posizionate orizzontalmente o verticalmente, ma non diagonalmente.			"
-		+ "2. Esistono diverse dimensioni di navi, a partire dalle piu' piccole di 1 caselle "
-		+ "   fino alle piu' grandi di 4 caselle. Ciascun giocatore ha 10 navi a disposizione "
-		+ "   (4 da 1 casella, 3 da 2 caselle, 2 da 3 caselle e 1 da 4 caselle).		"
-		+ "3 .Per determinare chi inizia lo decidera' il programma che fara' tutto in automatico. "
-		+ "   Il giocatore che inizia sceglie una casella sulla griglia dell'avversario e "
-		+ "   dichiara se c'e' una nave o meno. Se la casella scelta contiene una nave, "
-		+ "   il giocatore avversario la dichiara colpita, altrimenti la dichiara mancata. "
-		+ "   In caso tutte le caselle che contengono la nave vengono dichiarate "
-		+ "   la nave verra' dichiarata affondata.			"
-		+ "4. A turno, i giocatori cercano di individuare e distruggere le navi dell'avversario. "
-		+ "   Ogni volta che un giocatore colpisce una nave dell'avversario, ha diritto a un altro turno. "
-		+ "   Se invece il giocatore manca il bersaglio, il turno passa all'avversario.			"
-		+ "5. Il gioco prosegue fino a quando tutte e 10 le navi di uno dei giocatori vengono distrutte. "
-		+ "   Il giocatore che distrugge tutte le navi dell'avversario vince il gioco.			"
-		+ "6  E' importante notare che durante il gioco non e' consentito comunicare "
-		+ "   informazioni sulla posizione delle navi al proprio avversario.					"
-		+ "Buona fortuna!"
-		+ " </body></html>");
-
+				+ "'Sa Battala' e' un gioco di strategia e abilita' ispirato a battaglia navale, "
+				+ "in cui due giocatori cercano di distruggere le navi dell'avversario. "
+				+ "Il gioco viene su una griglia quadrata, dove ciascun giocatore posiziona "
+				+ "le proprie navi in segreto sulla propria griglia e cerca di individuare e "
+				+ "distruggere le navi del proprio avversario.				"
+				+ "Ecco le regole del gioco:			"
+				+ "1. Ciascun giocatore posiziona le proprie navi sulla propria griglia in segreto."
+				+ "   Le navi possono essere posizionate orizzontalmente o verticalmente, ma non diagonalmente.			"
+				+ "2. Esistono diverse dimensioni di navi, a partire dalle piu' piccole di 1 caselle "
+				+ "   fino alle piu' grandi di 4 caselle. Ciascun giocatore ha 10 navi a disposizione "
+				+ "   (4 da 1 casella, 3 da 2 caselle, 2 da 3 caselle e 1 da 4 caselle).		"
+				+ "3 .Per determinare chi inizia lo decidera' il programma che fara' tutto in automatico. "
+				+ "   Il giocatore che inizia sceglie una casella sulla griglia dell'avversario e "
+				+ "   dichiara se c'e' una nave o meno. Se la casella scelta contiene una nave, "
+				+ "   il giocatore avversario la dichiara colpita, altrimenti la dichiara mancata. "
+				+ "   In caso tutte le caselle che contengono la nave vengono dichiarate "
+				+ "   la nave verra' dichiarata affondata.			"
+				+ "4. A turno, i giocatori cercano di individuare e distruggere le navi dell'avversario. "
+				+ "   Ogni volta che un giocatore colpisce una nave dell'avversario, ha diritto a un altro turno. "
+				+ "   Se invece il giocatore manca il bersaglio, il turno passa all'avversario.			"
+				+ "5. Il gioco prosegue fino a quando tutte e 10 le navi di uno dei giocatori vengono distrutte. "
+				+ "   Il giocatore che distrugge tutte le navi dell'avversario vince il gioco.			"
+				+ "6  E' importante notare che durante il gioco non e' consentito comunicare "
+				+ "   informazioni sulla posizione delle navi al proprio avversario.					"
+				+ "Buona fortuna!"
+				+ " </body></html>");
 
 		testo.setBounds(screenWidth / 2 - (150), screenHeight / 2 - (300), 300, 80);
 		testo.setForeground(Color.BLACK);
@@ -319,20 +321,20 @@ public class Home extends JFrame implements ActionListener {
 		c.repaint();
 	}
 
-	private void accedi(){
+	private void accedi() {
 		c.removeAll();
 		c.setLayout(new GridLayout(1, 1));
 		sfondo7Panel.setLayout(null);
 		sfondo7Panel.add(backButton);
 
-		nomeLabel.setBounds(screenWidth/2-(200), screenHeight/2, 200, 50);
+		nomeLabel.setBounds(screenWidth / 2 - (200), screenHeight / 2, 200, 50);
 		nomeLabel.setFont(font);
-		nomeText.setBounds(screenWidth/2, screenHeight/2, 200, 50);
+		nomeText.setBounds(screenWidth / 2, screenHeight / 2, 200, 50);
 		nomeText.setFont(font);
-		passwordLabel.setBounds(screenWidth/2-(200), screenHeight/2+(50), 200, 50);
+		passwordLabel.setBounds(screenWidth / 2 - (200), screenHeight / 2 + (50), 200, 50);
 		passwordLabel.setFont(font);
-		passwordField.setBounds(screenWidth/2, screenHeight/2+(50), 200, 50);
-		loginButton.setBounds(screenWidth/2-(100), screenHeight/2+(200), 200, 80);
+		passwordField.setBounds(screenWidth / 2, screenHeight / 2 + (50), 200, 50);
+		loginButton.setBounds(screenWidth / 2 - (100), screenHeight / 2 + (200), 200, 80);
 
 		sfondo7Panel.add(nomeLabel);
 		sfondo7Panel.add(nomeText);
@@ -349,6 +351,12 @@ public class Home extends JFrame implements ActionListener {
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
+	}
+
+	public static boolean checkShipOverlap(JButton casella, JButton barca) {
+		Rectangle bounds1 = casella.getBounds();
+		Rectangle bounds2 = barca.getBounds();
+		return bounds1.intersects(bounds2);
 	}
 
 	private void ascoltatori() {
@@ -381,6 +389,22 @@ public class Home extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if (e.getActionCommand().equals("CONFERMA")) {
+
+			// GAME LOOP - RICERCA PUNTI OCCUPATI DA BARCA
+			for (int pID = 0; pID < pedina.length; pID++) { // pid = idPedina
+
+				for (int col = 0; col < arButton.length; col++) {
+					for (int row = 0; row < arButton.length; row++) {
+						if (checkShipOverlap(arButton[col][row], pedina[pID])) {
+							System.out.println(checkShipOverlap(arButton[col][row], pedina[pID]));
+							field[col][row] = 1;
+						}
+					}
+				}
+			}
+		}
+
 		if (e.getActionCommand().equals("Offline")) {
 			scelta();
 		} else if (e.getActionCommand().equals("Online")) {
