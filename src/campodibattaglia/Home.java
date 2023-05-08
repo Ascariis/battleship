@@ -207,9 +207,13 @@ public class Home extends JFrame implements ActionListener {
 
 
 		// GAME LOOP - RICERCA PUNTI OCCUPATI DA BARCA TODO
-
-		System.out.println(arButton[0][0].getPosX() + " X PRIMO BUTTON");
-		System.out.println(arButton[0][0].getPosY() + " X PRIMO BUTTON");
+		if(arButton[0][0].getPosX()>=660 && arButton[0][0].getPosX()<1260){
+			System.out.println(arButton[0][0].getPosX() + " X PRIMO BUTTON");
+		}
+		if(arButton[0][0].getPosY()>=240 && arButton[0][0].getPosY()<840){
+			System.out.println(arButton[0][0].getPosY() + " Y PRIMO BUTTON");
+		}
+		
 
 		c.add(sfondo4Panel);
 		c.revalidate();
