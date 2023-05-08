@@ -75,7 +75,7 @@ public class Home extends JFrame implements ActionListener {
 	private JLabel nota2 = new JLabel("Hai un'account? Accedi ora");
 	private int tornaprima = 0;
 	private int acaso = 0;
-
+	boolean poba = true;
 	Home() {
 		super("Sa Battalla");
 
@@ -167,11 +167,12 @@ public class Home extends JFrame implements ActionListener {
 		for (int i = 0; i < pedina.length; i++) {
 			pedina[i] = new Pedina(dimensionePedinaTEMP[i]);
 		}
-
+		if(poba == true){
 		for (int i = 0; i < pedina.length; i++) {
 			sfondo4Panel.add(pedina[i]);
 		}
-
+		poba=false;
+		}
 		sfondo4Panel.add(impo);
 		sfondo4Panel.add(confirmPositions);
 
@@ -192,7 +193,6 @@ public class Home extends JFrame implements ActionListener {
 			t += 50;
 			r = 50;
 		}
-
 		System.out.println(arButton[0][0].getPosX() + " X PRIMO BUTTON");
 		System.out.println(arButton[0][0].getPosY() + " X PRIMO BUTTON");
 
@@ -256,30 +256,30 @@ public class Home extends JFrame implements ActionListener {
 		sfondo6Panel.add(backButton);
 
 		JLabel testo = new JLabel("<html><body style='width: 400px;'>"
-				+ "'Sa Battala' e' un gioco di strategia e abilita' ispirato a battaglia navale,<br>"
+				+ "Sa Battala e' un gioco di strategia e abilita' ispirato a battaglia navale,"
 				+ "in cui due giocatori cercano di distruggere le navi dell'avversario.<br> "
-				+ "Il gioco viene su una griglia quadrata, dove ciascun giocatore posiziona<br> "
-				+ "le proprie navi in segreto sulla propria griglia e cerca di individuare e<br> "
-				+ "distruggere le navi del proprio avversario.<br>"
+				+ "Il gioco viene su una griglia quadrata, dove ciascun giocatore posiziona "
+				+ "le proprie navi in segreto sulla propria griglia e cerca di individuare e  "
+				+ "distruggere le navi del proprio avversario.<br><br>"
 				+ "Ecco le regole del gioco:<br>"
-				+ "<ol> <li>Ciascun giocatore posiziona le proprie navi sulla propria griglia in segreto.<br>"
-				+ "   Le navi possono essere posizionate orizzontalmente o verticalmente, ma non diagonalmente.<br></li></ol>"
-				+ "2. Esistono diverse dimensioni di navi, a partire dalle piu' piccole di 1 caselle<br>"
-				+ "   fino alle piu' grandi di 4 caselle. Ciascun giocatore ha 10 navi a disposizione<br>"
-				+ "   (4 da 1 casella, 3 da 2 caselle, 2 da 3 caselle e 1 da 4 caselle).<br>"
-				+ "3 .Per determinare chi inizia lo decidera' il programma che fara' tutto in automatico.<br>"
-				+ "   Il giocatore che inizia sceglie una casella sulla griglia dell'avversario e<br>"
-				+ "   dichiara se c'e' una nave o meno. Se la casella scelta contiene una nave,<br>"
-				+ "   il giocatore avversario la dichiara colpita, altrimenti la dichiara mancata.<br>"
-				+ "   In caso tutte le caselle che contengono la nave vengono dichiarate<br>"
-				+ "   la nave verra' dichiarata affondata.<br>"
-				+ "4. A turno, i giocatori cercano di individuare e distruggere le navi dell'avversario.<br>"
-				+ "   Ogni volta che un giocatore colpisce una nave dell'avversario, ha diritto a un altro turno.<br> "
-				+ "   Se invece il giocatore manca il bersaglio, il turno passa all'avversario.<br>"
-				+ "5. Il gioco prosegue fino a quando tutte e 10 le navi di uno dei giocatori vengono distrutte.<br> "
-				+ "   Il giocatore che distrugge tutte le navi dell'avversario vince il gioco.<br>"
-				+ "6  E' importante notare che durante il gioco non e' consentito comunicare "
-				+ "   informazioni sulla posizione delle navi al proprio avversario.<br>"
+				+ "<ol><li> Ciascun giocatore posiziona le proprie navi sulla propria griglia in segreto."
+				+ "    Le navi possono essere posizionate orizzontalmente o verticalmente, ma non diagonalmente.<br></li>"
+				+ "<li> Esistono diverse dimensioni di navi, a partire dalle piu' piccole di 1 caselle"
+				+ "    fino alle piu' grandi di 4 caselle. Ciascun giocatore ha 10 navi a disposizione"
+				+ "    (4 da 1 casella, 3 da 2 caselle, 2 da 3 caselle e 1 da 4 caselle).</li>"
+				+ "<li> Per determinare chi inizia lo decidera' il programma che fara' tutto in automatico."
+				+ "    Il giocatore che inizia sceglie una casella sulla griglia dell'avversario e"
+				+ "    dichiara se c'e' una nave o meno. Se la casella scelta contiene una nave,"
+				+ "    il giocatore avversario la dichiara colpita, altrimenti la dichiara mancata.<br>"
+				+ "    In caso tutte le caselle che contengono la nave vengono dichiarate"
+				+ "    la nave verra' dichiarata affondata.</li>"
+				+ "<li> A turno, i giocatori cercano di individuare e distruggere le navi dell'avversario."
+				+ "    Ogni volta che un giocatore colpisce una nave dell'avversario, ha diritto a un altro turno. "
+				+ "    Se invece il giocatore manca il bersaglio, il turno passa all'avversario.</li>"
+				+ "<li> Il gioco prosegue fino a quando tutte e 10 le navi di uno dei giocatori vengono distrutte. "
+				+ "    Il giocatore che distrugge tutte le navi dell'avversario vince il gioco.</li>"
+				+ "<li> E' importante notare che durante il gioco non e' consentito comunicare "
+				+ "    informazioni sulla posizione delle navi al proprio avversario.</li></ol>"
 				+ "Buona fortuna!<br>"
 				+ " </body></html>");
 
