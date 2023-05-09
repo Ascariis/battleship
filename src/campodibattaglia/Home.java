@@ -54,7 +54,7 @@ public class Home extends JFrame implements ActionListener {
 	private SfondoPanel sfondo4Panel = new SfondoPanel(2);
 	private Casella playerField[][] = new Casella[10][10];
 	private Casella attackField[][] = new Casella[10][10];
-	private int field[][] = new int[10][10];
+	int field[][] = new int[10][10];
 	private Pedina pedina[] = new Pedina[10];
 	private ButtonIcon confirmPositions = new ButtonIcon(11, confWidth, confHeight);
 	private ButtonIcon start = new ButtonIcon(12, confWidth, confHeight);
@@ -89,6 +89,7 @@ public class Home extends JFrame implements ActionListener {
 	private int tornaprima = 0;
 	private int acaso = 0;
 	boolean poba = true;
+	boolean botTurn;
 
 	Home() {
 		super("Sa Battalla");
@@ -239,8 +240,6 @@ public class Home extends JFrame implements ActionListener {
 			tr += 50;
 			rt = 50;
 		}
-
-		// GAME LOOP
 
 		System.out.println(playerField[0][0].getPosX() + " X PRIMO BUTTON");
 		System.out.println(playerField[0][0].getPosY() + " Y PRIMO BUTTON");
@@ -500,8 +499,8 @@ public class Home extends JFrame implements ActionListener {
 	}
 
 	public boolean setPlayerShot(int x, int y) {
-		
-		if (field[x][y] != 0) {
+
+		if (field[x][y] != 0) { // se non manca
 			field[x][y] = 5;
 			playerField[x][y].setBackground(Color.RED);
 			pedinePosizionate--;
@@ -510,6 +509,7 @@ public class Home extends JFrame implements ActionListener {
 			playerField[x][y].setBackground(Color.GRAY);
 			return false;
 		}
+
 	}
 
 	@Override
@@ -541,7 +541,6 @@ public class Home extends JFrame implements ActionListener {
 		if (e.getActionCommand().equals("START")) {
 			bot = new Bot();
 			start.setVisible(false);
-			
 
 			for (int[] x : field) {
 				for (int y : x) {
