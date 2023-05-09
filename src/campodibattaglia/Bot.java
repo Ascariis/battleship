@@ -38,27 +38,13 @@ public class Bot {
 
     public String play() {
         String position;
-        int lastRiga;
-        int lastColonna;
 
         int riga = random.nextInt(10);
         int colonna = random.nextInt(10);
 
-        lastRiga = riga;
-        lastColonna = colonna;
         position = riga + "," + colonna;
+        System.out.println(position);
         
-        if (alreadyPlaced) {
-            boolean verticale = random.nextBoolean();
-            if (verticale) {
-                position = (lastColonna + 1) + "," + lastRiga;
-                lastColonna += 1;
-            } else {
-                position = lastColonna + "," + (lastRiga + 1);
-                lastRiga += 1;
-            }
-
-        } 
         alreadyPlaced = true;
         return position;
     }
@@ -69,11 +55,23 @@ public class Bot {
 
     // Subire colpi
     public boolean setShot(int x, int y) {
-        if (tabella[x][y] != 0) {
-            numBarche--;
-            return true;
-        } else
+        if (numBarche > 0) {
+            if (tabella[x][y] != 0) {
+                numBarche--;
+                tabella[x][y] = 5;
+                return true;
+            } else
+                return false;
+        } else {
             return false;
+        }
+        
+    }
+
+    public boolean hasNoShips() {
+        if (numBarche > 0) {
+            return false;
+        } else return true;
     }
 
     private void printMat() {

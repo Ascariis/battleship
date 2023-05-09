@@ -6,6 +6,11 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Home extends JFrame implements ActionListener {
+
+	Bot bot;
+	boolean canContinue = true;
+	int pedinePosizionate = 0;
+
 	int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
@@ -215,7 +220,7 @@ public class Home extends JFrame implements ActionListener {
 		// Enemy Field
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
-				attackField[k][j] = new Casella();
+				attackField[k][j] = new Casella(this);
 			}
 		}
 
@@ -224,8 +229,9 @@ public class Home extends JFrame implements ActionListener {
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
 				attackField[k][j].setBounds((FIELD_X + rt) + 600, FIELD_Y + tr, 50, 50);
-				attackField[k][j].setText(Integer.toString(j) + "," + Integer.toString(k));
-				attackField[k][j].addActionListener(this);
+				attackField[k][j].setPosX(j);
+				attackField[k][j].setPosY(k);
+				attackField[k][j].addActionListener(attackField[k][j]);
 				attackField[k][j].setActionCommand(attackField[k][j].getText());
 				rt += 50;
 				sfondo4Panel.add(attackField[k][j]);
@@ -426,7 +432,7 @@ public class Home extends JFrame implements ActionListener {
 
 	private void finestra() {
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
 	}
 
@@ -477,9 +483,10 @@ public class Home extends JFrame implements ActionListener {
 
 		confirmPositions.addActionListener(this);
 		confirmPositions.setActionCommand("CONFERMA");
-		
+
 		start.addActionListener(this);
-		start.setActionCommand("START"); start.setVisible(false);
+		start.setActionCommand("START");
+		start.setVisible(false);
 	}
 
 	public int getPedinePosizionate() {
@@ -492,14 +499,17 @@ public class Home extends JFrame implements ActionListener {
 		return pedinePosizionate;
 	}
 
-	private void gameLoopBot() {
-		Bot bot = new Bot();
-		int barchePlayer = 20;
-
-		do {
-			
-		} while (barchePlayer != 0 || bot.getNumBarche() != 0);
-
+	public boolean setPlayerShot(int x, int y) {
+		
+		if (field[x][y] != 0) {
+			field[x][y] = 5;
+			playerField[x][y].setBackground(Color.RED);
+			pedinePosizionate--;
+			return true;
+		} else {
+			playerField[x][y].setBackground(Color.GRAY);
+			return false;
+		}
 	}
 
 	@Override
@@ -529,17 +539,17 @@ public class Home extends JFrame implements ActionListener {
 		}
 
 		if (e.getActionCommand().equals("START")) {
+			bot = new Bot();
+			start.setVisible(false);
 			
 
-		}
-
-		for (int[] x : field) {
-			for (int y : x) {
-				System.out.print(y + " ");
+			for (int[] x : field) {
+				for (int y : x) {
+					System.out.print(y + " ");
+				}
+				System.out.println();
 			}
-			System.out.println();
 		}
-
 		if (e.getActionCommand().equals("Offline")) {
 			scelta();
 		} else if (e.getActionCommand().equals("Online")) {
@@ -595,206 +605,7 @@ public class Home extends JFrame implements ActionListener {
 		} else if (e.getActionCommand().equals("Registrati")) {
 			registrati();
 		}
-			if (e.getActionCommand().equals("0,0")) {
 
-			} else if (e.getActionCommand().equals("0,1")) {
-	
-			} else if (e.getActionCommand().equals("0,2")) {
-	
-			} else if (e.getActionCommand().equals("0,3")) {
-	
-			} else if (e.getActionCommand().equals("0,4")) {
-	
-			} else if (e.getActionCommand().equals("0,5")) {
-	
-			} else if (e.getActionCommand().equals("0,6")) {
-	
-			} else if (e.getActionCommand().equals("0,7")) {
-	
-			} else if (e.getActionCommand().equals("0,8")) {
-	
-			}else if (e.getActionCommand().equals("0,9")) {
-
-			}else if (e.getActionCommand().equals("1,0")) {
-
-			} else if (e.getActionCommand().equals("1,1")) {
-	
-			} else if (e.getActionCommand().equals("1,2")) {
-	
-			} else if (e.getActionCommand().equals("1,3")) {
-	
-			} else if (e.getActionCommand().equals("1,4")) {
-	
-			} else if (e.getActionCommand().equals("1,5")) {
-	
-			} else if (e.getActionCommand().equals("1,6")) {
-	
-			} else if (e.getActionCommand().equals("1,7")) {
-	
-			} else if (e.getActionCommand().equals("1,8")) {
-	
-			} else if (e.getActionCommand().equals("1,9")) {
-
-			}else if (e.getActionCommand().equals("2,0")) {
-
-			} else if (e.getActionCommand().equals("1,1")) {
-		
-			} else if (e.getActionCommand().equals("2,2")) {
-		
-			} else if (e.getActionCommand().equals("2,3")) {
-		
-			} else if (e.getActionCommand().equals("2,4")) {
-		
-			} else if (e.getActionCommand().equals("2,5")) {
-	
-			} else if (e.getActionCommand().equals("2,6")) {
-		
-			} else if (e.getActionCommand().equals("2,7")) {
-	
-			} else if (e.getActionCommand().equals("2,8")) {
-		
-			} else if (e.getActionCommand().equals("2,9")) {
-
-			}else if (e.getActionCommand().equals("3,0")) {
-
-			} else if (e.getActionCommand().equals("3,1")) {
-		
-			} else if (e.getActionCommand().equals("3,2")) {
-		
-			} else if (e.getActionCommand().equals("3,3")) {
-		
-			} else if (e.getActionCommand().equals("3,4")) {
-		
-			} else if (e.getActionCommand().equals("3,5")) {
-	
-			} else if (e.getActionCommand().equals("3,6")) {
-		
-			} else if (e.getActionCommand().equals("3,7")) {
-	
-			} else if (e.getActionCommand().equals("3,8")) {
-		
-			} else if (e.getActionCommand().equals("3,9")) {
-
-			}else if (e.getActionCommand().equals("4,0")) {
-
-			} else if (e.getActionCommand().equals("4,1")) {
-		
-			} else if (e.getActionCommand().equals("4,2")) {
-		
-			} else if (e.getActionCommand().equals("4,3")) {
-		
-			} else if (e.getActionCommand().equals("4,4")) {
-		
-			} else if (e.getActionCommand().equals("4,5")) {
-	
-			} else if (e.getActionCommand().equals("4,6")) {
-		
-			} else if (e.getActionCommand().equals("4,7")) {
-	
-			} else if (e.getActionCommand().equals("4,8")) {
-		
-			} else if (e.getActionCommand().equals("4,9")) {
-
-			}else if (e.getActionCommand().equals("5,0")) {
-
-			} else if (e.getActionCommand().equals("5,1")) {
-		
-			} else if (e.getActionCommand().equals("5,2")) {
-		
-			} else if (e.getActionCommand().equals("5,3")) {
-		
-			} else if (e.getActionCommand().equals("5,4")) {
-		
-			} else if (e.getActionCommand().equals("5,5")) {
-	
-			} else if (e.getActionCommand().equals("5,6")) {
-		
-			} else if (e.getActionCommand().equals("5,7")) {
-	
-			} else if (e.getActionCommand().equals("5,8")) {
-		
-			} else if (e.getActionCommand().equals("5,9")) {
-
-            }else if (e.getActionCommand().equals("6,0")) {
-
-            } else if (e.getActionCommand().equals("6,1")) {
-    
-            } else if (e.getActionCommand().equals("6,2")) {
-    
-            } else if (e.getActionCommand().equals("6,3")) {
-    
-            } else if (e.getActionCommand().equals("6,4")) {
-    
-            } else if (e.getActionCommand().equals("6,5")) {
-    
-            } else if (e.getActionCommand().equals("6,6")) {
-    
-            } else if (e.getActionCommand().equals("6,7")) {
-    
-            } else if (e.getActionCommand().equals("6,8")) {
-    
-            }else if (e.getActionCommand().equals("6,9")) {
-
-            }else if (e.getActionCommand().equals("7,0")) {
-
-            } else if (e.getActionCommand().equals("7,1")) {
-    
-            } else if (e.getActionCommand().equals("7,2")) {
-    
-            } else if (e.getActionCommand().equals("7,3")) {
-    
-            } else if (e.getActionCommand().equals("7,4")) {
-    
-            } else if (e.getActionCommand().equals("7,5")) {
-    
-            } else if (e.getActionCommand().equals("7,6")) {
-    
-            } else if (e.getActionCommand().equals("7,7")) {
-    
-            } else if (e.getActionCommand().equals("7,8")) {
-    
-            } else if (e.getActionCommand().equals("7,9")) {
-
-            }else if (e.getActionCommand().equals("8,0")) {
-
-            } else if (e.getActionCommand().equals("8,1")) {
-        
-            } else if (e.getActionCommand().equals("8,2")) {
-        
-            } else if (e.getActionCommand().equals("8,3")) {
-        
-            } else if (e.getActionCommand().equals("8,4")) {
-        
-            } else if (e.getActionCommand().equals("8,5")) {
-    
-            } else if (e.getActionCommand().equals("8,6")) {
-        
-            } else if (e.getActionCommand().equals("8,7")) {
-    
-            } else if (e.getActionCommand().equals("8,8")) {
-        
-            } else if (e.getActionCommand().equals("8,9")) {
-
-            }else if (e.getActionCommand().equals("9,0")) {
-
-            } else if (e.getActionCommand().equals("9,1")) {
-        
-            } else if (e.getActionCommand().equals("9,2")) {
-        
-            } else if (e.getActionCommand().equals("9,3")) {
-        
-            } else if (e.getActionCommand().equals("9,4")) {
-        
-            } else if (e.getActionCommand().equals("9,5")) {
-    
-            } else if (e.getActionCommand().equals("9,6")) {
-        
-            } else if (e.getActionCommand().equals("9,7")) {
-    
-            } else if (e.getActionCommand().equals("9,8")) {
-        
-            } else if (e.getActionCommand().equals("9,9")) {
-			}
-		}
+	}
 
 }
