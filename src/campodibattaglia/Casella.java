@@ -16,7 +16,7 @@ public class Casella extends JButton implements MouseListener {
     Casella() {
         // this.setBorderPainted(false);
         this.setContentAreaFilled(false);
-        //this.setFocusPainted(false);
+        // this.setFocusPainted(false);
         this.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
 
     }

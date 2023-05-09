@@ -54,6 +54,8 @@ public class Home extends JFrame implements ActionListener {
 	private JLabel nameLabel = new JLabel(nameString);
 	private String scoreSting = "Score 0";
 	private JLabel scoreLabel = new JLabel(scoreSting);
+	private JLabel field1Label = new JLabel("Il tuo campo");
+	private JLabel field2Label = new JLabel("Il campo avversario");
 	private ButtonIcon fullscreenToggle = new ButtonIcon(7, homeWidth, homeHeight);
 	private ButtonIcon comandiButton = new ButtonIcon(9, homeWidth, homeHeight);
 	private ButtonIcon regoleButton = new ButtonIcon(10, homeWidth, homeHeight);
@@ -78,6 +80,7 @@ public class Home extends JFrame implements ActionListener {
 	private int tornaprima = 0;
 	private int acaso = 0;
 	boolean poba = true;
+
 	Home() {
 		super("Sa Battalla");
 
@@ -155,14 +158,22 @@ public class Home extends JFrame implements ActionListener {
 		confirmPositions.addActionListener(this);
 		confirmPositions.setActionCommand("CONFERMA");
 
-		confirmPositions.setBounds(screenWidth - 100, 1000, 200, 80);
+		confirmPositions.setBounds((screenWidth / 2) - 300, 760, 200, 80);
 		nameLabel.setForeground(Color.WHITE);
 		nameLabel.setBounds(100, 40, 200, 80);
 		nameLabel.setFont(font);
 		scoreLabel.setForeground(Color.WHITE);
-		sfondo4Panel.add(nameLabel);
+		field1Label.setFont(font);
+		field1Label.setForeground(Color.WHITE);
+		field2Label.setFont(font);
+		field2Label.setForeground(Color.WHITE);
 		scoreLabel.setFont(font);
 		scoreLabel.setBounds(300, 40, 200, 80);
+		field1Label.setBounds(510, FIELD_Y - 65, 200, 80);
+		field2Label.setBounds(1110, FIELD_Y - 65, 300, 80);
+		sfondo4Panel.add(field1Label);
+		sfondo4Panel.add(field2Label);
+		sfondo4Panel.add(nameLabel);
 		sfondo4Panel.add(scoreLabel);
 
 		if (!isPlaced) {
@@ -180,7 +191,6 @@ public class Home extends JFrame implements ActionListener {
 
 		sfondo4Panel.add(impo);
 		sfondo4Panel.add(confirmPositions);
-
 
 		// Player Field
 		for (int k = 0; k < 10; k++) {
@@ -224,11 +234,6 @@ public class Home extends JFrame implements ActionListener {
 		}
 
 		// GAME LOOP
-
-		boolean gameFinished = false;
-		do {
-
-		} while (!gameFinished);
 
 		System.out.println(playerField[0][0].getPosX() + " X PRIMO BUTTON");
 		System.out.println(playerField[0][0].getPosY() + " Y PRIMO BUTTON");
@@ -468,9 +473,26 @@ public class Home extends JFrame implements ActionListener {
 		registratiButton.setActionCommand("Registrati");
 	}
 
+	public int getPedinePosizionate() {
+		int pedinePosizionate = 0;
+		for (int i = 0; i < pedina.length; i++) {
+			if (pedina[i].getSnapState()) {
+				pedinePosizionate++;
+			}
+		}
+		return pedinePosizionate;
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("CONFERMA")) {
+
+			if (getPedinePosizionate() == 10) {
+				for (Pedina pedina : pedina) {
+					pedina.setLockedState();
+				}
+				confirmPositions.setVisible(false);
+			}
 
 			// GAME LOOP - RICERCA PUNTI OCCUPATI DA BARCA
 			for (int pID = 0; pID < pedina.length; pID++) { // pid = idPedina
@@ -479,11 +501,19 @@ public class Home extends JFrame implements ActionListener {
 					for (int row = 0; row < playerField.length; row++) {
 						if (checkOverlap(playerField[col][row], pedina[pID])) {
 							System.out.println(checkOverlap(playerField[col][row], pedina[pID]));
-							field[col][row] = 1;
+							field[col][row] = pedina[pID].getTaglia();
 						}
 					}
 				}
 			}
+
+		}
+
+		for (int[] x : field) {
+			for (int y : x) {
+				System.out.print(y + " ");
+			}
+			System.out.println();
 		}
 
 		if (e.getActionCommand().equals("Offline")) {
@@ -543,26 +573,27 @@ public class Home extends JFrame implements ActionListener {
 		}
 
 		if (e.getActionCommand().equals("0,0")) {
-			
+
 		} else if (e.getActionCommand().equals("0,0")) {
-			
+
 		} else if (e.getActionCommand().equals("0,0")) {
-			
+
 		} else if (e.getActionCommand().equals("0,0")) {
-			
+
 		} else if (e.getActionCommand().equals("0,0")) {
-			
+
 		} else if (e.getActionCommand().equals("0,0")) {
-			
+
 		} else if (e.getActionCommand().equals("0,0")) {
-			
+
 		} else if (e.getActionCommand().equals("0,0")) {
-			
+
 		} else if (e.getActionCommand().equals("0,0")) {
-			
+
 		} else if (e.getActionCommand().equals("0,0")) {
-			
-		} else {}
+
+		} else {
+		}
 	}
 
 }
