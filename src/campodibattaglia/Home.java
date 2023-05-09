@@ -27,7 +27,6 @@ public class Home extends JFrame implements ActionListener {
 	private double confWidth = (0.104166666666667) * screenWidth;
 	private double confHeight = (0.074074074074074) * screenHeight;
 
-
 	private Container c = this.getContentPane();
 	private SfondoPanel sfondo1Panel = new SfondoPanel(1);
 	private ButtonIcon offlineButton = new ButtonIcon(1, homeWidth, homeHeight);
@@ -52,7 +51,8 @@ public class Home extends JFrame implements ActionListener {
 	private Casella attackField[][] = new Casella[10][10];
 	private int field[][] = new int[10][10];
 	private Pedina pedina[] = new Pedina[10];
-	private ButtonIcon confirmPositions = new ButtonIcon(11,confWidth,confHeight);
+	private ButtonIcon confirmPositions = new ButtonIcon(11, confWidth, confHeight);
+	private ButtonIcon start = new ButtonIcon(12, confWidth, confHeight);
 
 	private String nameString;
 	private JLabel nameLabel = new JLabel(nameString);
@@ -159,7 +159,6 @@ public class Home extends JFrame implements ActionListener {
 		finestra = 2;
 		sfondo4Panel.setLayout(null);
 
-
 		nameLabel.setForeground(Color.WHITE);
 		nameLabel.setBounds(100, 40, 200, 80);
 		nameLabel.setFont(font);
@@ -192,6 +191,7 @@ public class Home extends JFrame implements ActionListener {
 
 		sfondo4Panel.add(impo);
 		sfondo4Panel.add(confirmPositions);
+		sfondo4Panel.add(start);
 
 		// Player Field
 		for (int k = 0; k < 10; k++) {
@@ -477,6 +477,9 @@ public class Home extends JFrame implements ActionListener {
 
 		confirmPositions.addActionListener(this);
 		confirmPositions.setActionCommand("CONFERMA");
+		
+		start.addActionListener(this);
+		start.setActionCommand("START"); start.setVisible(false);
 	}
 
 	public int getPedinePosizionate() {
@@ -495,9 +498,7 @@ public class Home extends JFrame implements ActionListener {
 
 		do {
 			
-
 		} while (barchePlayer != 0 || bot.getNumBarche() != 0);
-
 
 	}
 
@@ -510,21 +511,26 @@ public class Home extends JFrame implements ActionListener {
 					pedina.setLockedState();
 				}
 				confirmPositions.setVisible(false);
-			}
+				// GAME LOOP - RICERCA PUNTI OCCUPATI DA BARCA
+				for (int pID = 0; pID < pedina.length; pID++) { // pid = idPedina
 
-			// GAME LOOP - RICERCA PUNTI OCCUPATI DA BARCA
-			for (int pID = 0; pID < pedina.length; pID++) { // pid = idPedina
-
-				for (int col = 0; col < playerField.length; col++) {
-					for (int row = 0; row < playerField.length; row++) {
-						if (checkOverlap(playerField[col][row], pedina[pID])) {
-							System.out.println(checkOverlap(playerField[col][row], pedina[pID]));
-							field[col][row] = pedina[pID].getTaglia();
+					for (int col = 0; col < playerField.length; col++) {
+						for (int row = 0; row < playerField.length; row++) {
+							if (checkOverlap(playerField[col][row], pedina[pID])) {
+								System.out.println(checkOverlap(playerField[col][row], pedina[pID]));
+								field[col][row] = pedina[pID].getTaglia();
+							}
 						}
 					}
 				}
+				start.setVisible(true);
 			}
-			gameLoopBot();
+
+		}
+
+		if (e.getActionCommand().equals("START")) {
+			
+
 		}
 
 		for (int[] x : field) {
