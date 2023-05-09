@@ -595,29 +595,206 @@ public class Home extends JFrame implements ActionListener {
 		} else if (e.getActionCommand().equals("Registrati")) {
 			registrati();
 		}
+			if (e.getActionCommand().equals("0,0")) {
 
-		if (e.getActionCommand().equals("0,0")) {
+			} else if (e.getActionCommand().equals("0,1")) {
+	
+			} else if (e.getActionCommand().equals("0,2")) {
+	
+			} else if (e.getActionCommand().equals("0,3")) {
+	
+			} else if (e.getActionCommand().equals("0,4")) {
+	
+			} else if (e.getActionCommand().equals("0,5")) {
+	
+			} else if (e.getActionCommand().equals("0,6")) {
+	
+			} else if (e.getActionCommand().equals("0,7")) {
+	
+			} else if (e.getActionCommand().equals("0,8")) {
+	
+			}else if (e.getActionCommand().equals("0,9")) {
 
-		} else if (e.getActionCommand().equals("0,0")) {
+			}else if (e.getActionCommand().equals("1,0")) {
 
-		} else if (e.getActionCommand().equals("0,1")) {
+			} else if (e.getActionCommand().equals("1,1")) {
+	
+			} else if (e.getActionCommand().equals("1,2")) {
+	
+			} else if (e.getActionCommand().equals("1,3")) {
+	
+			} else if (e.getActionCommand().equals("1,4")) {
+	
+			} else if (e.getActionCommand().equals("1,5")) {
+	
+			} else if (e.getActionCommand().equals("1,6")) {
+	
+			} else if (e.getActionCommand().equals("1,7")) {
+	
+			} else if (e.getActionCommand().equals("1,8")) {
+	
+			} else if (e.getActionCommand().equals("1,9")) {
 
-		} else if (e.getActionCommand().equals("0,2")) {
+			}else if (e.getActionCommand().equals("2,0")) {
 
-		} else if (e.getActionCommand().equals("0,0")) {
+			} else if (e.getActionCommand().equals("1,1")) {
+		
+			} else if (e.getActionCommand().equals("2,2")) {
+		
+			} else if (e.getActionCommand().equals("2,3")) {
+		
+			} else if (e.getActionCommand().equals("2,4")) {
+		
+			} else if (e.getActionCommand().equals("2,5")) {
+	
+			} else if (e.getActionCommand().equals("2,6")) {
+		
+			} else if (e.getActionCommand().equals("2,7")) {
+	
+			} else if (e.getActionCommand().equals("2,8")) {
+		
+			} else if (e.getActionCommand().equals("2,9")) {
 
-		} else if (e.getActionCommand().equals("0,0")) {
+			}else if (e.getActionCommand().equals("3,0")) {
 
-		} else if (e.getActionCommand().equals("0,0")) {
+			} else if (e.getActionCommand().equals("3,1")) {
+		
+			} else if (e.getActionCommand().equals("3,2")) {
+		
+			} else if (e.getActionCommand().equals("3,3")) {
+		
+			} else if (e.getActionCommand().equals("3,4")) {
+		
+			} else if (e.getActionCommand().equals("3,5")) {
+	
+			} else if (e.getActionCommand().equals("3,6")) {
+		
+			} else if (e.getActionCommand().equals("3,7")) {
+	
+			} else if (e.getActionCommand().equals("3,8")) {
+		
+			} else if (e.getActionCommand().equals("3,9")) {
 
-		} else if (e.getActionCommand().equals("0,0")) {
+			}else if (e.getActionCommand().equals("4,0")) {
 
-		} else if (e.getActionCommand().equals("0,0")) {
+			} else if (e.getActionCommand().equals("4,1")) {
+		
+			} else if (e.getActionCommand().equals("4,2")) {
+		
+			} else if (e.getActionCommand().equals("4,3")) {
+		
+			} else if (e.getActionCommand().equals("4,4")) {
+		
+			} else if (e.getActionCommand().equals("4,5")) {
+	
+			} else if (e.getActionCommand().equals("4,6")) {
+		
+			} else if (e.getActionCommand().equals("4,7")) {
+	
+			} else if (e.getActionCommand().equals("4,8")) {
+		
+			} else if (e.getActionCommand().equals("4,9")) {
 
-		} else if (e.getActionCommand().equals("0,0")) {
+			}else if (e.getActionCommand().equals("5,0")) {
 
-		} else {
+			} else if (e.getActionCommand().equals("5,1")) {
+		
+			} else if (e.getActionCommand().equals("5,2")) {
+		
+			} else if (e.getActionCommand().equals("5,3")) {
+		
+			} else if (e.getActionCommand().equals("5,4")) {
+		
+			} else if (e.getActionCommand().equals("5,5")) {
+	
+			} else if (e.getActionCommand().equals("5,6")) {
+		
+			} else if (e.getActionCommand().equals("5,7")) {
+	
+			} else if (e.getActionCommand().equals("5,8")) {
+		
+			} else if (e.getActionCommand().equals("5,9")) {
+
+            }else if (e.getActionCommand().equals("6,0")) {
+
+            } else if (e.getActionCommand().equals("6,1")) {
+    
+            } else if (e.getActionCommand().equals("6,2")) {
+    
+            } else if (e.getActionCommand().equals("6,3")) {
+    
+            } else if (e.getActionCommand().equals("6,4")) {
+    
+            } else if (e.getActionCommand().equals("6,5")) {
+    
+            } else if (e.getActionCommand().equals("6,6")) {
+    
+            } else if (e.getActionCommand().equals("6,7")) {
+    
+            } else if (e.getActionCommand().equals("6,8")) {
+    
+            }else if (e.getActionCommand().equals("6,9")) {
+
+            }else if (e.getActionCommand().equals("7,0")) {
+
+            } else if (e.getActionCommand().equals("7,1")) {
+    
+            } else if (e.getActionCommand().equals("7,2")) {
+    
+            } else if (e.getActionCommand().equals("7,3")) {
+    
+            } else if (e.getActionCommand().equals("7,4")) {
+    
+            } else if (e.getActionCommand().equals("7,5")) {
+    
+            } else if (e.getActionCommand().equals("7,6")) {
+    
+            } else if (e.getActionCommand().equals("7,7")) {
+    
+            } else if (e.getActionCommand().equals("7,8")) {
+    
+            } else if (e.getActionCommand().equals("7,9")) {
+
+            }else if (e.getActionCommand().equals("8,0")) {
+
+            } else if (e.getActionCommand().equals("8,1")) {
+        
+            } else if (e.getActionCommand().equals("8,2")) {
+        
+            } else if (e.getActionCommand().equals("8,3")) {
+        
+            } else if (e.getActionCommand().equals("8,4")) {
+        
+            } else if (e.getActionCommand().equals("8,5")) {
+    
+            } else if (e.getActionCommand().equals("8,6")) {
+        
+            } else if (e.getActionCommand().equals("8,7")) {
+    
+            } else if (e.getActionCommand().equals("8,8")) {
+        
+            } else if (e.getActionCommand().equals("8,9")) {
+
+            }else if (e.getActionCommand().equals("9,0")) {
+
+            } else if (e.getActionCommand().equals("9,1")) {
+        
+            } else if (e.getActionCommand().equals("9,2")) {
+        
+            } else if (e.getActionCommand().equals("9,3")) {
+        
+            } else if (e.getActionCommand().equals("9,4")) {
+        
+            } else if (e.getActionCommand().equals("9,5")) {
+    
+            } else if (e.getActionCommand().equals("9,6")) {
+        
+            } else if (e.getActionCommand().equals("9,7")) {
+    
+            } else if (e.getActionCommand().equals("9,8")) {
+        
+            } else if (e.getActionCommand().equals("9,9")) {
+			}
 		}
-	}
 
 }
