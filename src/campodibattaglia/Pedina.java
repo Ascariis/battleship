@@ -58,7 +58,7 @@ public class Pedina extends JButton {
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (!LOCK) {
-                    if (e.getButton() == MouseEvent.BUTTON3) { // GODOOOOO
+                    if (e.getButton() == MouseEvent.BUTTON3) {
                         rotateButton();
                     } else
                         ;
@@ -73,16 +73,12 @@ public class Pedina extends JButton {
             public void mouseReleased(MouseEvent e) {
                 if (!LOCK) {
                     if (getX() + getWidth() > (FIELD_CLOSEST_X + 550)
-                            || getY() + getHeight() > (FIELD_CLOSEST_Y + 500)) {
-                        
+                            || getY() + getHeight() > (FIELD_CLOSEST_Y + 500)
+                            || getY() + getHeight() < (FIELD_CLOSEST_Y) || ((e.getXOnScreen() < FIELD_CLOSEST_X || e.getYOnScreen() < FIELD_CLOSEST_Y))) {
                         setToDefLocation();
-
-                    } else if ((e.getXOnScreen() < FIELD_CLOSEST_X || e.getXOnScreen() < FIELD_CLOSEST_Y)) {
-                        setToDefLocation();
-                    }
+                    } 
 
                 }
-
                 super.mouseReleased(e);
             }
         });
@@ -92,7 +88,8 @@ public class Pedina extends JButton {
             @Override
             public void mouseDragged(MouseEvent e) {
                 if (!LOCK) {
-                    if (getX() >= FIELD_CLOSEST_X) {
+                    if ((getX() > FIELD_CLOSEST_X && getX() <= FIELD_CLOSEST_X + 500)
+                            && (getY() >= FIELD_CLOSEST_Y && getY() <= FIELD_CLOSEST_Y + 500)) {
                         int deltaX = e.getX() - mouseX;
                         int deltaY = e.getY() - mouseY;
 
