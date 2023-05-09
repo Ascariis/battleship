@@ -24,6 +24,10 @@ public class Home extends JFrame implements ActionListener {
 	private double backWidth = (0.036458333333333) * screenWidth;
 	private double backHeight = (0.064814814814815) * screenHeight;
 
+	private double confWidth = (0.104166666666667) * screenWidth;
+	private double confHeight = (0.074074074074074) * screenHeight;
+
+
 	private Container c = this.getContentPane();
 	private SfondoPanel sfondo1Panel = new SfondoPanel(1);
 	private ButtonIcon offlineButton = new ButtonIcon(1, homeWidth, homeHeight);
@@ -48,7 +52,7 @@ public class Home extends JFrame implements ActionListener {
 	private Casella attackField[][] = new Casella[10][10];
 	private int field[][] = new int[10][10];
 	private Pedina pedina[] = new Pedina[10];
-	JButton confirmPositions = new JButton("CONFERMA");
+	private ButtonIcon confirmPositions = new ButtonIcon(11,confWidth,confHeight);
 
 	private String nameString;
 	private JLabel nameLabel = new JLabel(nameString);
@@ -155,10 +159,7 @@ public class Home extends JFrame implements ActionListener {
 		finestra = 2;
 		sfondo4Panel.setLayout(null);
 
-		confirmPositions.addActionListener(this);
-		confirmPositions.setActionCommand("CONFERMA");
 
-		confirmPositions.setBounds((screenWidth / 2) - 300, 760, 200, 80);
 		nameLabel.setForeground(Color.WHITE);
 		nameLabel.setBounds(100, 40, 200, 80);
 		nameLabel.setFont(font);
@@ -471,6 +472,9 @@ public class Home extends JFrame implements ActionListener {
 
 		registratiButton.addActionListener(this);
 		registratiButton.setActionCommand("Registrati");
+
+		confirmPositions.addActionListener(this);
+		confirmPositions.setActionCommand("CONFERMA");
 	}
 
 	public int getPedinePosizionate() {
