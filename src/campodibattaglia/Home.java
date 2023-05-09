@@ -366,7 +366,6 @@ public class Home extends JFrame implements ActionListener {
 		nomeLabel.setForeground(Color.WHITE);
 		passwordLabel.setForeground(Color.WHITE);
 		passwordConfLabel.setForeground(Color.WHITE);
-		//nota1.setForeground(Color.WHITE);
 		nomeText.setText(null);
 		passwordField.setText(null);
 
