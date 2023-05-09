@@ -1,10 +1,14 @@
 package campodibattaglia;
 
+import java.awt.Component;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.util.List;
+
 import javax.swing.*;
 
 public class Pedina extends JButton {
@@ -60,8 +64,7 @@ public class Pedina extends JButton {
                     rotateButton();
                 } else
                     ;
-                
-                
+
                 mouseX = e.getX();
                 mouseY = e.getY();
             }
@@ -75,6 +78,7 @@ public class Pedina extends JButton {
                 if ((e.getXOnScreen() < FIELD_CLOSEST_X - 50 || getY() < FIELD_CLOSEST_Y - 50)) {
                     setToDefLocation();
                 }
+                
 
                 super.mouseReleased(e);
             }
@@ -109,7 +113,15 @@ public class Pedina extends JButton {
 
     }
 
-    private void setToDefLocation() {
+    private boolean checkOverlap(JButton barca1, JButton barca2) {
+		Rectangle bounds1 = barca1.getBounds();
+		Rectangle bounds2 = barca2.getBounds();
+		return bounds1.intersects(bounds2);
+	}
+
+    
+
+    public void setToDefLocation() {
         if (taglia == 1) {
             setLocation(100, taglia * 200);
         } else if (taglia == 2) {

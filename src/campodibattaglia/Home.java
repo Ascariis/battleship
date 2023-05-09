@@ -44,7 +44,8 @@ public class Home extends JFrame implements ActionListener {
 	private ButtonIcon impo = new ButtonIcon(8, backWidth, backHeight);
 
 	private SfondoPanel sfondo4Panel = new SfondoPanel(2);
-	private Casella arButton[][] = new Casella[10][10];
+	private Casella playerField[][] = new Casella[10][10];
+	private Casella attackField[][] = new Casella[10][10];
 	private int field[][] = new int[10][10];
 	private Pedina pedina[] = new Pedina[10];
 	JButton confirmPositions = new JButton("CONFERMA");
@@ -163,8 +164,7 @@ public class Home extends JFrame implements ActionListener {
 		scoreLabel.setFont(font);
 		scoreLabel.setBounds(300, 40, 200, 80);
 		sfondo4Panel.add(scoreLabel);
-		
-		
+
 		if (!isPlaced) {
 			final int dimensionePedinaTEMP[] = { 1, 1, 1, 1, 2, 2, 2, 3, 3, 4 };
 			for (int i = 0; i < pedina.length; i++) {
@@ -181,9 +181,11 @@ public class Home extends JFrame implements ActionListener {
 		sfondo4Panel.add(impo);
 		sfondo4Panel.add(confirmPositions);
 
+
+		// Player Field
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
-				arButton[k][j] = new Casella();
+				playerField[k][j] = new Casella();
 			}
 		}
 
@@ -191,16 +193,45 @@ public class Home extends JFrame implements ActionListener {
 		int t = 0;
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
-				arButton[k][j].setBounds(FIELD_X + r, FIELD_Y + t, 50, 50);
+				playerField[k][j].setBounds(FIELD_X + r, FIELD_Y + t, 50, 50);
 				r += 50;
-				sfondo4Panel.add(arButton[k][j]);
+				sfondo4Panel.add(playerField[k][j]);
 			}
 			t += 50;
 			r = 50;
 		}
 
-		System.out.println(arButton[0][0].getPosX() + " X PRIMO BUTTON");
-		System.out.println(arButton[0][0].getPosY() + " X PRIMO BUTTON");
+		// Enemy Field
+		for (int k = 0; k < 10; k++) {
+			for (int j = 0; j < 10; j++) {
+				attackField[k][j] = new Casella();
+			}
+		}
+
+		int rt = 50;
+		int tr = 0;
+		for (int k = 0; k < 10; k++) {
+			for (int j = 0; j < 10; j++) {
+				attackField[k][j].setBounds((FIELD_X + rt) + 600, FIELD_Y + tr, 50, 50);
+				attackField[k][j].setText(Integer.toString(j) + "," + Integer.toString(k));
+				attackField[k][j].addActionListener(this);
+				attackField[k][j].setActionCommand(attackField[k][j].getText());
+				rt += 50;
+				sfondo4Panel.add(attackField[k][j]);
+			}
+			tr += 50;
+			rt = 50;
+		}
+
+		// GAME LOOP
+
+		boolean gameFinished = false;
+		do {
+
+		} while (!gameFinished);
+
+		System.out.println(playerField[0][0].getPosX() + " X PRIMO BUTTON");
+		System.out.println(playerField[0][0].getPosY() + " Y PRIMO BUTTON");
 
 		c.add(sfondo4Panel);
 		c.revalidate();
@@ -212,7 +243,7 @@ public class Home extends JFrame implements ActionListener {
 		c.setLayout(new GridLayout(1, 1));
 		sfondo5Panel.setLayout(null);
 		acaso = 1;
-		JLabel comando1 = new JLabel("Ruota barca:");
+		JLabel comando1 = new JLabel("Ruota barca: Tasto Destro");
 		JLabel comando2 = new JLabel("Vuoto:");
 		JLabel comando3 = new JLabel("Vuoto:");
 		JLabel comando4 = new JLabel("Vuoto:");
@@ -391,7 +422,7 @@ public class Home extends JFrame implements ActionListener {
 		this.setVisible(true);
 	}
 
-	public static boolean checkShipOverlap(JButton casella, JButton barca) {
+	public static boolean checkOverlap(JButton casella, JButton barca) {
 		Rectangle bounds1 = casella.getBounds();
 		Rectangle bounds2 = barca.getBounds();
 		return bounds1.intersects(bounds2);
@@ -444,10 +475,10 @@ public class Home extends JFrame implements ActionListener {
 			// GAME LOOP - RICERCA PUNTI OCCUPATI DA BARCA
 			for (int pID = 0; pID < pedina.length; pID++) { // pid = idPedina
 
-				for (int col = 0; col < arButton.length; col++) {
-					for (int row = 0; row < arButton.length; row++) {
-						if (checkShipOverlap(arButton[col][row], pedina[pID])) {
-							System.out.println(checkShipOverlap(arButton[col][row], pedina[pID]));
+				for (int col = 0; col < playerField.length; col++) {
+					for (int row = 0; row < playerField.length; row++) {
+						if (checkOverlap(playerField[col][row], pedina[pID])) {
+							System.out.println(checkOverlap(playerField[col][row], pedina[pID]));
 							field[col][row] = 1;
 						}
 					}
@@ -470,7 +501,7 @@ public class Home extends JFrame implements ActionListener {
 			else if (finestra == 2) {
 				for (int k = 0; k < 10; k++) {
 					for (int j = 0; j < 10; j++) {
-						sfondo4Panel.remove(arButton[k][j]);
+						sfondo4Panel.remove(playerField[k][j]);
 					}
 				}
 				campoDaGioco();
@@ -511,6 +542,27 @@ public class Home extends JFrame implements ActionListener {
 			registrati();
 		}
 
+		if (e.getActionCommand().equals("0,0")) {
+			
+		} else if (e.getActionCommand().equals("0,0")) {
+			
+		} else if (e.getActionCommand().equals("0,0")) {
+			
+		} else if (e.getActionCommand().equals("0,0")) {
+			
+		} else if (e.getActionCommand().equals("0,0")) {
+			
+		} else if (e.getActionCommand().equals("0,0")) {
+			
+		} else if (e.getActionCommand().equals("0,0")) {
+			
+		} else if (e.getActionCommand().equals("0,0")) {
+			
+		} else if (e.getActionCommand().equals("0,0")) {
+			
+		} else if (e.getActionCommand().equals("0,0")) {
+			
+		} else {}
 	}
 
 }

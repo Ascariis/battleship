@@ -1,12 +1,12 @@
 package campodibattaglia;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class Bot {
     private int[][] tabella = new int[10][10];
     private int[] lunghezzaBarche = { 1, 1, 1, 1, 2, 2, 2, 3, 3, 4 };
     private Random random = new Random();
+    boolean alreadyPlaced = false;
 
     public Bot() {
         posizionaBarche();
@@ -32,6 +32,39 @@ public class Bot {
             }
         }
         printMat();
+    }
+
+    public String play() {
+        String position;
+        int lastRiga;
+        int lastColonna;
+
+        int riga = random.nextInt(10);
+        int colonna = random.nextInt(10);
+
+        lastRiga = riga;
+        lastColonna = colonna;
+        position = riga + "," + colonna;
+        alreadyPlaced = true;
+
+        if (alreadyPlaced) {
+            boolean verticale = random.nextBoolean();
+            if (verticale) {
+                position = (lastColonna + 1) + "," + lastRiga;
+                lastColonna += 1;
+            } else
+                position = lastColonna + "," + (lastRiga + 1);
+            lastRiga += 1;
+        }
+
+        return position;
+    }
+
+    public boolean setShot(int x, int y) {
+        if (tabella[x][y] != 0) {
+            return true;
+        } else
+            return false;
     }
 
     private void printMat() {
