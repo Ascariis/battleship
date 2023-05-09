@@ -363,7 +363,10 @@ public class Home extends JFrame implements ActionListener {
 		nota1.setHorizontalAlignment(JLabel.CENTER);
 		nota1.setBounds(screenWidth / 2 - (150), screenHeight / 2 + (230), 300, 15);
 		registratiButton.setBounds(screenWidth / 2 - (60), screenHeight / 2 + (250), 120, 30);
-
+		nomeLabel.setForeground(Color.WHITE);
+		passwordLabel.setForeground(Color.WHITE);
+		passwordConfLabel.setForeground(Color.WHITE);
+		//nota1.setForeground(Color.WHITE);
 		nomeText.setText(null);
 		passwordField.setText(null);
 
