@@ -74,7 +74,9 @@ public class Pedina extends JButton {
                 if (!LOCK) {
                     if (getX() + getWidth() > (FIELD_CLOSEST_X + 550)
                             || getY() + getHeight() > (FIELD_CLOSEST_Y + 500)) {
+                        
                         setToDefLocation();
+
                     } else if ((e.getXOnScreen() < FIELD_CLOSEST_X || e.getXOnScreen() < FIELD_CLOSEST_Y)) {
                         setToDefLocation();
                     }
