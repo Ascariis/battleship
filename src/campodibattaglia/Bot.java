@@ -5,6 +5,7 @@ import java.util.Random;
 public class Bot {
     private int[][] tabella = new int[10][10];
     private int[] lunghezzaBarche = { 1, 1, 1, 1, 2, 2, 2, 3, 3, 4 };
+    private int numBarche;
     private Random random = new Random();
     boolean alreadyPlaced = false;
 
@@ -31,6 +32,7 @@ public class Bot {
                 }
             }
         }
+        numBarche = lunghezzaBarche.length * 2;
         printMat();
     }
 
@@ -61,8 +63,14 @@ public class Bot {
         return position;
     }
 
+    public int getNumBarche() {
+        return numBarche;
+    }
+
+    // Subire colpi
     public boolean setShot(int x, int y) {
         if (tabella[x][y] != 0) {
+            numBarche--;
             return true;
         } else
             return false;

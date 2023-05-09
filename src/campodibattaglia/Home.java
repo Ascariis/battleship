@@ -489,6 +489,18 @@ public class Home extends JFrame implements ActionListener {
 		return pedinePosizionate;
 	}
 
+	private void gameLoopBot() {
+		Bot bot = new Bot();
+		int barchePlayer = 20;
+
+		do {
+			
+
+		} while (barchePlayer != 0 || bot.getNumBarche() != 0);
+
+
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("CONFERMA")) {
@@ -512,7 +524,7 @@ public class Home extends JFrame implements ActionListener {
 					}
 				}
 			}
-
+			gameLoopBot();
 		}
 
 		for (int[] x : field) {
@@ -582,9 +594,9 @@ public class Home extends JFrame implements ActionListener {
 
 		} else if (e.getActionCommand().equals("0,0")) {
 
-		} else if (e.getActionCommand().equals("0,0")) {
+		} else if (e.getActionCommand().equals("0,1")) {
 
-		} else if (e.getActionCommand().equals("0,0")) {
+		} else if (e.getActionCommand().equals("0,2")) {
 
 		} else if (e.getActionCommand().equals("0,0")) {
 
