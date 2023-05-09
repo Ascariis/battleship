@@ -58,7 +58,7 @@ public class Pedina extends JButton {
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (!LOCK) {
-                    if (e.getButton() == MouseEvent.BUTTON3) { // GODOOOOO
+                    if (e.getButton() == MouseEvent.BUTTON3) {
                         rotateButton();
                     } else
                         ;

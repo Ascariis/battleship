@@ -45,18 +45,19 @@ public class Bot {
         lastRiga = riga;
         lastColonna = colonna;
         position = riga + "," + colonna;
-        alreadyPlaced = true;
-
+        
         if (alreadyPlaced) {
             boolean verticale = random.nextBoolean();
             if (verticale) {
                 position = (lastColonna + 1) + "," + lastRiga;
                 lastColonna += 1;
-            } else
+            } else {
                 position = lastColonna + "," + (lastRiga + 1);
-            lastRiga += 1;
-        }
+                lastRiga += 1;
+            }
 
+        } 
+        alreadyPlaced = true;
         return position;
     }
 
