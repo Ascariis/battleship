@@ -54,14 +54,7 @@ public class Home extends JFrame implements ActionListener, MouseListener,MouseM
 	private SfondoPanel sfondo4Panel = new SfondoPanel(2);
 	private Casella playerField[][] = new Casella[10][10];
 	private Casella attackField[][] = new Casella[10][10];
-<<<<<<< HEAD
-	private int field[][] = new int[10][10];
-
-	private int ceckPedina[][] = new int[10][10];
-
-=======
 	int field[][] = new int[10][10];
->>>>>>> 906d848fceca1f5fae8b051d5d5f2e0202e28f7d
 	private Pedina pedina[] = new Pedina[10];
 	private ButtonIcon confirmPositions = new ButtonIcon(11, confWidth, confHeight);
 	private ButtonIcon start = new ButtonIcon(12, confWidth, confHeight);
@@ -560,7 +553,7 @@ public class Home extends JFrame implements ActionListener, MouseListener,MouseM
 				}
 				start.setVisible(true);
 			}
-			pedinePosizionate *= 2;
+			pedinePosizionate *= 2; //parità con bot
 
 		}
 
