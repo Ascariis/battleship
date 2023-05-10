@@ -101,9 +101,10 @@ public class Pedina extends JButton {
                         System.out.println(getWidth());
                         System.out.println(" ");
                         System.out.println(getHeight());
-
-                        int snappedX = ((newX + GRID_SIZE / 2) / GRID_SIZE * GRID_SIZE) + (int)(0.005208333333333*screenWidth); // 10 il valore mistico
-                        int snappedY = ((newY + GRID_SIZE / 2) / GRID_SIZE * GRID_SIZE) - (int)(0.009259259259259*screenHeight);
+                        //+ (int)(0.005208333333333*screenWidth);
+                        //- (int)(0.009259259259259*screenHeight)
+                        int snappedX = ((newX + (int)(0.026041666666667*screenWidth) / 2) / (int)(0.026041666666667*screenWidth) * (int)(0.026041666666667*screenWidth)); // 10 il valore mistico
+                        int snappedY = ((newY + (int)(0.046296296296296*screenHeight) / 2) / (int)(0.046296296296296*screenHeight) * (int)(0.046296296296296*screenHeight));
 
                         setLocation(snappedX, snappedY);
                         System.out.println(snappedX + " " + snappedY);
