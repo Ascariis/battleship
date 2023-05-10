@@ -54,14 +54,7 @@ public class Home extends JFrame implements ActionListener, MouseListener,MouseM
 	private SfondoPanel sfondo4Panel = new SfondoPanel(2);
 	private Casella playerField[][] = new Casella[10][10];
 	private Casella attackField[][] = new Casella[10][10];
-<<<<<<< HEAD
-	private int field[][] = new int[10][10];
-
-	private int ceckPedina[][] = new int[10][10];
-
-=======
 	int field[][] = new int[10][10];
->>>>>>> 906d848fceca1f5fae8b051d5d5f2e0202e28f7d
 	private Pedina pedina[] = new Pedina[10];
 	private ButtonIcon confirmPositions = new ButtonIcon(11, confWidth, confHeight);
 	private ButtonIcon start = new ButtonIcon(12, confWidth, confHeight);
@@ -97,6 +90,10 @@ public class Home extends JFrame implements ActionListener, MouseListener,MouseM
 	private int acaso = 0;
 	boolean poba = true;
 	boolean botTurn;
+	boolean win=false;
+	private SfondoPanel haiVintoPanel= new SfondoPanel(8);
+	private SfondoPanel haiPersoPanel= new SfondoPanel(9);
+	private ButtonIcon home = new ButtonIcon(13, homeWidth, homeHeight);
 
 	Home() {
 		super("Sa Battalla");
@@ -451,6 +448,22 @@ public class Home extends JFrame implements ActionListener, MouseListener,MouseM
 		sfondo8Panel.add(nota2);
 
 		c.add(sfondo8Panel);
+		c.revalidate();
+		c.repaint();
+	}
+	private void fine(){
+		c.removeAll();
+		c.setLayout(new GridLayout(1, 1));
+		if(win){
+			haiVintoPanel.setLayout(null);
+			haiVintoPanel.add(home);
+			c.add(haiVintoPanel);
+		}
+		else{
+			haiPersoPanel.setLayout(null);
+			haiPersoPanel.add(home);
+			c.add(haiPersoPanel);
+		}
 		c.revalidate();
 		c.repaint();
 	}
