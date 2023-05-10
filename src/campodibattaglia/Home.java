@@ -149,7 +149,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 
 	private void scelta() {
 		c.removeAll();
-
+		tornaprima = 0;
 		finestra = 1;
 
 		c.setLayout(new GridLayout(1, 1));
@@ -285,39 +285,28 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 		JLabel comando1 = new JLabel("Ruota barca: Tasto Destro");
 		JLabel comando2 = new JLabel("Vuoto:");
 		JLabel comando3 = new JLabel("Vuoto:");
-		JLabel comando4 = new JLabel("Vuoto:");
-		JLabel comando5 = new JLabel("Vuoto:");
-		JLabel comando6 = new JLabel("Vuoto:");
+
 
 		sfondo5Panel.add(backButton);
 
 		comando1.setForeground(Color.WHITE);
 		comando2.setForeground(Color.WHITE);
 		comando3.setForeground(Color.WHITE);
-		comando4.setForeground(Color.WHITE);
-		comando5.setForeground(Color.WHITE);
-		comando6.setForeground(Color.WHITE);
 
 		comando1.setFont(font1);
 		comando2.setFont(font1);
 		comando3.setFont(font1);
-		comando4.setFont(font1);
-		comando5.setFont(font1);
-		comando6.setFont(font1);
 
-		comando1.setBounds(screenWidth / 2 - (300), screenHeight / 2 + (100), 300, 80);
-		comando2.setBounds(screenWidth / 2 - (300), screenHeight / 2, 300, 80);
-		comando3.setBounds(screenWidth / 2 - (300), screenHeight / 2 - (100), 300, 80);
-		comando4.setBounds(screenWidth / 2 - (300), screenHeight / 2 - (200), 300, 80);
-		comando5.setBounds(screenWidth / 2 - (300), screenHeight / 2 - (300), 300, 80);
-		comando6.setBounds(screenWidth / 2 - (300), screenHeight / 2 - (400), 300, 80);
+
+		comando1.setBounds(screenWidth / 2 - (300), screenHeight / 2 + (100), 600, 80);
+		comando2.setBounds(screenWidth / 2 - (300), screenHeight / 2, 600, 80);
+		comando3.setBounds(screenWidth / 2 - (300), screenHeight / 2 - (100), 600, 80);
+
 
 		sfondo5Panel.add(comando1);
 		sfondo5Panel.add(comando2);
 		sfondo5Panel.add(comando3);
-		sfondo5Panel.add(comando4);
-		sfondo5Panel.add(comando5);
-		sfondo5Panel.add(comando6);
+
 
 		c.add(sfondo5Panel);
 		c.revalidate();
