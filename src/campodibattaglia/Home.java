@@ -5,7 +5,7 @@ import java.io.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Home extends JFrame implements ActionListener {
+public class Home extends JFrame implements ActionListener, MouseListener,MouseMotionListener {
 
 	Bot bot;
 	boolean canContinue = true;
@@ -55,6 +55,9 @@ public class Home extends JFrame implements ActionListener {
 	private Casella playerField[][] = new Casella[10][10];
 	private Casella attackField[][] = new Casella[10][10];
 	private int field[][] = new int[10][10];
+
+	private int ceckPedina[][] = new int[10][10];
+
 	private Pedina pedina[] = new Pedina[10];
 	private ButtonIcon confirmPositions = new ButtonIcon(11, confWidth, confHeight);
 	private ButtonIcon start = new ButtonIcon(12, confWidth, confHeight);
@@ -105,6 +108,25 @@ public class Home extends JFrame implements ActionListener {
 		} catch (IOException | FontFormatException e) {
 			e.printStackTrace();
 		}
+
+		/* 
+			for (int pID = 0; pID < pedina.length; pID++) { // pid = idPedina
+			for (int col = 0; col < 10; col++) {
+				for (int row = 0; row < playerField.length; row++) {
+					if (checkOverlap(playerField[col][row], pedina[pID])) {
+						ceckPedina[col][row] = 1;
+						}
+					}
+				}
+			for (int col = 0; col < 10; col++) {
+				for (int row = 0; row < 10; row++) {
+					if (ceckPedina[col][row]==1) { //al posto di uno mettere le x e le y della pedina appena posizionata
+						//riportare la pedina all posizione originale
+						}
+					}
+				}
+			}
+		*/
 	}
 
 	private void home() {
@@ -239,7 +261,7 @@ public class Home extends JFrame implements ActionListener {
 			tr += 50;
 			rt = 50;
 		}
-
+		
 		// GAME LOOP
 
 		System.out.println(playerField[0][0].getPosX() + " X PRIMO BUTTON");
@@ -515,7 +537,7 @@ public class Home extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("CONFERMA")) {
-
+	
 			if (getPedinePosizionate() == 10) {
 				for (Pedina pedina : pedina) {
 					pedina.setLockedState();
@@ -608,4 +630,47 @@ public class Home extends JFrame implements ActionListener {
 
 	}
 
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'mouseDragged'");
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'mouseMoved'");
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'mouseClicked'");
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'mousePressed'");
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'mouseReleased'");
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'mouseEntered'");
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'mouseExited'");
+
+	}
+				
 }
