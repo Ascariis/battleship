@@ -474,7 +474,6 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 	void fine() {
 		c.removeAll();
 		c.setLayout(new GridLayout(1, 1));
-		reset();
 		int vediamo = bot.numBarche;
 		int miccullu = pedinePosizionate;
 		System.out.println(bot.numBarche + "AAAAAAAAAAAAAAAAAAA");
@@ -493,6 +492,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 			home.addActionListener(this);
 			c.add(haiPersoPanel);
 		}
+		reset();
 		c.revalidate();
 		c.repaint();
 	}
