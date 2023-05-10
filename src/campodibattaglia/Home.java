@@ -14,8 +14,8 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 	int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
-	public final int FIELD_X = 760 - (int)(0.15625*screenWidth);
-	public final int FIELD_Y = 540 - (int)(0.277777777777778*screenHeight);
+	public final int FIELD_X = (int)(0.390625*screenWidth) - (int)(0.15625*screenWidth);
+	public final int FIELD_Y = (int)(0.5*screenHeight) - (int)(0.277777777777778*screenHeight);
 	private boolean isFullscreen = false;
 	boolean isPlaced = false;
 	boolean alreadycreated = false;
