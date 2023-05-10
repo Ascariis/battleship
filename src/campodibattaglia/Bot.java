@@ -39,7 +39,7 @@ public class Bot {
                 }
             }
         }
-        numBarche = lunghezzaBarche.length * 2;
+        numBarche = 20;
         printMat();
     }
 
@@ -48,18 +48,17 @@ public class Bot {
         String position;
         int row, col;
 
-        if (destroyMode) {
-
+        if (destroyMode && !destroyVicini.isEmpty()) {
             position = destroyVicini.remove(0);
             String[] parts = position.split(",");
             row = Integer.parseInt(parts[0]);
             col = Integer.parseInt(parts[1]);
-
-        } else {
+        } else { // Torna a modalità seek se destroyVicini è empty
+            destroyMode = false;
             do {
                 row = random.nextInt(10);
                 col = random.nextInt(10);
-            } while ((row + col) % 2 == 1); // Spara a celle alterne
+            } while ((row + col) % 2 == 1); // Spara celle alterne
             position = row + "," + col;
         }
 

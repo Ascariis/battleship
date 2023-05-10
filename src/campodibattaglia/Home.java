@@ -538,7 +538,6 @@ public class Home extends JFrame implements ActionListener, MouseListener,MouseM
 	}
 
 	public boolean setPlayerShot(int x, int y) {
-
 		if (field[x][y] != 0) { // se non manca
 			field[x][y] = 5;
 			playerField[x][y].setBackground(Color.RED);
@@ -574,6 +573,7 @@ public class Home extends JFrame implements ActionListener, MouseListener,MouseM
 				}
 				start.setVisible(true);
 			}
+			pedinePosizionate *= 2; //parità con bot
 
 		}
 
