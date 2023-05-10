@@ -90,6 +90,10 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 	private int acaso = 0;
 	boolean poba = true;
 	boolean botTurn;
+	boolean win=false;
+	private SfondoPanel haiVintoPanel= new SfondoPanel(8);
+	private SfondoPanel haiPersoPanel= new SfondoPanel(9);
+	private ButtonIcon home = new ButtonIcon(13, homeWidth, homeHeight);
 
 	Home() {
 		super("Sa Battalla");
@@ -445,6 +449,22 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 		sfondo8Panel.add(nota2);
 
 		c.add(sfondo8Panel);
+		c.revalidate();
+		c.repaint();
+	}
+	private void fine(){
+		c.removeAll();
+		c.setLayout(new GridLayout(1, 1));
+		if(win){
+			haiVintoPanel.setLayout(null);
+			haiVintoPanel.add(home);
+			c.add(haiVintoPanel);
+		}
+		else{
+			haiPersoPanel.setLayout(null);
+			haiPersoPanel.add(home);
+			c.add(haiPersoPanel);
+		}
 		c.revalidate();
 		c.repaint();
 	}
