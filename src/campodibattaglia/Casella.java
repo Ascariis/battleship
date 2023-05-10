@@ -93,34 +93,69 @@ public class Casella extends JButton implements MouseListener, ActionListener {
         throw new UnsupportedOperationException("Unimplemented method 'mouseExited'");
     }
 
+    private void botTurn() {
+        boolean botHasHit = false;
+        do {
+            homeInstance.bot.play();
+            String botResponseString = homeInstance.bot.play();
+            System.out.println(botResponseString);
+            String[] splitStr = botResponseString.split(",");
+            int X = Integer.parseInt(splitStr[0]);
+            int Y = Integer.parseInt(splitStr[1]);
+            botHasHit = homeInstance.setPlayerShot(X, Y);
+
+            if (botHasHit) {
+                botTurn();
+                homeInstance.bot.reportHitResult(botHasHit, X, Y);
+            } else botHasHit = false;
+
+        } while (botHasHit);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (homeInstance.getPedinePosizionate() != 0 && homeInstance.bot.getNumBarche() != 0) { // IF GAME IS RUNNING
-            boolean isHit = homeInstance.bot.setShot(posInArrayY, posInArrayX);
-            if (isHit) {
-                setBackground(Color.GREEN);
-                homeInstance.canContinue = true;
-            } else {
-                setBackground(Color.GRAY);
-                homeInstance.canContinue = false;
-
-                String botResponseString;
-                if (!homeInstance.canContinue) { // If player hits water, bot's turn
-                    botResponseString = homeInstance.bot.play();
-                    System.out.println(botResponseString);
-                    String[] splitStr = botResponseString.split(",");
-                    int X = Integer.parseInt(splitStr[0]);
-                    int Y = Integer.parseInt(splitStr[1]);
-                    homeInstance.setPlayerShot(X, Y);
-                }
-            }
-        } else if (homeInstance.getPedinePosizionate() > homeInstance.bot.getNumBarche()) {
-            System.out.println("poba");
-            homeInstance.canContinue = false;
-        } else if (homeInstance.getPedinePosizionate() < homeInstance.bot.getNumBarche()) {
-            System.out.println("poba");
-            homeInstance.canContinue = false;
+        boolean isHit = homeInstance.bot.getHitFromPlayer(posInArrayY, posInArrayX);
+        // Check if hit is registered for player to Bot
+        if (isHit) {
+            setBackground(Color.GREEN);
+        } else { // if Hits water turn goes to Bot
+            System.out.println("AGUA");
+            setBackground(Color.GRAY);
+            botTurn();
+            System.out.println("povia");
         }
+
+        /*
+         * if (homeInstance.getPedinePosizionate() != 0 &&
+         * homeInstance.bot.getNumBarche() != 0) { // IF GAME IS RUNNING
+         * boolean isHit =
+         * if (isHit) {
+         * setBackground(Color.GREEN);
+         * homeInstance.canContinue = true;
+         * } else {
+         * setBackground(Color.GRAY);
+         * homeInstance.canContinue = false;
+         * 
+         * String botResponseString;
+         * if (!homeInstance.canContinue) { // If player hits water, bot's turn
+         * botResponseString = homeInstance.bot.play();
+         * System.out.println(botResponseString);
+         * String[] splitStr = botResponseString.split(",");
+         * int X = Integer.parseInt(splitStr[0]);
+         * int Y = Integer.parseInt(splitStr[1]);
+         * homeInstance.setPlayerShot(X, Y);
+         * }
+         * }
+         * } else if (homeInstance.getPedinePosizionate() >
+         * homeInstance.bot.getNumBarche()) {
+         * System.out.println("poba");
+         * homeInstance.canContinue = false;
+         * } else if (homeInstance.getPedinePosizionate() <
+         * homeInstance.bot.getNumBarche()) {
+         * System.out.println("poba");
+         * homeInstance.canContinue = false;
+         * }
+         */
     }
 
 }

@@ -1,5 +1,7 @@
 package campodibattaglia;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Bot {
@@ -8,6 +10,11 @@ public class Bot {
     private int numBarche;
     private Random random = new Random();
     boolean alreadyPlaced = false;
+
+    private boolean destroyMode = false;
+    private int lastHitRow = -1;
+    private int lastHitCol = -1;
+    private List<String> destroyVicini = new ArrayList<>();
 
     public Bot() {
         posizionaBarche();
@@ -36,25 +43,72 @@ public class Bot {
         printMat();
     }
 
+    // SEEK & DESTROY
     public String play() {
         String position;
+        int row, col;
 
-        int riga = random.nextInt(10);
-        int colonna = random.nextInt(10);
+        if (destroyMode) {
 
-        position = riga + "," + colonna;
+            position = destroyVicini.remove(0);
+            String[] parts = position.split(",");
+            row = Integer.parseInt(parts[0]);
+            col = Integer.parseInt(parts[1]);
+
+        } else {
+            do {
+                row = random.nextInt(10);
+                col = random.nextInt(10);
+            } while ((row + col) % 2 == 1); // Spara a celle alterne
+            position = row + "," + col;
+        }
+
         System.out.println(position);
-        
-        alreadyPlaced = true;
         return position;
     }
 
-    public int getNumBarche() {
-        return numBarche;
+    public void reportHitResult(boolean hit, int row, int col) {
+        if (hit) {
+            destroyMode = true;
+            lastHitRow = row;
+            lastHitCol = col;
+            destroyVicini.clear();
+
+            // Le celle vicini alla lista destroy Vicini
+            if (row > 0)
+                destroyVicini.add((row - 1) + "," + col);
+            if (row < 9)
+                destroyVicini.add((row + 1) + "," + col);
+            if (col > 0)
+                destroyVicini.add(row + "," + (col - 1));
+            if (col < 9)
+                destroyVicini.add(row + "," + (col + 1));
+        } else if (destroyMode && destroyVicini.isEmpty()) {
+            destroyMode = false; // Torna alla modalità casuale
+        }
     }
 
+    /*
+     * public String play() {
+     * String position;
+     * 
+     * int riga = random.nextInt(10);
+     * int colonna = random.nextInt(10);
+     * 
+     * position = riga + "," + colonna;
+     * System.out.println(position);
+     * 
+     * alreadyPlaced = true;
+     * return position;
+     * }
+     * 
+     * public int getNumBarche() {
+     * return numBarche;
+     * }
+     */
+
     // Subire colpi
-    public boolean setShot(int x, int y) {
+    public boolean getHitFromPlayer(int x, int y) {
         if (numBarche > 0) {
             if (tabella[x][y] != 0) {
                 numBarche--;
@@ -65,13 +119,14 @@ public class Bot {
         } else {
             return false;
         }
-        
+
     }
 
     public boolean hasNoShips() {
         if (numBarche > 0) {
             return false;
-        } else return true;
+        } else
+            return true;
     }
 
     private void printMat() {
