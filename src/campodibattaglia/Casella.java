@@ -93,7 +93,7 @@ public class Casella extends JButton implements MouseListener, ActionListener {
     }
 
     private void botTurn() {
-        if (homeInstance.bot.hasNoShips() || homeInstance.pedinePosizionate == 0) {
+        if (homeInstance.bot.numBarche == 0 || homeInstance.pedinePosizionate == 0) {
             homeInstance.fine();
             System.out.println("EOIA");
         } else {
@@ -121,17 +121,20 @@ public class Casella extends JButton implements MouseListener, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        boolean isHit = homeInstance.bot.getHitFromPlayer(posInArrayY, posInArrayX);
-        // Check if hit is registered from player to Bot
-        if (isHit) {
-            setBackground(Color.GREEN);
-        } else { // if Hits water turn goes to Bot
-            System.out.println("AGUA");
-            setBackground(Color.GRAY);
-            botTurn();
+        if (homeInstance.bot.numBarche == 0 || homeInstance.pedinePosizionate == 0) {
+            homeInstance.fine();
+            System.out.println("EOIA");
+        } else {
+            boolean isHit = homeInstance.bot.getHitFromPlayer(posInArrayY, posInArrayX);
+            // Check if hit is registered from player to Bot
+            if (isHit) {
+                setBackground(Color.GREEN);
+            } else { // if Hits water turn goes to Bot
+                System.out.println("AGUA");
+                setBackground(Color.GRAY);
+                botTurn();
+            }
         }
-
     }
 
 }

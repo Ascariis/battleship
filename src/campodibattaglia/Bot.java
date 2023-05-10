@@ -7,7 +7,7 @@ import java.util.Random;
 public class Bot {
     private int[][] tabella = new int[10][10];
     private int[] lunghezzaBarche = { 1, 1, 1, 1, 2, 2, 2, 3, 3, 4 };
-    private int numBarche;
+    public int numBarche;
     private Random random = new Random();
     boolean alreadyPlaced = false;
 

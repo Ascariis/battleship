@@ -18,6 +18,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 	public final int FIELD_Y = 540 - (300);
 	private boolean isFullscreen = false;
 	boolean isPlaced = false;
+	boolean alreadycreated = false;
 
 	// dimensione bottoni
 	private double homeWidth = ((0.234375) * screenWidth);
@@ -90,9 +91,9 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 	private int acaso = 0;
 	boolean poba = true;
 	boolean botTurn;
-	boolean win=false;
-	private SfondoPanel haiVintoPanel= new SfondoPanel(8);
-	private SfondoPanel haiPersoPanel= new SfondoPanel(9);
+	boolean win = false;
+	private SfondoPanel haiVintoPanel = new SfondoPanel(8);
+	private SfondoPanel haiPersoPanel = new SfondoPanel(9);
 	private ButtonIcon home = new ButtonIcon(13, homeWidth, homeHeight);
 
 	Home() {
@@ -242,28 +243,31 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 			r = 50;
 		}
 
-		// Enemy Field
-		for (int k = 0; k < 10; k++) {
-			for (int j = 0; j < 10; j++) {
-				attackField[k][j] = new Casella(this);
+		if (!alreadycreated) {
+			// Enemy Field
+			for (int k = 0; k < 10; k++) {
+				for (int j = 0; j < 10; j++) {
+					attackField[k][j] = new Casella(this);
+				}
 			}
-		}
 
-		int rt = 50;
-		int tr = 0;
-		for (int k = 0; k < 10; k++) {
-			for (int j = 0; j < 10; j++) {
-				attackField[k][j].setBounds((FIELD_X + rt) + 600, FIELD_Y + tr, 50, 50);
-				attackField[k][j].setPosX(j);
-				attackField[k][j].setPosY(k);
-				attackField[k][j].addActionListener(attackField[k][j]);
-				attackField[k][j].setActionCommand(attackField[k][j].getText());
-				rt += 50;
-				sfondo4Panel.add(attackField[k][j]);
+			int rt = 50;
+			int tr = 0;
+			for (int k = 0; k < 10; k++) {
+				for (int j = 0; j < 10; j++) {
+					attackField[k][j].setBounds((FIELD_X + rt) + 600, FIELD_Y + tr, 50, 50);
+					attackField[k][j].setPosX(j);
+					attackField[k][j].setPosY(k);
+					attackField[k][j].addActionListener(attackField[k][j]);
+					attackField[k][j].setActionCommand(attackField[k][j].getText());
+					rt += 50;
+					sfondo4Panel.add(attackField[k][j]);
+				}
+				tr += 50;
+				rt = 50;
 			}
-			tr += 50;
-			rt = 50;
-		}
+			alreadycreated = true;
+		} else
 
 		System.out.println(playerField[0][0].getPosX() + " X PRIMO BUTTON");
 		System.out.println(playerField[0][0].getPosY() + " Y PRIMO BUTTON");
@@ -452,17 +456,25 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 		c.revalidate();
 		c.repaint();
 	}
-	void fine(){
+
+	void fine() {
 		c.removeAll();
 		c.setLayout(new GridLayout(1, 1));
-		if(win){
+		
+		System.out.println(bot.numBarche + "AAAAAAAAAAAAAAAAAAA");
+		System.out.println(pedinePosizionate + "BBBBBBBBBBBBBBBBBB");
+		
+		if (bot.numBarche == 0 && pedinePosizionate != 0) {
 			haiVintoPanel.setLayout(null);
 			haiVintoPanel.add(home);
+			home.addActionListener(this);
+			home.setActionCommand("ENDGAME");
 			c.add(haiVintoPanel);
-		}
-		else{
+		} else if (pedinePosizionate == 0 && bot.numBarche != 0) {
 			haiPersoPanel.setLayout(null);
 			haiPersoPanel.add(home);
+			home.setActionCommand("ENDGAME");
+			home.addActionListener(this);
 			c.add(haiPersoPanel);
 		}
 		c.revalidate();
@@ -539,7 +551,10 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 	}
 
 	public boolean setPlayerShot(int x, int y) {
-		if (field[x][y] != 0) { // se non manca
+		if (field[x][y] == 5) {
+			return false;
+		}
+		if (field[x][y] != 0 && field[x][y] != 5) { // se non manca
 			field[x][y] = 5;
 			playerField[x][y].setBackground(Color.RED);
 			pedinePosizionate--;
@@ -550,7 +565,20 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 		}
 
 	}
-
+/* 
+	int getRemainingPlayerPedine() {
+		int tempCounter = 0;
+		for (int i = 0; i < field.length; i++) {
+			for (int j = 0; j < field.length; j++) {
+				if (field[i][j] == 5) {
+					tempCounter++;
+				}
+			}
+		}
+		pedinePosizionate = tempCounter;
+		return pedinePosizionate;
+	}
+*/
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("CONFERMA")) {
@@ -643,6 +671,8 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 			accedi();
 		} else if (e.getActionCommand().equals("Registrati")) {
 			registrati();
+		} else if (e.getActionCommand().equals("ENDGAME")) {
+			home();
 		}
 
 	}
