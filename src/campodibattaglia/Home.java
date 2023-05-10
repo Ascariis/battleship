@@ -452,7 +452,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 		c.revalidate();
 		c.repaint();
 	}
-	private void fine(){
+	void fine(){
 		c.removeAll();
 		c.setLayout(new GridLayout(1, 1));
 		if(win){

@@ -94,7 +94,7 @@ public class Casella extends JButton implements MouseListener, ActionListener {
 
     private void botTurn() {
         if (homeInstance.bot.hasNoShips() || homeInstance.pedinePosizionate == 0) {
-            // homeInstance.fine();
+            homeInstance.fine();
             System.out.println("EOIA");
         } else {
             System.out.println();
@@ -129,7 +129,6 @@ public class Casella extends JButton implements MouseListener, ActionListener {
         } else { // if Hits water turn goes to Bot
             System.out.println("AGUA");
             setBackground(Color.GRAY);
-
             botTurn();
         }
 
