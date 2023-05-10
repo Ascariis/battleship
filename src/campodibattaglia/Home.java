@@ -14,8 +14,8 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 	int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 	int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
-	public final int FIELD_X = 760 - (300);
-	public final int FIELD_Y = 540 - (300);
+	public final int FIELD_X = 760 - (int)(0.15625*screenWidth);
+	public final int FIELD_Y = 540 - (int)(0.277777777777778*screenHeight);
 	private boolean isFullscreen = false;
 	boolean isPlaced = false;
 	boolean alreadycreated = false;
@@ -231,16 +231,16 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 			}
 		}
 
-		int r = 50;
+		int r = (int)(0.026041666666667*screenWidth);
 		int t = 0;
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
-				playerField[k][j].setBounds(FIELD_X + r, FIELD_Y + t, 50, 50);
-				r += 50;
+				playerField[k][j].setBounds(FIELD_X + r, FIELD_Y + t, (int)(0.026041666666667*screenWidth), (int)(0.026041666666667*screenWidth));
+				r += (int)(0.026041666666667*screenWidth);
 				sfondo4Panel.add(playerField[k][j]);
 			}
-			t += 50;
-			r = 50;
+			t += (int)(0.026041666666667*screenWidth);
+			r = (int)(0.026041666666667*screenWidth);
 		}
 
 		if (!alreadycreated) {
@@ -251,11 +251,11 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 				}
 			}
 
-			int rt = 50;
+			int rt = (int)(0.026041666666667*screenWidth);
 			int tr = 0;
 			for (int k = 0; k < 10; k++) {
 				for (int j = 0; j < 10; j++) {
-					attackField[k][j].setBounds((FIELD_X + rt) + 600, FIELD_Y + tr, 50, 50);
+					attackField[k][j].setBounds((FIELD_X + rt) + (int)(0.3125*screenWidth), FIELD_Y + tr, (int)(0.026041666666667*screenWidth), (int)(0.026041666666667*screenWidth));
 					attackField[k][j].setPosX(j);
 					attackField[k][j].setPosY(k);
 					attackField[k][j].addActionListener(attackField[k][j]);
@@ -263,8 +263,8 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 					rt += 50;
 					sfondo4Panel.add(attackField[k][j]);
 				}
-				tr += 50;
-				rt = 50;
+				tr += (int)(0.026041666666667*screenWidth);
+				rt = (int)(0.026041666666667*screenWidth);
 			}
 			alreadycreated = true;
 		} else
