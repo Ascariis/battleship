@@ -260,7 +260,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 					attackField[k][j].setPosY(k);
 					attackField[k][j].addActionListener(attackField[k][j]);
 					attackField[k][j].setActionCommand(attackField[k][j].getText());
-					rt += 50;
+					rt += (int)(0.026041666666667*screenWidth);
 					sfondo4Panel.add(attackField[k][j]);
 				}
 				tr += (int)(0.026041666666667*screenWidth);
