@@ -5,7 +5,7 @@ import java.io.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Home extends JFrame implements ActionListener, MouseListener,MouseMotionListener {
+public class Home extends JFrame implements ActionListener, MouseListener, MouseMotionListener {
 
 	Bot bot;
 	boolean canContinue = true;
@@ -107,24 +107,25 @@ public class Home extends JFrame implements ActionListener, MouseListener,MouseM
 			e.printStackTrace();
 		}
 
-		/* 
-			for (int pID = 0; pID < pedina.length; pID++) { // pid = idPedina
-			for (int col = 0; col < 10; col++) {
-				for (int row = 0; row < playerField.length; row++) {
-					if (checkOverlap(playerField[col][row], pedina[pID])) {
-						ceckPedina[col][row] = 1;
-						}
-					}
-				}
-			for (int col = 0; col < 10; col++) {
-				for (int row = 0; row < 10; row++) {
-					if (ceckPedina[col][row]==1) { //al posto di uno mettere le x e le y della pedina appena posizionata
-						//riportare la pedina all posizione originale
-						}
-					}
-				}
-			}
-		*/
+		/*
+		 * for (int pID = 0; pID < pedina.length; pID++) { // pid = idPedina
+		 * for (int col = 0; col < 10; col++) {
+		 * for (int row = 0; row < playerField.length; row++) {
+		 * if (checkOverlap(playerField[col][row], pedina[pID])) {
+		 * ceckPedina[col][row] = 1;
+		 * }
+		 * }
+		 * }
+		 * for (int col = 0; col < 10; col++) {
+		 * for (int row = 0; row < 10; row++) {
+		 * if (ceckPedina[col][row]==1) { //al posto di uno mettere le x e le y della
+		 * pedina appena posizionata
+		 * //riportare la pedina all posizione originale
+		 * }
+		 * }
+		 * }
+		 * }
+		 */
 	}
 
 	private void home() {
@@ -533,8 +534,8 @@ public class Home extends JFrame implements ActionListener, MouseListener,MouseM
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("CONFERMA")) {
-	
-			if (getPedinePosizionate() == 10) {
+
+			if (getPedinePosizionate() >= 10) {
 				for (Pedina pedina : pedina) {
 					pedina.setLockedState();
 				}
@@ -553,8 +554,8 @@ public class Home extends JFrame implements ActionListener, MouseListener,MouseM
 				}
 				start.setVisible(true);
 			}
-			pedinePosizionate *= 2; //parità con bot
-
+			// parità con bot
+			pedinePosizionate = getPedinePosizionate() * 2;
 		}
 
 		if (e.getActionCommand().equals("START")) {
@@ -668,5 +669,5 @@ public class Home extends JFrame implements ActionListener, MouseListener,MouseM
 		throw new UnsupportedOperationException("Unimplemented method 'mouseExited'");
 
 	}
-				
+
 }

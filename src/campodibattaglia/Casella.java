@@ -93,10 +93,11 @@ public class Casella extends JButton implements MouseListener, ActionListener {
     }
 
     private void botTurn() {
-        if (homeInstance.bot.hasNoShips()) {
-            //homeInstance.fine();
+        if (homeInstance.bot.hasNoShips() || homeInstance.pedinePosizionate == 0) {
+            // homeInstance.fine();
             System.out.println("EOIA");
         } else {
+            System.out.println();
             boolean botHasHit = false;
             do {
                 homeInstance.bot.play();

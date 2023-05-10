@@ -87,25 +87,6 @@ public class Bot {
         }
     }
 
-    /*
-     * public String play() {
-     * String position;
-     * 
-     * int riga = random.nextInt(10);
-     * int colonna = random.nextInt(10);
-     * 
-     * position = riga + "," + colonna;
-     * System.out.println(position);
-     * 
-     * alreadyPlaced = true;
-     * return position;
-     * }
-     * 
-     * public int getNumBarche() {
-     * return numBarche;
-     * }
-     */
-
     // Subire colpi
     public boolean getHitFromPlayer(int x, int y) {
         if (numBarche > 0) {

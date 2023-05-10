@@ -1,7 +1,6 @@
 package campodibattaglia;
 
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -13,9 +12,6 @@ public class Pedina extends JButton {
     private int taglia;
     private boolean isRotated = false;
     private boolean LOCK = false;
-
-    private int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-    private int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
     private boolean isSnapped = false;
     private int mouseX, mouseY;
@@ -61,7 +57,7 @@ public class Pedina extends JButton {
                     if (e.getButton() == MouseEvent.BUTTON3) {
                         rotateButton();
                     } else
-                        ;
+                        ; // Molto bellino questo
 
                     mouseX = e.getX();
                     mouseY = e.getY();
@@ -117,7 +113,7 @@ public class Pedina extends JButton {
 
     }
 
-    public void setToDefLocation() {
+    private void setToDefLocation() {
         if (taglia == 1) {
             setLocation(100, 150 + taglia * 100);
         } else if (taglia == 2) {
