@@ -456,21 +456,37 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 		c.revalidate();
 		c.repaint();
 	}
+	private void reset(){
+		sfondo4Panel.removeAll();
+		sfondo4Panel.setLayout(null);
+		sfondo4Panel.add(impo);
+		sfondo4Panel.add(confirmPositions);
+		sfondo4Panel.add(start);
+		isPlaced=false;
+		alreadycreated=false;
+		sfondo4Panel.add(field1Label);
+		sfondo4Panel.add(field2Label);
+		sfondo4Panel.add(nameLabel);
+		sfondo4Panel.add(scoreLabel);
+		confirmPositions.setVisible(true);
+	}
 
 	void fine() {
 		c.removeAll();
 		c.setLayout(new GridLayout(1, 1));
-		
+		reset();
+		int vediamo = bot.numBarche;
+		int miccullu = pedinePosizionate;
 		System.out.println(bot.numBarche + "AAAAAAAAAAAAAAAAAAA");
 		System.out.println(pedinePosizionate + "BBBBBBBBBBBBBBBBBB");
 		
-		if (bot.numBarche == 0 && pedinePosizionate != 0) {
+		if (vediamo == 0 && miccullu != 0) {
 			haiVintoPanel.setLayout(null);
 			haiVintoPanel.add(home);
 			home.addActionListener(this);
 			home.setActionCommand("ENDGAME");
 			c.add(haiVintoPanel);
-		} else if (pedinePosizionate == 0 && bot.numBarche != 0) {
+		} else if(vediamo != 0 && miccullu == 0){
 			haiPersoPanel.setLayout(null);
 			haiPersoPanel.add(home);
 			home.setActionCommand("ENDGAME");
