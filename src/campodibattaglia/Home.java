@@ -499,7 +499,6 @@ public class Home extends JFrame implements ActionListener {
 	}
 
 	public boolean setPlayerShot(int x, int y) {
-
 		if (field[x][y] != 0) { // se non manca
 			field[x][y] = 5;
 			playerField[x][y].setBackground(Color.RED);
@@ -535,6 +534,7 @@ public class Home extends JFrame implements ActionListener {
 				}
 				start.setVisible(true);
 			}
+			pedinePosizionate *= 2;
 
 		}
 
