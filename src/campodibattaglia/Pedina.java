@@ -10,7 +10,7 @@ import javax.swing.*;
 public class Pedina extends JButton {
 
     int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-	int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+    int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
     ImageIcon icon;
     private int taglia;
@@ -19,9 +19,8 @@ public class Pedina extends JButton {
 
     private boolean isSnapped = false;
     private int mouseX, mouseY;
-    public final int FIELD_CLOSEST_X = (int)(0.395833333333333*screenWidth) - (int)(0.15625*screenWidth);
-	public final int FIELD_CLOSEST_Y = (int)(0.5*screenHeight) - (int)(0.277777777777778*screenHeight);
-    
+    public final int FIELD_CLOSEST_X = 760 - 300;
+    public final int FIELD_CLOSEST_Y = 540 - 300;
 
     public Pedina(int taglia) {
         this.taglia = taglia;
@@ -30,25 +29,25 @@ public class Pedina extends JButton {
         this.setFocusPainted(false);
 
         if (taglia == 1) {
-            setBounds(100, 150 + taglia * 100, (int)(0.026041666666667*screenWidth), (int)(0.046296296296296*screenHeight));
+            setBounds(100, 150 + taglia * 100, 50, 50);
             icon = new ImageIcon("image/barca1.png");
             Image img = icon.getImage();
             Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), java.awt.Image.SCALE_SMOOTH);
             icon = new ImageIcon(newImg);
         } else if (taglia == 2) {
-            setBounds(100, 150 + taglia * 100, (int)(0.052083333333333*screenWidth), (int)(0.046296296296296*screenHeight));
+            setBounds(100, 150 + taglia * 100, 100, 50);
             icon = new ImageIcon("image/barca2.png");
             Image img = icon.getImage();
             Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), java.awt.Image.SCALE_SMOOTH);
             icon = new ImageIcon(newImg);
         } else if (taglia == 3) {
-            setBounds(100, 150 + taglia * 100, (int)(0.078125*screenWidth), (int)(0.046296296296296*screenHeight));
+            setBounds(100, 150 + taglia * 100, 150, 50);
             icon = new ImageIcon("image/barca3.png");
             Image img = icon.getImage();
             Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), java.awt.Image.SCALE_SMOOTH);
             icon = new ImageIcon(newImg);
         } else if (taglia == 4) {
-            setBounds(100, 150 + taglia * 100, (int)(0.104166666666667*screenWidth), (int)(0.046296296296296*screenHeight));
+            setBounds(100, 150 + taglia * 100, 200, 50);
             icon = new ImageIcon("image/barca4.png");
             Image img = icon.getImage();
             Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), java.awt.Image.SCALE_SMOOTH);
@@ -73,8 +72,8 @@ public class Pedina extends JButton {
             @Override
             public void mouseReleased(MouseEvent e) {
                 if (!LOCK) {
-                    if (getX() + getWidth() > (FIELD_CLOSEST_X + (int)(0.286458333333333*screenWidth))
-                            || getY() + getHeight() > (FIELD_CLOSEST_Y + (int)(0.462962962962963*screenHeight))
+                    if (getX() + getWidth() > (FIELD_CLOSEST_X + 500)
+                            || getY() + getHeight() > (FIELD_CLOSEST_Y + 500)
                             || getY() + getHeight() < (FIELD_CLOSEST_Y)
                             || ((e.getXOnScreen() < FIELD_CLOSEST_X || e.getYOnScreen() < FIELD_CLOSEST_Y))) {
                         setToDefLocation();
@@ -86,12 +85,13 @@ public class Pedina extends JButton {
         });
 
         int GRID_SIZE = 50;
+
         addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
                 if (!LOCK) {
-                    if ((getX() > FIELD_CLOSEST_X && getX() <= FIELD_CLOSEST_X + (int)(0.260416666666667*screenWidth))
-                            && (getY() >= FIELD_CLOSEST_Y && getY() <= FIELD_CLOSEST_Y + (int)(0.462962962962963*screenHeight))) {
+                    if ((getX() > FIELD_CLOSEST_X && getX() <= FIELD_CLOSEST_X + 500)
+                            && (getY() >= FIELD_CLOSEST_Y && getY() <= FIELD_CLOSEST_Y + 500)) {
                         int deltaX = e.getX() - mouseX;
                         int deltaY = e.getY() - mouseY;
 
@@ -101,10 +101,9 @@ public class Pedina extends JButton {
                         System.out.println(getWidth());
                         System.out.println(" ");
                         System.out.println(getHeight());
-                        //+ (int)(0.005208333333333*screenWidth);
-                        //- (int)(0.009259259259259*screenHeight)
-                        int snappedX = ((newX + (int)(0.026041666666667*screenWidth) / 2) / (int)(0.026041666666667*screenWidth) * (int)(0.026041666666667*screenWidth)); // 10 il valore mistico
-                        int snappedY = ((newY + (int)(0.046296296296296*screenHeight) / 2) / (int)(0.046296296296296*screenHeight) * (int)(0.046296296296296*screenHeight));
+
+                        int snappedX = ((newX + GRID_SIZE / 2) / GRID_SIZE * GRID_SIZE) + 10; // 10 il valore mistico
+                        int snappedY = ((newY + GRID_SIZE / 2) / GRID_SIZE * GRID_SIZE) - 10;
 
                         setLocation(snappedX, snappedY);
                         System.out.println(snappedX + " " + snappedY);
@@ -135,25 +134,25 @@ public class Pedina extends JButton {
 
     private void setImageRotated() {
         if (taglia == 1) {
-            setSize((int)(0.026041666666667*screenWidth), (int)(0.046296296296296*screenHeight));
+            setSize(50, 50);
             icon = new ImageIcon("image/barca1ruotata.png");
             Image img = icon.getImage();
             Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), java.awt.Image.SCALE_SMOOTH);
             icon = new ImageIcon(newImg);
         } else if (taglia == 2) {
-            setSize((int)(0.026041666666667*screenWidth), (int)(0.092592592592593*screenHeight));
+            setSize(50, 100);
             icon = new ImageIcon("image/barca2ruotata.png");
             Image img = icon.getImage();
             Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), java.awt.Image.SCALE_SMOOTH);
             icon = new ImageIcon(newImg);
         } else if (taglia == 3) {
-            setSize((int)(0.026041666666667*screenWidth), (int)(0.138888888888889*screenHeight));
+            setSize(50, 150);
             icon = new ImageIcon("image/barca3ruotata.png");
             Image img = icon.getImage();
             Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), java.awt.Image.SCALE_SMOOTH);
             icon = new ImageIcon(newImg);
         } else if (taglia == 4) {
-            setSize((int)(0.026041666666667*screenWidth), (int)(0.185185185185185*screenHeight));
+            setSize(50, 200);
             icon = new ImageIcon("image/barca4ruotata.png");
             Image img = icon.getImage();
             Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), java.awt.Image.SCALE_SMOOTH);
@@ -164,25 +163,25 @@ public class Pedina extends JButton {
 
     private void setImage() {
         if (taglia == 1) {
-            setSize((int)(0.026041666666667*screenWidth), (int)(0.046296296296296*screenHeight));
+            setSize(50, 50);
             icon = new ImageIcon("image/barca1.png");
             Image img = icon.getImage();
             Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), java.awt.Image.SCALE_SMOOTH);
             icon = new ImageIcon(newImg);
         } else if (taglia == 2) {
-            setSize((int)(0.052083333333333*screenWidth), (int)(0.046296296296296*screenHeight));
+            setSize(100, 50);
             icon = new ImageIcon("image/barca2.png");
             Image img = icon.getImage();
             Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), java.awt.Image.SCALE_SMOOTH);
             icon = new ImageIcon(newImg);
         } else if (taglia == 3) {
-            setSize((int)(0.078125*screenWidth), (int)(0.046296296296296*screenHeight));
+            setSize(150, 50);
             icon = new ImageIcon("image/barca3.png");
             Image img = icon.getImage();
             Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), java.awt.Image.SCALE_SMOOTH);
             icon = new ImageIcon(newImg);
         } else if (taglia == 4) {
-            setSize((int)(0.104166666666667*screenWidth), (int)(0.046296296296296*screenHeight));
+            setSize(200, 50);
             icon = new ImageIcon("image/barca4.png");
             Image img = icon.getImage();
             Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), java.awt.Image.SCALE_SMOOTH);

@@ -96,14 +96,20 @@ public class ButtonIcon extends JButton {
             Image newImg = img.getScaledInstance(x, y, java.awt.Image.SCALE_SMOOTH);
             icon = new ImageIcon(newImg);
         } else if (nFinestra == 12) {
-            setBounds((int) (screenWidth / 2 - (0.15625 * screenWidth) + 500), (int) (0.703703703703704 * screenHeight),
-                    x, y);
+            setBounds((int) (screenWidth / 2 - (0.15625 * screenWidth) + 500), (int) (0.703703703703704 * screenHeight), x, y);
             icon = new ImageIcon("image/gioca.png");
             Image img = icon.getImage();
             Image newImg = img.getScaledInstance(x, y, java.awt.Image.SCALE_SMOOTH);
             icon = new ImageIcon(newImg);
         } else if (nFinestra == 13) {
             setBounds((int) (screenWidth / 2 - (0.1171875 * screenWidth)), screenHeight / 2, x, y);
+            icon = new ImageIcon("image/paginaPrincipale.png");
+            Image img = icon.getImage();
+            Image newImg = img.getScaledInstance(x, y, java.awt.Image.SCALE_SMOOTH);
+            icon = new ImageIcon(newImg);
+        } else if (nFinestra == 14) {
+            setBounds((int) (screenWidth / 2 - (0.1171875 * screenWidth)),
+                    (int) (screenHeight / 2 + (0.1851851851851852 * screenHeight)), x, y);
             icon = new ImageIcon("image/paginaPrincipale.png");
             Image img = icon.getImage();
             Image newImg = img.getScaledInstance(x, y, java.awt.Image.SCALE_SMOOTH);

@@ -95,6 +95,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 	private SfondoPanel haiVintoPanel = new SfondoPanel(8);
 	private SfondoPanel haiPersoPanel = new SfondoPanel(9);
 	private ButtonIcon home = new ButtonIcon(13, homeWidth, homeHeight);
+	private ButtonIcon torna = new ButtonIcon(14, homeWidth, homeHeight);
 
 	Home() {
 		super("Sa Battalla");
@@ -171,6 +172,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 
 		fullscreenToggle.addActionListener(this);
 		fullscreenToggle.setActionCommand("Fullscreen");
+		sfondo3Panel.add(torna);
 
 		sfondo3Panel.add(comandiButton);
 
@@ -231,16 +233,16 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 			}
 		}
 
-		int r = (int)(0.026041666666667*screenWidth);
+		int r = 50;
 		int t = 0;
 		for (int k = 0; k < 10; k++) {
 			for (int j = 0; j < 10; j++) {
-				playerField[k][j].setBounds(FIELD_X + r, FIELD_Y + t, (int)(0.026041666666667*screenWidth), (int)(0.026041666666667*screenWidth));
-				r += (int)(0.026041666666667*screenWidth);
+				playerField[k][j].setBounds(FIELD_X + r, FIELD_Y + t, 50, 50);
+				r += 50;
 				sfondo4Panel.add(playerField[k][j]);
 			}
-			t += (int)(0.026041666666667*screenWidth);
-			r = (int)(0.026041666666667*screenWidth);
+			t += 50;
+			r = 50;
 		}
 
 		if (!alreadycreated) {
@@ -251,20 +253,20 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 				}
 			}
 
-			int rt = (int)(0.026041666666667*screenWidth);
+			int rt = 50;
 			int tr = 0;
 			for (int k = 0; k < 10; k++) {
 				for (int j = 0; j < 10; j++) {
-					attackField[k][j].setBounds((FIELD_X + rt) + (int)(0.3125*screenWidth), FIELD_Y + tr, (int)(0.026041666666667*screenWidth), (int)(0.026041666666667*screenWidth));
+					attackField[k][j].setBounds((FIELD_X + rt) + 600, FIELD_Y + tr, 50, 50);
 					attackField[k][j].setPosX(j);
 					attackField[k][j].setPosY(k);
 					attackField[k][j].addActionListener(attackField[k][j]);
 					attackField[k][j].setActionCommand(attackField[k][j].getText());
-					rt += (int)(0.026041666666667*screenWidth);
+					rt += 50;
 					sfondo4Panel.add(attackField[k][j]);
 				}
-				tr += (int)(0.026041666666667*screenWidth);
-				rt = (int)(0.026041666666667*screenWidth);
+				tr += 50;
+				rt = 50;
 			}
 			alreadycreated = true;
 		} else
@@ -539,6 +541,9 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 
 		confirmPositions.addActionListener(this);
 		confirmPositions.setActionCommand("CONFERMA");
+
+		torna.addActionListener(this);
+		torna.setActionCommand("ENDGAME");
 
 		start.addActionListener(this);
 		start.setActionCommand("START");
