@@ -17,7 +17,7 @@ Il progetto implementa la versione single-player e multi-player.
 - "Intelligenza artificiale" avversaria che posiziona le navi casualmente.
 - Meccaniche di gioco come colpire e affondare le navi.
 - Messaggi di feedback per indicare se un colpo ha colpito una nave o è andato a vuoto.
-- Finestra di dialogo finale che mostra il punteggio ottenuto.
+- Finestra di dialogo finale.
 
 ## Requisiti di sistema
 
