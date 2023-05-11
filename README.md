@@ -1,5 +1,6 @@
 # Battleship
 
+Se viene scaricato come zip, assicurarsi di rinominare da `battleship-main` a `battleship`
 Questo progetto è una versione del gioco classico della Battaglia Navale, implementato utilizzando il linguaggio di programmazione Java e la libreria Swing per l'interfaccia grafica.
 
 ## Descrizione
