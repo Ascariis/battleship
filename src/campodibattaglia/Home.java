@@ -465,18 +465,17 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 	void fine() {
 		c.removeAll();
 		c.setLayout(new GridLayout(1, 1));
-		int vediamo = bot.numBarche;
-		int miccullu = pedinePosizionate;
+
 		System.out.println(bot.numBarche + "AAAAAAAAAAAAAAAAAAA");
 		System.out.println(pedinePosizionate + "BBBBBBBBBBBBBBBBBB");
 		
-		if (vediamo == 0 && miccullu != 0) {
+		if (bot.numBarche == 0 && pedinePosizionate != 0) {
 			haiVintoPanel.setLayout(null);
 			haiVintoPanel.add(home);
 			home.addActionListener(this);
 			home.setActionCommand("ENDGAME");
 			c.add(haiVintoPanel);
-		} else if(vediamo != 0 && miccullu == 0){
+		} else if(bot.numBarche != 0 && pedinePosizionate == 0){
 			haiPersoPanel.setLayout(null);
 			haiPersoPanel.add(home);
 			home.setActionCommand("ENDGAME");
@@ -575,20 +574,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 		}
 
 	}
-/* 
-	int getRemainingPlayerPedine() {
-		int tempCounter = 0;
-		for (int i = 0; i < field.length; i++) {
-			for (int j = 0; j < field.length; j++) {
-				if (field[i][j] == 5) {
-					tempCounter++;
-				}
-			}
-		}
-		pedinePosizionate = tempCounter;
-		return pedinePosizionate;
-	}
-*/
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("CONFERMA")) {
@@ -620,6 +606,7 @@ public class Home extends JFrame implements ActionListener, MouseListener, Mouse
 			bot = new Bot();
 			start.setVisible(false);
 
+			// Stampa campo BOT
 			for (int[] x : field) {
 				for (int y : x) {
 					System.out.print(y + " ");
